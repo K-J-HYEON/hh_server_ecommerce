@@ -6,6 +6,7 @@
 - Junit & AssertJ
 - H2 DB
 - JPA
+- gradle
 
 ## [프로젝트 개요](https://www.notion.so/teamsparta/e-afea5b4f98f64f60a093185877db151c?pvs=4)
 
