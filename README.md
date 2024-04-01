@@ -66,6 +66,9 @@
 ## Milestone
 [hh_3wk_MileStone.pdf](https://github.com/K-J-HYEON/hh_3wk_ecommerce/files/14816387/hh_3wk_MileStone.pdf)
 
+## 시퀀스 다이어그램
+![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/c6e7d96b-9bf2-4570-899e-2fcd635413d7)
+
 ## 플로우 차트
 ![hh_3wk_server_setting](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e339aef7-6ea5-4cec-b29f-600c0eb80aa3)
 
