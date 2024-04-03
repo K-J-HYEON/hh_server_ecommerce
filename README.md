@@ -1,5 +1,3 @@
-## 시나리오 : e-커머스 서비스
-
 ## Environment
 - Spring Boot 3.2.4
 - Java 17
@@ -61,11 +59,14 @@
 - 동시에 여러 주문이 들어올 경우, 유저의 보유 잔고에 대한 처리가 정확해야 합니다.
 - 각 상품의 재고 관리가 정상적으로 이루어져 잘못된 주문이 발생하지 않도록 해야 합니다.
 
+
+
+## [API 명세](https://www.notion.so/API-Spec-03d6bae05df54779a35530352d778071?pvs=4)
 ### 잔액 충전
 
 - Request
     - Method: POST
-    - URL: /point/charge/{userId}
+    - URL: /api/point/charge/{userId}
     - Header:
         - Content-Type: application/json
     - Body:
@@ -101,7 +102,7 @@
 
 - Request
     - Method: GET
-    - URL: /point/{userId}
+    - URL: /api/point/{userId}
     - Header:
         - Content-Type: application/json
 - Response
@@ -123,7 +124,7 @@
 
 - Request
     - Method: GET
-    - URL: /product/{productId}
+    - URL: /api/product/{productId}
     - Header:
         - Content-Type: application/json
         
@@ -143,9 +144,138 @@
         }
         ```
 
+### 인기 판매 상품 조회
+
+- Request
+    - Method: GET
+    - URL: /api/product/best
+    - Header:
+        - Content-Type: application/json
+        - Authorization: Bearer {token}
+    - Query:
+        - cursor: 1
+        - size?: 5
+        - sort?: createdAt
+        - direction?: desc
+- Response
+    - 200 OK: 성공적으로 조회
+        ```json
+        {
+            "code": "OK",
+            "products": [
+                {
+                    "id": 1,
+                    "name": "테스트상품1",
+                    "price": 1000,
+                    "stock": 10,
+                    "threeDaysCount": "3",
+                    "rank": "1",
+
+                    "id": 2,
+                    "name": "테스트상품2",
+                    "price": 1000,
+                    "stock": 10,
+                    "threeDaysCount": "3",
+                    "rank": "2",
 
 
-## [API 명세](https://www.notion.so/API-Spec-03d6bae05df54779a35530352d778071?pvs=4)
+                    "id": 4,
+                    "name": "테스트상품4",
+                    "price": 1000,
+                    "stock": 10,
+                    "threeDaysCount": "3",
+                    "rank": "3",
+
+
+                    "id": 3,
+                    "name": "테스트상품3",
+                    "price": 1000,
+                    "stock": 10,
+                    "threeDaysCount": "3",
+                    "rank": "4",
+
+
+                    "id": 6,
+                    "name": "테스트상품6",
+                    "price": 1000,
+                    "stock": 10,
+                    "threeDaysCount": "3",
+                    "rank": "5"
+        
+                }
+            ]
+        }
+
+
+        
+### 주문
+
+- Request
+    - Method: POST
+    - URL: /order/{orderId}/{userId}
+    - Header:
+        - Content-Type: application/json
+    - Body:
+        ```json
+        { 
+           "orderProductList": [ 
+                { "productId": 1, "productName": 1, "count": 3, "price": 3000 },
+                { "productId": 2, "productName": 2, "count": 4, "price": 4000 }
+            ],
+           "totalPrice": 25000
+        }
+        ```
+- Response
+    - 200 OK: 성공적으로 주문
+        ```json
+        {
+            "code": "OK",
+            "id": 1,
+                "totalPrice": 0,
+                "amount": 0,
+            "orderProductList": [
+                {
+                    "product": {
+                        "id": 1,
+                        "proeuctName": "상품1",
+                        "price": 1000,
+                        "stock": 10
+                    },
+                    "count": 1
+                },
+                {
+                    "product": {
+                        "id": 2,
+                        "proeuctName": "상품2",
+                        "price": 2000,
+                        "stock": 10
+                    },
+                    "count": 2
+                }
+            ]
+        }
+        ```
+    - 400 Bad Request: 주문 상품이 적절하지 않은 경우
+        ```json
+        {
+            "code": "BAD_REQUEST",
+            "message": "Order Product List is not valid"
+        }
+        ```
+    - 404 Not Found User: 유저 정보가 없는 경우
+        ```json
+        {
+            "code": "NOT_FOUND_USER",
+            "message": "User information is missing"
+        }
+        ```
+    - 404 Not Found Product: 상품 정보가 없는 경우
+        ```json
+        {
+            "code": "NOT_FOUND_PRODUCT",
+            "message": "no product information was found"
+        }
+        ```
 
 ## Milestone
 초안 : [hh_3wk_MileStone.pdf](https://github.com/K-J-HYEON/hh_3wk_ecommerce/files/14816387/hh_3wk_MileStone.pdf)
@@ -178,4 +308,4 @@ gantt
 ![hh_3wk_server_setting](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e339aef7-6ea5-4cec-b29f-600c0eb80aa3)
 
 ## ERD 초안
-<img width="1087" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/63e900b5-04c9-4636-a66e-21a653883910">
+<img width="1132" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/3de97f24-f3c0-4007-ad4a-aa0941ecae7d">
