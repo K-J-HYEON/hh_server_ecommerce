@@ -58,6 +58,88 @@
 <aside>
 💡 KEY POINT
 
+### 잔액 충전
+
+- Request
+    - Method: POST
+    - URL: /point/charge/{userId}
+    - Header:
+        - Content-Type: application/json
+    - Body:
+        ```json
+        {
+            "point": 0
+        }
+        ```
+- Response
+    - 200 OK: 성공적으로 금액을 충전한 경우
+        ```json
+        {
+            "code": "OK",
+            "point": 0
+        }
+        ```
+    - 400 Bad Request: 충전 금액이 알맞지 않은 경우
+        ```json
+        {
+            "code": "BAD_REQUEST",
+            "message": "requested point is not appropriate"
+        }
+        ```
+    - 404 User Not Found: 유저 정보가 없는 경우
+        ```json
+        {
+            "code": "USER_NOT_FOUND",
+            "message": "User information is missing."
+        }
+        ```
+
+### 잔액 조회
+
+- Request
+    - Method: GET
+    - URL: /point/{userId}
+    - Header:
+        - Content-Type: application/json
+- Response
+    - 200 OK: 성공적으로 금액 조회
+        ```json
+        {
+            "code": "OK",
+            "point": 0
+        }
+        ```
+    - 404 User Not Found : 유저 정보가 없는 경우
+        ```json
+        {
+            "code": "USER_NOT_FOUND",
+            "message": "User information is missing."
+        }
+        ```
+### 상품 목록 조회
+
+- Request
+    - Method: GET
+    - URL: /product/{productId}
+    - Header:
+        - Content-Type: application/json
+        
+- Response
+    - 200 OK: 성공적으로 조회
+        ```json
+        {
+            "code": "OK",
+            "products": [
+                {
+                    "id": 1,
+                    "productName": "테스트 상품1",
+                    "price": 1000,
+                    "count": 1
+                }
+            ],
+        }
+        ```
+
 </aside>
 - 동시에 여러 주문이 들어올 경우, 유저의 보유 잔고에 대한 처리가 정확해야 합니다.
 - 각 상품의 재고 관리가 정상적으로 이루어져 잘못된 주문이 발생하지 않도록 해야 합니다.
