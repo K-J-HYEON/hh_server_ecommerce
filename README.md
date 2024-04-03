@@ -87,14 +87,14 @@
         ```json
         {
             "code": "BAD_REQUEST",
-            "message": "requested point is not appropriate"
+            "message": "Requested Point is not appropriate"
         }
         ```
     - 404 User Not Found: 유저 정보가 없는 경우
         ```json
         {
             "code": "USER_NOT_FOUND",
-            "message": "User information is missing."
+            "message": "User Information is missing."
         }
         ```
 
@@ -127,7 +127,6 @@
     - URL: /api/product/{productId}
     - Header:
         - Content-Type: application/json
-        
 - Response
     - 200 OK: 성공적으로 조회
         ```json
@@ -151,12 +150,7 @@
     - URL: /api/product/best
     - Header:
         - Content-Type: application/json
-        - Authorization: Bearer {token}
-    - Query:
-        - cursor: 1
-        - size?: 5
-        - sort?: createdAt
-        - direction?: desc
+
 - Response
     - 200 OK: 성공적으로 조회
         ```json
@@ -266,14 +260,14 @@
         ```json
         {
             "code": "NOT_FOUND_USER",
-            "message": "User information is missing"
+            "message": "User Information is missing"
         }
         ```
     - 404 Not Found Product: 상품 정보가 없는 경우
         ```json
         {
             "code": "NOT_FOUND_PRODUCT",
-            "message": "no product information was found"
+            "message": "Product Information was not found"
         }
         ```
 
