@@ -93,3 +93,6 @@ gantt
 
 ## 플로우 차트
 ![hh_3wk_server_setting](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e339aef7-6ea5-4cec-b29f-600c0eb80aa3)
+
+## ERD 초안
+<img width="1087" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/63e900b5-04c9-4636-a66e-21a653883910">
