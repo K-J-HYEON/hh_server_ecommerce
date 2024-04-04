@@ -235,7 +235,7 @@ gantt
         - Content-Type: application/json
     - Body:
         ```json
-        { 
+        {
            "orderProductList": [ 
                 { "productId": 1, "productName": 1, "count": 3, "price": 3000 },
                 { "productId": 2, "productName": 2, "count": 4, "price": 4000 }
@@ -296,6 +296,112 @@ gantt
         ```
 
 
+
+### 장바구니 상품 추가
+
+- Request
+    - Method:POST
+    - URL: /api/cart/{cartId}/user/{userId}
+    - Header:
+        - Content-Type: application/json
+- Body:
+    ```json
+    [
+        {
+            "productId": 1,
+            "productName": "sample1",
+            "count": 1,
+            "price": 1000
+        },
+        {
+            "productId": 2,
+            "productName": "sample2",
+            "count": 1,
+            "price": 2000
+        }
+    ]
+    ```
+- Response
+- 200 OK: 성공적으로 조회
+    ```json
+    {
+        "code": "OK",
+        "cartId" : 1,
+        "userId" : 1,
+        "totalPrice" : 3000,
+        "cart":
+        [
+            {
+                "productId" : 1,
+                "productName" : "sample1",
+                "count" : 1,
+                "price" : 1000
+            },
+            {
+                "productId" : 2,
+                "productName" : "sample2",
+                "count" : 1,
+                "price" : 2000
+            }
+        ]
+    }
+    ```
+
+
+### 장바구니 상품 삭제
+- Request
+    - Method:DELETE
+    - URL: /api/cart/{cartId}/user/{userId}
+    - Header:
+        - Content-Type: application/json
+     
+- Body
+  ```json
+        [
+        	{
+        		"productId": 3,
+                "productName": "sample3",
+        		"count": 3,
+                "price": 3000
+        	},
+        	{
+                "productId": 4,
+                "productName": "sample4",
+        		"count": 4,
+                "price": 4000
+        	}
+        ]
+  ```
+  
+- Response
+    - 200 OK: 성공적으로 조회
+      ```json
+      {
+            "code": "OK",
+        	"cartId" : 1,
+            "userId" : 1,
+        	"totalPrice" : 25000,
+        	"cart":
+        	[
+        		{
+        			"productId" : 3,
+        			"productName" : "sample3",
+        			"count" : 3,
+        			"price" : 3000
+        		},
+        		{
+        			"productId" : 4,
+        			"productName" : "sample4",
+        			"count" : 4,
+        			"price" : 4000
+        		}
+        	]
+        }
+        ```
+
+
+
+
 ### 장바구니 목록 조회
 
 - Request
@@ -306,9 +412,8 @@ gantt
 - Response
     - 200 OK: 성공적으로 조회
         ```json
-        {
-            "code": "OK",
             {
+                "code": "OK",
                 "cartId": 1,
                 "userId": 1,
                 "totalPrice": 5000,
@@ -327,7 +432,6 @@ gantt
                     }
                 ]
             }
-        }
         ```
 
 ## [Mock API 작성](https://www.notion.so/Mock-API-8987218a4185421f942fab4da77f858a?pvs=4)
@@ -340,4 +444,5 @@ gantt
 ![hh_3wk_server_setting](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e339aef7-6ea5-4cec-b29f-600c0eb80aa3)
 
 ## ERD 초안
-<img width="1132" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/3de97f24-f3c0-4007-ad4a-aa0941ecae7d">
+![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/f6ce6ffd-f4ee-4cae-9c89-97177ed17412)
+
