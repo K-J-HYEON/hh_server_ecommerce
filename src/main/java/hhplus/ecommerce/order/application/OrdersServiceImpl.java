@@ -1,4 +1,4 @@
 package hhplus.ecommerce.order.application;
 
-public interface OrderService {
+public class OrdersServiceImpl {
 }

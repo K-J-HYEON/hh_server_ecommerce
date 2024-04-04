@@ -1,4 +1,4 @@
 package hhplus.ecommerce.cart.application;
 
-public class CarServiceImpl {
+public interface CartsService {
 }

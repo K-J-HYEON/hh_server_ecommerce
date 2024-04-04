@@ -1,4 +1,4 @@
 package hhplus.ecommerce.cart.infrastructure;
 
-public class CartRepository {
+public class CartsRepository {
 }

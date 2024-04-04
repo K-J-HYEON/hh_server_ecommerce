@@ -1,4 +1,4 @@
 package hhplus.ecommerce.order.infrastructure;
 
-public class OrderRepository {
+public class OrdersListRepository {
 }

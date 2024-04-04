@@ -1,4 +1,4 @@
 package hhplus.ecommerce.product.dto;
 
-public class ProductReq {
+public class ProductsReq {
 }

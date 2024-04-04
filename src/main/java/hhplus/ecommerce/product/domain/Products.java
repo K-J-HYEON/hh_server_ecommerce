@@ -1,4 +1,4 @@
 package hhplus.ecommerce.product.domain;
 
-public class Product {
+public class Products {
 }

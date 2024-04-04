@@ -1,4 +1,4 @@
 package hhplus.ecommerce.cart.dto.response;
 
-public class CartRes {
+public class CartsRes {
 }

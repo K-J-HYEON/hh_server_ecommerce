@@ -1,4 +1,4 @@
 package hhplus.ecommerce.product.infrastructure;
 
-public class ProductRepository {
+public class ProductsRepository {
 }

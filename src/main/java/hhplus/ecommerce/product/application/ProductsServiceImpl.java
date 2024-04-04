@@ -1,4 +1,4 @@
 package hhplus.ecommerce.product.application;
 
-public interface ProductService {
+public class ProductsServiceImpl {
 }
