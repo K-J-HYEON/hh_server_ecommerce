@@ -86,27 +86,33 @@ gantt
 
 
 ## [API 명세](https://www.notion.so/API-Spec-03d6bae05df54779a35530352d778071?pvs=4)
-### 잔액 충전
 
-- Request
+<details>
+  <summary>잔액충전</summary>
+    
+- Request:
     - Method: POST
     - URL: /api/point/charge/{userId}
-    - Header:
+    - Headers:
         - Content-Type: application/json
-    - Body:
-        ```json
+
+
+- Body
+  ```json
         {
-            "point": 0
+            "point": 100
         }
-        ```
-- Response
-    - 200 OK: 성공적으로 금액을 충전한 경우
+  ```
+  
+- Response:
+    - 200 OK: 성공적으로 잔액 충전
         ```json
-        {
-            "code": "OK",
-            "point": 0
-        }
+            {
+                "code": "OK",
+                "point": 100
+            }
         ```
+        
     - 400 Bad Request: 충전 금액이 알맞지 않은 경우
         ```json
         {
@@ -121,59 +127,76 @@ gantt
             "message": "User Information is missing."
         }
         ```
+</details>
 
-### 잔액 조회
 
-- Request
+
+<details>
+  <summary><b>잔액조회</b></summary>
+    
+- Request:
     - Method: GET
     - URL: /api/point/{userId}
-    - Header:
-        - Content-Type: application/json
-- Response
-    - 200 OK: 성공적으로 금액 조회
-        ```json
-        {
-            "code": "OK",
-            "point": 0
-        }
-        ```
+    - Headers:
+      - Content-Type: application/json
+        
+- Response:
+    - 200 OK: 성공적으로 잔액 조회
+    ```json
+            {
+                "code": "OK",
+                "point": 100
+            }
+    ```
+
     - 404 User Not Found : 유저 정보가 없는 경우
-        ```json
+    ```json
         {
             "code": "USER_NOT_FOUND",
             "message": "User information is missing."
         }
-        ```
-### 상품 목록 조회
+    ```
+</details>
 
-- Request
+
+
+<details>
+    <summary><b>상품 목록 조회</b></summary>
+
+- Request:
     - Method: GET
     - URL: /api/product/{productId}
-    - Header:
-        - Content-Type: application/json
-- Response
+    - Headers:
+      - Content-Type: application/json
+    
+- Response:
     - 200 OK: 성공적으로 조회
         ```json
-        {
-            "code": "OK",
-            "products": [
-                {
-                    "productId": 1,
-                    "productName": "테스트 상품1",
-                    "price": 1000,
-                    "count": 1
-                }
-            ]
-        }
+    
+            {
+                "code": "OK",
+                "products": [
+                    {
+                        "productId": 1,
+                        "productName": "테스트 상품1",
+                        "price": 1000,
+                        "count": 1
+                    }
+                ]
+            }
         ```
+</details>
 
-### 인기 판매 상품 조회
 
+
+<details>
+    <summary><b>인기 판매 상품 조회</b></summary>
+    
 - Request
     - Method: GET
     - URL: /api/product/best
-    - Header:
-        - Content-Type: application/json
+    - Headers:
+      - Content-Type: application/json
 
 - Response
     - 200 OK: 성공적으로 조회
@@ -223,55 +246,68 @@ gantt
                 }
             ]
         }
-        ```
+    ```
+</details>
 
-        
-### 주문
 
+
+<details>
+    <summary><b>주문 결제</b></summary>
+    
 - Request
     - Method: POST
     - URL: /order/{orderId}/{userId}
-    - Header:
-        - Content-Type: application/json
-    - Body:
-        ```json
-        {
-           "orderProductList": [ 
-                { "productId": 1, "productName": 1, "count": 3, "price": 3000 },
-                { "productId": 2, "productName": 2, "count": 4, "price": 4000 }
-            ],
-           "totalPrice": 25000
-        }
-        ```
+    - Headers:
+      - Content-Type: application/json
+    
+- Body:
+  ```json
+    
+        [
+            {
+                "productId": 1,
+                "productName": "sample1",
+                "count": 1,
+                "price": 1000
+        
+            },
+        
+            {
+                "productId": 2,
+                "productName": "sample2",
+                "count": 2,
+                "price": 2000
+            }
+        ]
+  ```
+  
 - Response
-    - 200 OK: 성공적으로 주문
+    - 200 OK: 성공적으로 주문 및 결제
         ```json
-        {
-            "code": "OK",
-            "userId": 1,
-                "totalPrice": 0,
-                "amount": 0,
-            "orderProductList": [
-                {
-                    "product": {
+            {
+                "userId": 1,
+                "orderId": 1,
+                "paymentId": 1,
+                "point": 10000,
+                "paymentPoint": 3000,
+                "aftePoint": 7000,
+                "order":
+                [
+                    {
                         "productId": 1,
-                        "proeuctName": "상품1",
-                        "price": 1000,
-                        "stock": 10
+                        "productName": "sample1",
+                        "count": 1,
+                        "price": 1000
+        
                     },
-                    "count": 1
-                },
-                {
-                    "product": {
+                    {
                         "productId": 2,
-                        "proeuctName": "상품2",
-                        "price": 2000,
-                        "stock": 10
-                    },
-                    "count": 2
-                }
-            ]
-        }
+                        "productName": "sample2",
+                        "count": 2,
+                        "price": 2000
+                    }
+                ]
+            }
         ```
     - 400 Bad Request: 주문 상품이 적절하지 않은 경우
         ```json
@@ -294,120 +330,130 @@ gantt
             "message": "Product Information was not found"
         }
         ```
+</details>
 
 
 
-### 장바구니 상품 추가
-
+<details>
+  <summary>장바구니 상품 추가</summary>
+    
 - Request
-    - Method:POST
+    - Method: POST
     - URL: /api/cart/{cartId}/user/{userId}
-    - Header:
+    - Headers:
         - Content-Type: application/json
+    
 - Body:
     ```json
-    [
-        {
-            "productId": 1,
-            "productName": "sample1",
-            "count": 1,
-            "price": 1000
-        },
-        {
-            "productId": 2,
-            "productName": "sample2",
-            "count": 1,
-            "price": 2000
-        }
-    ]
-    ```
-- Response
-- 200 OK: 성공적으로 조회
-    ```json
-    {
-        "code": "OK",
-        "cartId" : 1,
-        "userId" : 1,
-        "totalPrice" : 3000,
-        "cart":
+    
         [
             {
-                "productId" : 1,
-                "productName" : "sample1",
-                "count" : 1,
-                "price" : 1000
+                "productId": 1,
+                "productName": "sample1",
+                "count": 1,
+                "price": 1000
             },
             {
-                "productId" : 2,
-                "productName" : "sample2",
-                "count" : 1,
-                "price" : 2000
+                "productId": 2,
+                "productName": "sample2",
+                "count": 1,
+                "price": 2000
             }
         ]
-    }
-    ```
+    ```    
+- Response
+    - 200 OK: 성공적으로 추가
+        ```json
+        {
+            "code": "OK",
+            "cartId" : 1,
+            "userId" : 1,
+            "totalPrice" : 3000,
+            "cart":
+            [
+                {
+                    "productId" : 1,
+                    "productName" : "sample1",
+                    "count" : 1,
+                    "price" : 1000
+                },
+                {
+                    "productId" : 2,
+                    "productName" : "sample2",
+                    "count" : 1,
+                    "price" : 2000
+                }
+            ]
+        }
+        ```
+</details>
 
 
-### 장바구니 상품 삭제
+
+<details>
+  <summary>장바구니 상품 삭제</summary>
+    
 - Request
-    - Method:DELETE
+    - Method:DELETE
     - URL: /api/cart/{cartId}/user/{userId}
-    - Header:
+    - Headers:
         - Content-Type: application/json
-     
+    
 - Body
   ```json
         [
-        	{
-        		"productId": 3,
+            {
+                "productId": 3,
                 "productName": "sample3",
-        		"count": 3,
+                "count": 3,
                 "price": 3000
-        	},
-        	{
+            },
+            {
                 "productId": 4,
                 "productName": "sample4",
-        		"count": 4,
+                "count": 4,
                 "price": 4000
-        	}
+            }
         ]
   ```
+
   
 - Response
-    - 200 OK: 성공적으로 조회
+    - 200 OK: 성공적으로 삭제
       ```json
-      {
-            "code": "OK",
-        	"cartId" : 1,
-            "userId" : 1,
-        	"totalPrice" : 25000,
-        	"cart":
-        	[
-        		{
-        			"productId" : 3,
-        			"productName" : "sample3",
-        			"count" : 3,
-        			"price" : 3000
-        		},
-        		{
-        			"productId" : 4,
-        			"productName" : "sample4",
-        			"count" : 4,
-        			"price" : 4000
-        		}
-        	]
-        }
+          {
+                "code": "OK",
+            	"cartId" : 1,
+                "userId" : 1,
+            	"totalPrice" : 25000,
+            	"cart":
+            	[
+            		{
+            			"productId" : 3,
+            			"productName" : "sample3",
+            			"count" : 3,
+            			"price" : 3000
+            		},
+            		{
+            			"productId" : 4,
+            			"productName" : "sample4",
+            			"count" : 4,
+            			"price" : 4000
+            		}
+            	]
+            }
         ```
+</details>
 
 
 
-
-### 장바구니 목록 조회
+<details>
+  <summary>장바구니 목록 조회</summary>
 
 - Request
     - Method: GET
     - URL: /api/cart/{cartId}/user/{userId}
-    - Header:
+    - Headers:
         - Content-Type: application/json
 - Response
     - 200 OK: 성공적으로 조회
@@ -433,6 +479,11 @@ gantt
                 ]
             }
         ```
+</details>
+
+
+
+
 
 ## [Mock API 작성](https://www.notion.so/Mock-API-8987218a4185421f942fab4da77f858a?pvs=4)
 
