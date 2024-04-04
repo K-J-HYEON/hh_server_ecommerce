@@ -123,7 +123,7 @@ gantt
     - 404 User Not Found: 유저 정보가 없는 경우
         ```json
         {
-            "code": "USER_NOT_FOUND",
+            "code": "NOT_FOUND_USER",
             "message": "User Information is missing."
         }
         ```
@@ -152,7 +152,7 @@ gantt
     - 404 User Not Found : 유저 정보가 없는 경우
     ```json
         {
-            "code": "USER_NOT_FOUND",
+            "code": "NOT_FOUND_USER",
             "message": "User information is missing."
         }
     ```
@@ -328,7 +328,14 @@ gantt
         ```json
         {
             "code": "NOT_FOUND_PRODUCT",
-            "message": "Product Information was not found"
+            "message": "Product Information is not found"
+        }
+        ```
+    - 404 Bad Request: 포인트가 없는 경우
+        ```json
+        {
+            "code": "NOT_FOUND_POINT",
+            "message": "Point is not found"
         }
         ```
 </details>
