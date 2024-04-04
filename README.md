@@ -300,6 +300,7 @@ gantt
                         "price": 1000
         
                     },
+        
                     {
                         "productId": 2,
                         "productName": "sample2",
@@ -353,6 +354,7 @@ gantt
                 "count": 1,
                 "price": 1000
             },
+    
             {
                 "productId": 2,
                 "productName": "sample2",
@@ -377,6 +379,7 @@ gantt
                     "count" : 1,
                     "price" : 1000
                 },
+        
                 {
                     "productId" : 2,
                     "productName" : "sample2",
@@ -408,6 +411,7 @@ gantt
                 "count": 3,
                 "price": 3000
             },
+  
             {
                 "productId": 4,
                 "productName": "sample4",
@@ -423,24 +427,25 @@ gantt
       ```json
           {
                 "code": "OK",
-            	"cartId" : 1,
+            	  "cartId" : 1,
                 "userId" : 1,
-            	"totalPrice" : 25000,
-            	"cart":
-            	[
-            		{
-            			"productId" : 3,
-            			"productName" : "sample3",
-            			"count" : 3,
-            			"price" : 3000
-            		},
-            		{
-            			"productId" : 4,
-            			"productName" : "sample4",
-            			"count" : 4,
-            			"price" : 4000
-            		}
-            	]
+            	  "totalPrice" : 25000,
+            	  "cart":
+                	[
+                		{
+                			"productId" : 3,
+                			"productName" : "sample3",
+                			"count" : 3,
+                			"price" : 3000
+                		},
+      
+                		{
+                			"productId" : 4,
+                			"productName" : "sample4",
+                			"count" : 4,
+                			"price" : 4000
+                		}
+                	]
             }
         ```
 </details>
@@ -470,6 +475,7 @@ gantt
                         "count": 3,
                         "price": 1000
                     },
+        
                     {
                         "productId": 2,
                         "productName": "sample2",
