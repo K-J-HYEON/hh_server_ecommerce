@@ -158,7 +158,7 @@ gantt
             "code": "OK",
             "products": [
                 {
-                    "id": 1,
+                    "productId": 1,
                     "productName": "테스트 상품1",
                     "price": 1000,
                     "count": 1
@@ -182,14 +182,14 @@ gantt
             "code": "OK",
             "products": [
                 {
-                    "id": 1,
+                    "productId": 1,
                     "name": "테스트상품1",
                     "price": 1000,
                     "stock": 10,
                     "threeDaysCount": "3",
                     "rank": "1",
 
-                    "id": 2,
+                    "productId": 2,
                     "name": "테스트상품2",
                     "price": 1000,
                     "stock": 10,
@@ -197,7 +197,7 @@ gantt
                     "rank": "2",
 
 
-                    "id": 4,
+                    "productId": 4,
                     "name": "테스트상품4",
                     "price": 1000,
                     "stock": 10,
@@ -205,7 +205,7 @@ gantt
                     "rank": "3",
 
 
-                    "id": 3,
+                    "productId": 3,
                     "name": "테스트상품3",
                     "price": 1000,
                     "stock": 10,
@@ -213,7 +213,7 @@ gantt
                     "rank": "4",
 
 
-                    "id": 6,
+                    "productId": 6,
                     "name": "테스트상품6",
                     "price": 1000,
                     "stock": 10,
@@ -248,13 +248,13 @@ gantt
         ```json
         {
             "code": "OK",
-            "id": 1,
+            "userId": 1,
                 "totalPrice": 0,
                 "amount": 0,
             "orderProductList": [
                 {
                     "product": {
-                        "id": 1,
+                        "productId": 1,
                         "proeuctName": "상품1",
                         "price": 1000,
                         "stock": 10
@@ -263,7 +263,7 @@ gantt
                 },
                 {
                     "product": {
-                        "id": 2,
+                        "productId": 2,
                         "proeuctName": "상품2",
                         "price": 2000,
                         "stock": 10
