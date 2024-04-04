@@ -60,6 +60,30 @@
 - 각 상품의 재고 관리가 정상적으로 이루어져 잘못된 주문이 발생하지 않도록 해야 합니다.
 
 
+## Milestone
+초안 : [hh_3wk_MileStone.pdf](https://github.com/K-J-HYEON/hh_3wk_ecommerce/files/14816387/hh_3wk_MileStone.pdf)
+##
+수정
+##
+```mermaid
+gantt
+    title 3wk E-commerce Service Scenario
+    dateFormat YYYY-MM-DD
+    section 요구사항 분석
+        요구사항분석/API명세: Done, 2024-03-31, 2024-04-02
+    section ERD 작성
+        ERD 설계자료 : Done, 2024-04-02, 2024-04-03
+    section Mock API 구현
+        Mock API 개발: active, 2024-04-03, 2024-04-05
+    section API 기본 기능 구현 및 Test 코드 작성
+        잔액충전/조회 API 및 TestCode: 2024-04-05, 2024-04-06
+        상품목록조회 API 및 TestCode: 2024-04-06, 2024-04-07
+        주문/결제 API 및 TestCode: 2024-04-07, 2024-04-09
+        인기판매 상품조회 API 및 TestCode: 2024-04-09, 2024-04-12
+    section 심화과제 API 구현 및 Test 코드 작성
+        장바구니조회/추가/삭제 API 및 TestCode: 2024-04-12, 2024-04-19
+```
+
 
 ## [API 명세](https://www.notion.so/API-Spec-03d6bae05df54779a35530352d778071?pvs=4)
 ### 잔액 충전
@@ -139,7 +163,7 @@
                     "price": 1000,
                     "count": 1
                 }
-            ],
+            ]
         }
         ```
 
@@ -199,7 +223,7 @@
                 }
             ]
         }
-
+        ```
 
         
 ### 주문
@@ -271,29 +295,43 @@
         }
         ```
 
-## Milestone
-초안 : [hh_3wk_MileStone.pdf](https://github.com/K-J-HYEON/hh_3wk_ecommerce/files/14816387/hh_3wk_MileStone.pdf)
-##
-수정
-##
-```mermaid
-gantt
-    title 3wk E-commerce Service Scenario
-    dateFormat YYYY-MM-DD
-    section 요구사항 분석
-        요구사항분석/API명세: Done, 2024-03-31, 2024-04-02
-    section ERD 작성
-        ERD 설계자료 : Done, 2024-04-02, 2024-04-03
-    section Mock API 구현
-        Mock API 개발: active, 2024-04-03, 2024-04-05
-    section API 기본 기능 구현 및 Test 코드 작성
-        잔액충전/조회 API 및 TestCode: 2024-04-05, 2024-04-06
-        상품목록조회 API 및 TestCode: 2024-04-06, 2024-04-07
-        주문/결제 API 및 TestCode: 2024-04-07, 2024-04-09
-        인기판매 상품조회 API 및 TestCode: 2024-04-09, 2024-04-12
-    section 심화과제 API 구현 및 Test 코드 작성
-        장바구니조회/추가/삭제 API 및 TestCode: 2024-04-12, 2024-04-19
-```
+
+### 장바구니 목록 조회
+
+- Request
+    - Method: GET
+    - URL: /api/cart/{cartId}/user/{userId}
+    - Header:
+        - Content-Type: application/json
+- Response
+    - 200 OK: 성공적으로 조회
+        ```json
+        {
+            "code": "OK",
+            {
+                "cartId": 1,
+                "userId": 1,
+                "totalPrice": 5000,
+                "cart": [
+                    {
+                        "productId": 1,
+                        "productName": "sample1",
+                        "count": 3,
+                        "price": 1000
+                    },
+                    {
+                        "productId": 2,
+                        "productName": "sample2",
+                        "count": 2,
+                        "price": 2000
+                    }
+                ]
+            }
+        }
+        ```
+
+## [Mock API 작성](https://www.notion.so/Mock-API-8987218a4185421f942fab4da77f858a?pvs=4)
+
 
 ## 시퀀스 다이어그램
 ![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/c6e7d96b-9bf2-4570-899e-2fcd635413d7)
