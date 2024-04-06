@@ -123,7 +123,7 @@ gantt
     - 404 User Not Found: 유저 정보가 없는 경우
         ```json
         {
-            "code": "USER_NOT_FOUND",
+            "code": "NOT_FOUND_USER",
             "message": "User Information is missing."
         }
         ```
@@ -152,7 +152,7 @@ gantt
     - 404 User Not Found : 유저 정보가 없는 경우
     ```json
         {
-            "code": "USER_NOT_FOUND",
+            "code": "NOT_FOUND_USER",
             "message": "User information is missing."
         }
     ```
@@ -300,6 +300,7 @@ gantt
                         "price": 1000
         
                     },
+        
                     {
                         "productId": 2,
                         "productName": "sample2",
@@ -327,7 +328,14 @@ gantt
         ```json
         {
             "code": "NOT_FOUND_PRODUCT",
-            "message": "Product Information was not found"
+            "message": "Product Information is not found"
+        }
+        ```
+    - 404 Bad Request: 포인트가 없는 경우
+        ```json
+        {
+            "code": "NOT_FOUND_POINT",
+            "message": "Point is not found"
         }
         ```
 </details>
@@ -353,6 +361,7 @@ gantt
                 "count": 1,
                 "price": 1000
             },
+    
             {
                 "productId": 2,
                 "productName": "sample2",
@@ -377,6 +386,7 @@ gantt
                     "count" : 1,
                     "price" : 1000
                 },
+        
                 {
                     "productId" : 2,
                     "productName" : "sample2",
@@ -408,6 +418,7 @@ gantt
                 "count": 3,
                 "price": 3000
             },
+  
             {
                 "productId": 4,
                 "productName": "sample4",
@@ -423,24 +434,25 @@ gantt
       ```json
           {
                 "code": "OK",
-            	"cartId" : 1,
+            	  "cartId" : 1,
                 "userId" : 1,
-            	"totalPrice" : 25000,
-            	"cart":
-            	[
-            		{
-            			"productId" : 3,
-            			"productName" : "sample3",
-            			"count" : 3,
-            			"price" : 3000
-            		},
-            		{
-            			"productId" : 4,
-            			"productName" : "sample4",
-            			"count" : 4,
-            			"price" : 4000
-            		}
-            	]
+            	  "totalPrice" : 25000,
+            	  "cart":
+                	[
+                		{
+                			"productId" : 3,
+                			"productName" : "sample3",
+                			"count" : 3,
+                			"price" : 3000
+                		},
+      
+                		{
+                			"productId" : 4,
+                			"productName" : "sample4",
+                			"count" : 4,
+                			"price" : 4000
+                		}
+                	]
             }
         ```
 </details>
@@ -470,6 +482,7 @@ gantt
                         "count": 3,
                         "price": 1000
                     },
+        
                     {
                         "productId": 2,
                         "productName": "sample2",
@@ -485,7 +498,8 @@ gantt
 
 
 
-## [Mock API 작성](https://www.notion.so/Mock-API-8987218a4185421f942fab4da77f858a?pvs=4)
+## [Mock API 작성](https://www.notion.so/Mock-API-8987218a4185421f942fab4da77f858a?pvs=4) / [링크](https://documenter.getpostman.com/view/22802100/2sA35LUynx#intro)
+
 
 
 ## 시퀀스 다이어그램
@@ -495,5 +509,4 @@ gantt
 ![hh_3wk_server_setting](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e339aef7-6ea5-4cec-b29f-600c0eb80aa3)
 
 ## ERD 초안
-![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/521ba0e0-3ec6-4a84-a96d-b92a119cf0f1)
-
+![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e5745065-2ed8-4297-8edc-c734213711fa)
