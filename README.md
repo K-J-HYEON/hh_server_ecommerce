@@ -509,4 +509,4 @@ gantt
 ![hh_3wk_server_setting](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e339aef7-6ea5-4cec-b29f-600c0eb80aa3)
 
 ## ERD 초안
-<img width="1100" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/a44266cc-9845-4239-863e-55280b1a06e9">
+<img width="1014" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/dbad2478-c17e-47c6-a557-f58e20e37968">
