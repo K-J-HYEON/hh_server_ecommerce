@@ -18,7 +18,6 @@ public class ProductsServiceImplTest {
     @Mock
     ProductRepository productRepository;
 
-
     // 상품 목록 조회 성공
     @Test
     @DisplayName("상품 목록 조회 성공")
