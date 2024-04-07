@@ -5,11 +5,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-
+@Builder
 public class ProductInfoReq {
     private Long productId;
     private String name;
