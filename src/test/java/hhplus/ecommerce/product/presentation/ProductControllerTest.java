@@ -26,7 +26,7 @@ class ProductControllerTest {
     private ProductServiceImpl productsService;
 
     @Test
-    @DisplayName("상품 목록 조회 성공")
+    @DisplayName("상품목록 조회 성공")
     void readProductInfo_success() throws Exception {
 
         // given
@@ -48,7 +48,7 @@ class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("상품 상세 조회 성공")
+    @DisplayName("상품정보 상세조회 성공")
     void readProductInfoDetails_success() throws Exception {
 
         // given
