@@ -161,7 +161,36 @@ gantt
 
 
 <details>
-    <summary><b>상품 목록 조회</b></summary>
+    <summary><b>상품 정보 조회</b></summary>
+
+- Request:
+    - Method: GET
+    - URL: /ecommerce/api/product
+    - Headers:
+      - Content-Type: application/json
+    
+- Response:
+    - 200 OK: 성공적으로 조회
+        ```json
+    
+            {
+                "code": "OK",
+                "products": [
+                    {
+                        "productId": 1,
+                        "productName": "테스트 상품1",
+                        "price": 1000,
+                        
+                    }
+                ]
+            }
+        ```
+</details>
+
+
+
+<details>
+    <summary><b>상품 정보 상세 조회</b></summary>
 
 - Request:
     - Method: GET
@@ -180,7 +209,9 @@ gantt
                         "productId": 1,
                         "productName": "테스트 상품1",
                         "price": 1000,
-                        "count": 1
+                        "stock": 10
+                        "size": "XL"
+                        "color": "베이직"
                     }
                 ]
             }
