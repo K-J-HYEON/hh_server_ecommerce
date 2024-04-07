@@ -34,7 +34,7 @@
 - 상품 정보 ( ID, 이름, 가격, 잔여수량 ) 을 조회하는 API 를 작성합니다.
 - 조회시점의 상품별 잔여수량이 정확하면 좋습니다.
 
-3️⃣ **주요** **주문 / 결제 API**
+3️⃣ **주문 / 결제 API**
 - 사용자 식별자와 (상품 ID, 수량) 목록을 입력받아 주문하고 결제를 수행하는 API 를 작성합니다.
 - 결제는 기 충전된 잔액을 기반으로 수행하며 성공할 시 잔액을 차감해야 합니다.
 - 데이터 분석을 위해 결제 성공 시에 실시간으로 주문 정보를 데이터 플랫폼에 전송해야 합니다. ( 데이터 플랫폼이 어플리케이션 `외부` 라는 가정만 지켜 작업해 주시면 됩니다 )
@@ -92,7 +92,7 @@ gantt
     
 - Request:
     - Method: POST
-    - URL: /api/point/charge/{userId}
+    - URL: /ecommerce/api/point/charge/{userId}
     - Headers:
         - Content-Type: application/json
 
@@ -136,7 +136,7 @@ gantt
     
 - Request:
     - Method: GET
-    - URL: /api/point/{userId}
+    - URL: /ecommerce/api/point/{userId}
     - Headers:
       - Content-Type: application/json
         
@@ -161,11 +161,11 @@ gantt
 
 
 <details>
-    <summary><b>상품 목록 조회</b></summary>
+    <summary><b>상품 정보 조회</b></summary>
 
 - Request:
     - Method: GET
-    - URL: /api/product/{productId}
+    - URL: /ecommerce/api/product
     - Headers:
       - Content-Type: application/json
     
@@ -180,7 +180,38 @@ gantt
                         "productId": 1,
                         "productName": "테스트 상품1",
                         "price": 1000,
-                        "count": 1
+                        
+                    }
+                ]
+            }
+        ```
+</details>
+
+
+
+<details>
+    <summary><b>상품 정보 상세 조회</b></summary>
+
+- Request:
+    - Method: GET
+    - URL: /ecommerce/api/product/{productId}
+    - Headers:
+      - Content-Type: application/json
+    
+- Response:
+    - 200 OK: 성공적으로 조회
+        ```json
+    
+            {
+                "code": "OK",
+                "products": [
+                    {
+                        "productId": 1,
+                        "productName": "테스트 상품1",
+                        "price": 1000,
+                        "stock": 10
+                        "size": "XL"
+                        "color": "베이직"
                     }
                 ]
             }
@@ -194,7 +225,7 @@ gantt
     
 - Request
     - Method: GET
-    - URL: /api/product/best
+    - URL: /ecommerce/api/product/best
     - Headers:
       - Content-Type: application/json
 
@@ -256,7 +287,7 @@ gantt
     
 - Request
     - Method: POST
-    - URL: /order/{orderId}/{userId}
+    - URL: /ecommerce/order/{orderId}/{userId}
     - Headers:
       - Content-Type: application/json
     
@@ -347,7 +378,7 @@ gantt
     
 - Request
     - Method: POST
-    - URL: /api/cart/{cartId}/user/{userId}
+    - URL: /ecommerce/api/cart/{cartId}/user/{userId}
     - Headers:
         - Content-Type: application/json
     
@@ -405,7 +436,7 @@ gantt
     
 - Request
     - Method:DELETE
-    - URL: /api/cart/{cartId}/user/{userId}
+    - URL: /ecommerce/api/cart/{cartId}/user/{userId}
     - Headers:
         - Content-Type: application/json
     
@@ -464,7 +495,7 @@ gantt
 
 - Request
     - Method: GET
-    - URL: /api/cart/{cartId}/user/{userId}
+    - URL: /ecommerce/api/cart/{cartId}/user/{userId}
     - Headers:
         - Content-Type: application/json
 - Response
@@ -503,10 +534,24 @@ gantt
 
 
 ## 시퀀스 다이어그램
-![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/c6e7d96b-9bf2-4570-899e-2fcd635413d7)
+
+### 잔액 충전 및 조회
+![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/33b4ce45-cc6f-4d7a-b9ee-37ab259b2f27)
+
+### 상품 조회
+![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/996c49bd-6073-47b9-90e8-35e77c229901)
+
+### 인기 판매 상품 조회
+![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/2407b477-75d0-4cde-bc67-57d35c8652cc)
+
+### 상품 주문 결제
+![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/2581e168-b319-4acb-ba1e-608250950789)
+
+### 장바구니 추가/삭제/조회
+![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/4884ff2d-e19c-4404-8cef-26e6e82803c2)
 
 ## 플로우 차트
 ![hh_3wk_server_setting](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e339aef7-6ea5-4cec-b29f-600c0eb80aa3)
 
 ## ERD 초안
-![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e5745065-2ed8-4297-8edc-c734213711fa)
+![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/9a1b0fb7-882a-42b5-82f0-ccd03b6eb11d)
