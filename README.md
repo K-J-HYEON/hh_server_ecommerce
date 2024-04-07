@@ -165,7 +165,7 @@ gantt
 
 - Request:
     - Method: GET
-    - URL: /api/product/{productId}
+    - URL: /ecommerce/api/product/{productId}
     - Headers:
       - Content-Type: application/json
     
