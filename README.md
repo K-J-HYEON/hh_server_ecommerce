@@ -92,7 +92,7 @@ gantt
     
 - Request:
     - Method: POST
-    - URL: /api/point/charge/{userId}
+    - URL: /ecommerce/api/point/charge/{userId}
     - Headers:
         - Content-Type: application/json
 
@@ -136,7 +136,7 @@ gantt
     
 - Request:
     - Method: GET
-    - URL: /api/point/{userId}
+    - URL: /ecommerce/api/point/{userId}
     - Headers:
       - Content-Type: application/json
         
@@ -194,7 +194,7 @@ gantt
     
 - Request
     - Method: GET
-    - URL: /api/product/best
+    - URL: /ecommerce/api/product/best
     - Headers:
       - Content-Type: application/json
 
@@ -256,7 +256,7 @@ gantt
     
 - Request
     - Method: POST
-    - URL: /order/{orderId}/{userId}
+    - URL: /ecommerce/order/{orderId}/{userId}
     - Headers:
       - Content-Type: application/json
     
@@ -347,7 +347,7 @@ gantt
     
 - Request
     - Method: POST
-    - URL: /api/cart/{cartId}/user/{userId}
+    - URL: /ecommerce/api/cart/{cartId}/user/{userId}
     - Headers:
         - Content-Type: application/json
     
@@ -405,7 +405,7 @@ gantt
     
 - Request
     - Method:DELETE
-    - URL: /api/cart/{cartId}/user/{userId}
+    - URL: /ecommerce/api/cart/{cartId}/user/{userId}
     - Headers:
         - Content-Type: application/json
     
@@ -464,7 +464,7 @@ gantt
 
 - Request
     - Method: GET
-    - URL: /api/cart/{cartId}/user/{userId}
+    - URL: /ecommerce/api/cart/{cartId}/user/{userId}
     - Headers:
         - Content-Type: application/json
 - Response
