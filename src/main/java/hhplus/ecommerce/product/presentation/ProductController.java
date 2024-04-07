@@ -1,36 +1,38 @@
 package hhplus.ecommerce.product.presentation;
 
-
-import hhplus.ecommerce.config.BaseException;
-import hhplus.ecommerce.config.BaseResponse;
-import hhplus.ecommerce.product.application.ProductsService;
-import hhplus.ecommerce.product.application.ProductsServiceImpl;
+import hhplus.ecommerce.product.application.ProductService;
+import hhplus.ecommerce.product.domain.Product;
+import hhplus.ecommerce.product.dto.res.ProductInfoDetailRes;
 import hhplus.ecommerce.product.dto.res.ProductInfoRes;
-import hhplus.ecommerce.util.jwt.JwtTokenProvider;
+import hhplus.ecommerce.product.dto.res.ProductListRes;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/ecommerce/api/product")
 public class ProductController {
 
-    private final ProductsService productsService;
-    private final JwtTokenProvider jwtTokenProvider;
+    private final ProductService productService;
 
-    public ProductController(ProductsService productsService, JwtTokenProvider jwtTokenProvider) {
-        this.productsService = productsService;
-        this.jwtTokenProvider = jwtTokenProvider;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
+    @GetMapping
+    public ProductListRes readProductInfo() {
+        List<Product> products = productService.readProductInfo();
+
+        List<ProductInfoRes> productInfoResList = products.stream()
+                .map(ProductInfoRes::from)
+                .toList();
+        return new ProductListRes(productInfoResList);
     }
 
     @GetMapping("/{productId}")
-    public BaseResponse<ProductInfoRes> userReadProductInfo(@PathVariable Long productId) {
-        String token = jwtTokenProvider.getHeader();
-        Long userId = Long.valueOf(JwtTokenProvider.getUserPk(token));
-
-        try {
-            ProductInfoRes product = productsService.userReadProductInfo(productId, userId);
-            return new BaseResponse<>(product);
-        } catch (BaseException exception) {
-            return new BaseResponse<>(exception.getStatus());
-        }
+    public ProductInfoDetailRes readProductInfoDetail(@PathVariable Long productId) {
+        Product product = productService.readProductInfoDetail(productId);
+        return ProductInfoDetailRes.from(product);
     }
 }
