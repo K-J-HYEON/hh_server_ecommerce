@@ -27,6 +27,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .paths(PathSelectors.any())
                 .build();
     }
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("ecommerce_api")
