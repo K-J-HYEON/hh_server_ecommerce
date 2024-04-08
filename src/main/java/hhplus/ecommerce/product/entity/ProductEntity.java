@@ -4,7 +4,6 @@ import hhplus.ecommerce.config.BaseTimeEntity;
 import hhplus.ecommerce.product.domain.Product;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
