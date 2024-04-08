@@ -6,9 +6,7 @@ import hhplus.ecommerce.product.dto.res.ProductInfoDetailRes;
 import hhplus.ecommerce.product.dto.res.ProductInfoRes;
 import hhplus.ecommerce.product.dto.res.ProductListRes;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/ecommerce/api/product")
