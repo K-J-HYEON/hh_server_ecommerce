@@ -555,3 +555,6 @@ gantt
 
 ## ERD 초안
 ![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e618b49d-209e-4bfc-b408-7c90ad466416)
+
+## Swagger API No operations defined in spec! Error 해결 중
+![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/af74add9-70ae-4a5a-8fec-cfe85d0500a0)
