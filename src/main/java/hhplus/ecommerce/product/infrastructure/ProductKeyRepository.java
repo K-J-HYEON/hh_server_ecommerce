@@ -1,11 +1,9 @@
 package hhplus.ecommerce.product.infrastructure;
 
-
 import hhplus.ecommerce.product.domain.Product;
 import hhplus.ecommerce.product.entity.ProductEntity;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
-
 import java.util.Comparator;
 import java.util.List;
 

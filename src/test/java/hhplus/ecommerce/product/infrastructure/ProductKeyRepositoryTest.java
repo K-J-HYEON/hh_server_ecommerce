@@ -21,7 +21,7 @@ class ProductKeyRepositoryTest {
     }
 
     @Test
-    @DisplayName("에러 : 상품을 찾지 못하였습니다..")
+    @DisplayName("에러 : 상품을 찾지 못하였습니다.")
     void notFoundProduct() {
 
         Long productId = 1L;
