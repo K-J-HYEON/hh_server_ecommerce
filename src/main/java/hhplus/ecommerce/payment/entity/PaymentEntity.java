@@ -1,6 +1,5 @@
 package hhplus.ecommerce.payment.entity;
 
-
 import hhplus.ecommerce.config.BaseTimeEntity;
 import hhplus.ecommerce.payment.domain.Payment;
 import hhplus.ecommerce.payment.domain.component.PayType;
@@ -15,6 +14,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PaymentEntity extends BaseTimeEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long paymentId;
+
     @Column(name = "orderId")
     private Long orderId;
 
@@ -24,6 +27,10 @@ public class PaymentEntity extends BaseTimeEntity {
     @Column(name = "payment_method")
     @Enumerated(EnumType.STRING)
     private PayType paymentMethod;
+
+    public Long getId() {
+        return paymentId;
+    }
 
     public PaymentEntity(Long orderId, Long payAmount, PayType paymentMethod) {
         this.orderId = orderId;
