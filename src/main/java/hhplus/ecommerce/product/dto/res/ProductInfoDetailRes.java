@@ -5,7 +5,7 @@ import hhplus.ecommerce.product.domain.Product;
 public record ProductInfoDetailRes(
         Long productId,
         String name,
-        int price,
+        Long price,
         Long stockCount,
         String size,
         String color
