@@ -1,7 +1,7 @@
 package hhplus.ecommerce.product.application;
 
 import hhplus.ecommerce.TestFixtures;
-import hhplus.ecommerce.product.component.ProductReader;
+import hhplus.ecommerce.product.domain.component.ProductReader;
 import hhplus.ecommerce.product.domain.Product;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
