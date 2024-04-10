@@ -1,7 +1,6 @@
 package hhplus.ecommerce.orderitem.infrastructure;
 
 import hhplus.ecommerce.orderitem.Entity.OrderItemEntity;
-import hhplus.ecommerce.orderitem.application.OrderItemAppender;
 import hhplus.ecommerce.orderitem.domain.OrderItem;
 
 import java.util.List;
