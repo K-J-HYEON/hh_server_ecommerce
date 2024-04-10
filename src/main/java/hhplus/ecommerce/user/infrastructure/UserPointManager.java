@@ -14,4 +14,8 @@ public class UserPointManager {
     public User chargePoint(User user, Long chargingPoint) {
         return userRepository.updateUserPoint(user.addPoint(chargingPoint));
     }
+
+    public User usePoint(User user, Long payAmount) {
+        return userRepository.updateUserPoint(user.decreasePoint(payAmount));
+    }
 }
