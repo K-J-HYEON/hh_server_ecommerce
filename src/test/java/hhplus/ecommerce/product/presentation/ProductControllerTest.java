@@ -1,6 +1,6 @@
 package hhplus.ecommerce.product.presentation;
 
-import hhplus.ecommerce.product.TestFixtures;
+import hhplus.ecommerce.TestFixtures;
 import hhplus.ecommerce.product.application.ProductServiceImpl;
 import hhplus.ecommerce.product.domain.Product;
 import org.junit.jupiter.api.DisplayName;
