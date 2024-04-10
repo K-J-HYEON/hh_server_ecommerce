@@ -1,6 +1,5 @@
-package hhplus.ecommerce.order.util;
+package hhplus.ecommerce.order.component;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 

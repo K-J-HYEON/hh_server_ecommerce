@@ -1,6 +1,6 @@
 package hhplus.ecommerce.product.infrastructure;
 
-import hhplus.ecommerce.order.util.OrderStatus;
+import hhplus.ecommerce.order.component.OrderStatus;
 import hhplus.ecommerce.product.domain.Product;
 import hhplus.ecommerce.product.entity.ProductEntity;
 import jakarta.persistence.EntityNotFoundException;
@@ -11,11 +11,11 @@ import java.util.Comparator;
 import java.util.List;
 
 @Repository
-public class ProductKeyRepository implements ProductRepository {
+public class ProductCoreRepository implements ProductRepository {
 
     private final ProductJpaRepository productJpaRepository;
 
-    public ProductKeyRepository(ProductJpaRepository productJpaRepository) {
+    public ProductCoreRepository(ProductJpaRepository productJpaRepository) {
         this.productJpaRepository = productJpaRepository;
     }
 

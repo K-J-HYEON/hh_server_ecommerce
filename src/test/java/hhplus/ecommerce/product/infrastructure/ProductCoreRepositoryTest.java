@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 
-class ProductKeyRepositoryTest {
-    private ProductKeyRepository productKeyRepository;
+class ProductCoreRepositoryTest {
+    private ProductCoreRepository productCoreRepository;
 
     private ProductJpaRepository productJpaRepository;
 
@@ -17,7 +17,7 @@ class ProductKeyRepositoryTest {
     void setUp() {
         productJpaRepository = mock(ProductJpaRepository.class);
 
-        productKeyRepository = new ProductKeyRepository(productJpaRepository);
+        productCoreRepository = new ProductCoreRepository(productJpaRepository);
     }
 
     @Test
@@ -27,7 +27,7 @@ class ProductKeyRepositoryTest {
         Long productId = 1L;
 
         assertThrows(EntityNotFoundException.class, () -> {
-            productKeyRepository.findById(productId);
+            productCoreRepository.findById(productId);
         });
     }
 }

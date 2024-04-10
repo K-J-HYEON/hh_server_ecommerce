@@ -1,30 +1,30 @@
 package hhplus.ecommerce.user.application;
 
 import hhplus.ecommerce.user.domain.User;
-import hhplus.ecommerce.user.util.UserRetrieve;
+import hhplus.ecommerce.user.component.UserReader;
 import hhplus.ecommerce.user.infrastructure.UserPointManager;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserPointServiceImpl implements UserPointService {
-    private final UserRetrieve userRetrieve;
+    private final UserReader userReader;
     private final UserPointManager userPointManager;
 
-    public UserPointServiceImpl(UserRetrieve userRetrieve, UserPointManager userPointManager) {
-        this.userRetrieve = userRetrieve;
+    public UserPointServiceImpl(UserReader userReader, UserPointManager userPointManager) {
+        this.userReader = userReader;
         this.userPointManager = userPointManager;
     }
 
     @Override
     public Long chargePoint(Long userId, Long amount) {
-        User user = userRetrieve.retrieveByUserId(userId);
+        User user = userReader.retrieveByUserId(userId);
         User chargedUser = userPointManager.chargePoint(user, amount);
         return chargedUser.point();
     }
 
     @Override
     public Long readPoint(Long userId) {
-        User user = userRetrieve.retrieveByUserId(userId);
+        User user = userReader.retrieveByUserId(userId);
         return user.point();
     }
 }

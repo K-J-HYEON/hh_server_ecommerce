@@ -2,39 +2,39 @@ package hhplus.ecommerce.order.application;
 
 import hhplus.ecommerce.order.domain.Order;
 import hhplus.ecommerce.order.dto.request.OrderReq;
-import hhplus.ecommerce.order.util.OrderProcessor;
-import hhplus.ecommerce.order.util.OrderStatus;
-import hhplus.ecommerce.order.util.OrderUpdater;
-import hhplus.ecommerce.orderitem.application.OrderItemAppender;
-import hhplus.ecommerce.product.application.ProductRetrieve;
-import hhplus.ecommerce.product.application.ProductUpdater;
-import hhplus.ecommerce.product.application.ProductValidator;
+import hhplus.ecommerce.order.component.OrderProcessor;
+import hhplus.ecommerce.order.component.OrderStatus;
+import hhplus.ecommerce.order.component.OrderUpdater;
+import hhplus.ecommerce.orderitem.component.OrderItemAppender;
+import hhplus.ecommerce.product.component.ProductReader;
+import hhplus.ecommerce.product.component.ProductUpdater;
+import hhplus.ecommerce.product.component.ProductValidator;
 import hhplus.ecommerce.product.domain.Product;
 import hhplus.ecommerce.user.domain.User;
-import hhplus.ecommerce.user.util.UserRetrieve;
+import hhplus.ecommerce.user.component.UserReader;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-    private final UserRetrieve userRetrieve;
-    private final ProductRetrieve productRetrieve;
+    private final UserReader userReader;
+    private final ProductReader productReader;
     private final ProductUpdater productUpdater;
     private final OrderItemAppender orderItemAppender;
     private final OrderProcessor orderProcessor;
     private final OrderUpdater orderUpdater;
     private final ProductValidator productValidator;
 
-    public OrderServiceImpl(UserRetrieve userRetrieve,
-                        ProductRetrieve productRetrieve,
-                        ProductUpdater productUpdater,
-                        OrderItemAppender orderItemAppender,
-                        OrderProcessor orderProcessor,
-                        OrderUpdater orderUpdater,
-                        ProductValidator productValidator) {
-        this.userRetrieve = userRetrieve;
-        this.productRetrieve = productRetrieve;
+    public OrderServiceImpl(UserReader userReader,
+                            ProductReader productReader,
+                            ProductUpdater productUpdater,
+                            OrderItemAppender orderItemAppender,
+                            OrderProcessor orderProcessor,
+                            OrderUpdater orderUpdater,
+                            ProductValidator productValidator) {
+        this.userReader = userReader;
+        this.productReader = productReader;
         this.productUpdater = productUpdater;
         this.orderItemAppender = orderItemAppender;
         this.orderProcessor = orderProcessor;
@@ -44,11 +44,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order order(Long userId, OrderReq req) {
-        User user = userRetrieve.retrieveByUserId(userId);
+        User user = userReader.retrieveByUserId(userId);
 
         Order order = orderProcessor.order(user, req);
 
-        List<Product> products = productRetrieve.retrieveAllByIds(req.products());
+        List<Product> products = productReader.retrieveAllByIds(req.products());
 
         productValidator.checkProductStockCount(order, products, req.products());
         productUpdater.updateStock(products, req.products());

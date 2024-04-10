@@ -5,10 +5,10 @@ import hhplus.ecommerce.orderitem.domain.OrderItem;
 
 import java.util.List;
 
-public class OrderItemKeyRepository implements OrderItemRepository {
+public class OrderItemCoreRepository implements OrderItemRepository {
     private final OrderItemJpaRepository orderItemJpaRepository;
 
-    public OrderItemKeyRepository(OrderItemJpaRepository orderItemJpaRepository) {
+    public OrderItemCoreRepository(OrderItemJpaRepository orderItemJpaRepository) {
         this.orderItemJpaRepository = orderItemJpaRepository;
     }
 

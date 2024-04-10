@@ -6,11 +6,11 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserKeyRepository implements UserRepository {
+public class UserCoreRepository implements UserRepository {
 
     private final UserJpaRepository userJpaRepository;
 
-    public UserKeyRepository(UserJpaRepository userJpaRepository) {
+    public UserCoreRepository(UserJpaRepository userJpaRepository) {
         this.userJpaRepository = userJpaRepository;
     }
 

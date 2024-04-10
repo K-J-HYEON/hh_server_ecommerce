@@ -1,14 +1,14 @@
-package hhplus.ecommerce.user.util;
+package hhplus.ecommerce.user.component;
 
 import hhplus.ecommerce.user.domain.User;
 import hhplus.ecommerce.user.infrastructure.UserRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserRetrieve {
+public class UserReader {
     private final UserRepository userRepository;
 
-    public UserRetrieve(UserRepository userRepository) {
+    public UserReader(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

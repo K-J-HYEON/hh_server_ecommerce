@@ -1,7 +1,7 @@
-package hhplus.ecommerce.product.application;
+package hhplus.ecommerce.product.component;
 
 import hhplus.ecommerce.order.dto.request.OrderReq;
-import hhplus.ecommerce.order.util.OrderStatus;
+import hhplus.ecommerce.order.component.OrderStatus;
 import hhplus.ecommerce.product.domain.Product;
 import hhplus.ecommerce.product.infrastructure.ProductRepository;
 import org.springframework.data.domain.PageRequest;
@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
-public class ProductRetrieve {
+public class ProductReader {
     private final ProductRepository productRepository;
 
-    public ProductRetrieve(ProductRepository productRepository) {
+    public ProductReader(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 

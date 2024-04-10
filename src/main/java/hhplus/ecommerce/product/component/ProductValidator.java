@@ -1,10 +1,10 @@
-package hhplus.ecommerce.product.application;
+package hhplus.ecommerce.product.component;
 
 
 import hhplus.ecommerce.order.domain.Order;
 import hhplus.ecommerce.order.dto.request.OrderReq;
-import hhplus.ecommerce.order.util.OrderStatus;
-import hhplus.ecommerce.order.util.OrderUpdater;
+import hhplus.ecommerce.order.component.OrderStatus;
+import hhplus.ecommerce.order.component.OrderUpdater;
 import hhplus.ecommerce.product.domain.Product;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Component;

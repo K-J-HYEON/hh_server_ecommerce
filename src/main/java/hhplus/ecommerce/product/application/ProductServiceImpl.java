@@ -1,31 +1,30 @@
 package hhplus.ecommerce.product.application;
 
+import hhplus.ecommerce.product.component.ProductReader;
 import hhplus.ecommerce.product.domain.Product;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRetrieve productRetrieve;
-    public ProductServiceImpl(ProductRetrieve productRetrieve) {
-        this.productRetrieve = productRetrieve;
+    private final ProductReader productReader;
+    public ProductServiceImpl(ProductReader productReader) {
+        this.productReader = productReader;
     }
 
     @Override
     public List<Product> readProductInfo() {
-        return productRetrieve.retrieveAll();
+        return productReader.retrieveAll();
     }
 
     @Override
     public Product readProductInfoDetail(Long productId) {
-        return productRetrieve.retrieveById(productId);
+        return productReader.retrieveById(productId);
     }
 
     @Override
     public List<Product> readPopularProduct() {
-        return productRetrieve.readPopularSellingProducts();
+        return productReader.readPopularSellingProducts();
     }
 }

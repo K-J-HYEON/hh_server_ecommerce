@@ -1,6 +1,7 @@
 package hhplus.ecommerce.product.application;
 
 import hhplus.ecommerce.TestFixtures;
+import hhplus.ecommerce.product.component.ProductReader;
 import hhplus.ecommerce.product.domain.Product;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,13 +17,13 @@ import static org.assertj.core.api.Assertions.*;
 class ProductServiceImplTest {
 
     private ProductServiceImpl productService;
-    private ProductRetrieve productRetrieve;
+    private ProductReader productReader;
 
     @BeforeEach
     void setUp() {
-        productRetrieve = mock(ProductRetrieve.class);
+        productReader = mock(ProductReader.class);
 
-        productService = new ProductServiceImpl(productRetrieve);
+        productService = new ProductServiceImpl(productReader);
     }
 
     @Test
@@ -32,7 +33,7 @@ class ProductServiceImplTest {
         // given
         Product sample1 = TestFixtures.product("신발");
         Product sample2 = TestFixtures.product("바지");
-        given(productRetrieve.retrieveAll()).willReturn(List.of(sample1, sample2));
+        given(productReader.retrieveAll()).willReturn(List.of(sample1, sample2));
 
         // when
         List<Product> products = productService.readProductInfo();
@@ -56,7 +57,7 @@ class ProductServiceImplTest {
 
         Product product = TestFixtures.product("신발");
 
-        given(productRetrieve.retrieveById(any())).willReturn(product);
+        given(productReader.retrieveById(any())).willReturn(product);
 
         // when
         Product productDetail = productService.readProductInfoDetail(productId);
