@@ -14,7 +14,8 @@ public enum BaseResponseStatus {
     /**
      * 4000 : Database 오류
      */
-    PRODUCT_READ_FAILED(false, 4000, "상품 조회에 실패했습니다.");
+    PRODUCT_READ_FAILED(false, 4000, "상품 조회에 실패했습니다."),
+    USER_RETRIEVE_FAILED(false, 4012, "사용자 조회에 실패했습니다.");
 
     final boolean isSuccess;
     private final int code;
