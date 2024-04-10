@@ -1,8 +1,6 @@
 package hhplus.ecommerce.user.presentation;
 
-import hhplus.ecommerce.order.presentation.AccountController;
 import hhplus.ecommerce.user.application.UserPointService;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(AccountController.class)
+@WebMvcTest(PointController.class)
 class PointControllerTest {
 
     @Autowired
