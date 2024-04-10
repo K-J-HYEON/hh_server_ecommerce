@@ -30,19 +30,19 @@ public class TestFixtures {
 
     public static Order order(OrderStatus orderStatus) {
         if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "ready", LocalDateTime.now(), "sample1", 10L, 10_000L, 100_000L);
+            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "ready", LocalDateTime.now());
         }
 
         if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "complete", LocalDateTime.now(), "sample1", 10L, 10_000L, 100_000L);
+            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "complete", LocalDateTime.now());
         }
 
         if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "canceled", LocalDateTime.now(), "sample1", 10L, 10_000L, 100_000L);
+            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "canceled", LocalDateTime.now());
         }
 
         if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "paid", LocalDateTime.now(), "sample1", 10L, 10_000L, 100_000L);
+            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "paid", LocalDateTime.now());
         }
         throw new EntityNotFoundException("Order Not Found - order status: " + orderStatus);
     }
