@@ -283,7 +283,7 @@ gantt
 
 
 <details>
-    <summary><b>주문 결제</b></summary>
+    <summary><b>상품 주문</b></summary>
     
 - Request
     - Method: POST
@@ -363,6 +363,73 @@ gantt
         }
         ```
     - 404 Bad Request: 포인트가 없는 경우
+        ```json
+        {
+            "code": "NOT_FOUND_POINT",
+            "message": "Point is not found"
+        }
+        ```
+</details>
+
+<details>
+    <summary><b>상품 결제</b></summary>
+    
+- Request
+    - Method: POST
+    - URL: /ecommerce/payment/{paymentId}/{userId}
+    - Headers:
+      - Content-Type: application/json
+    
+- Body:
+  ```json
+    
+        [
+            {
+                "orderId": 1,
+                "amount" : 50000,
+                "paymentMethod" : "CARD"
+            },
+        
+            {
+                "orderId": 2,
+                "amount" : 100000,
+                "paymentMethod" : "ACCOUNT_TRANSFER"
+            }
+        ]
+  ```
+  
+- Response
+    - 200 OK: 성공적으로 주문 및 결제
+        ```json
+            {
+                "transactionId": 1,
+                "message": "상품 결제가 완료되었습니다",
+                "status": "SUCCESS",
+                "paidAt": "2024-04-01 11:00:00",
+            }
+        ```
+    - 400 Bad Request: 주문 상품이 적절하지 않은 경우
+        ```json
+        {
+            "code": "BAD_REQUEST",
+            "message": "Order Product List is not valid"
+        }
+        ```
+    - 404 Not Found User: 유저 정보가 없는 경우
+        ```json
+        {
+            "code": "NOT_FOUND_USER",
+            "message": "User Information is missing"
+        }
+        ```
+    - 404 Not Found Product: 상품 정보가 없는 경우
+        ```json
+        {
+            "code": "NOT_FOUND_PRODUCT",
+            "message": "Product Information is not found"
+        }
+        ```
+    - 404 Bad Request: 포인트가 없는 경우
         ```json
         {
             "code": "NOT_FOUND_POINT",
@@ -554,7 +621,7 @@ gantt
 ![hh_3wk_server_setting](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e339aef7-6ea5-4cec-b29f-600c0eb80aa3)
 
 ## ERD 초안
-![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e618b49d-209e-4bfc-b408-7c90ad466416)
+<img width="1083" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b33ed170-fc68-48b1-86f2-bd4b3e437f26">
 
 ## Swagger - No operations defined in spec! Error 해결 중
-![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/af74add9-70ae-4a5a-8fec-cfe85d0500a0)
+![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/3efa128b-e40f-4096-9548-fb87db69b438)
