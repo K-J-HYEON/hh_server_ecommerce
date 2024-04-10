@@ -1,7 +1,7 @@
 package hhplus.ecommerce.user.application;
 
 import hhplus.ecommerce.user.domain.User;
-import hhplus.ecommerce.user.component.UserReader;
+import hhplus.ecommerce.user.domain.component.UserReader;
 import hhplus.ecommerce.user.infrastructure.UserPointManager;
 import org.springframework.stereotype.Service;
 

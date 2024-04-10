@@ -1,6 +1,6 @@
 package hhplus.ecommerce.product.infrastructure;
 
-import hhplus.ecommerce.order.component.OrderStatus;
+import hhplus.ecommerce.order.domain.component.OrderStatus;
 import hhplus.ecommerce.product.entity.ProductEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,4 +1,4 @@
-package hhplus.ecommerce.order.component;
+package hhplus.ecommerce.order.domain.component;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;

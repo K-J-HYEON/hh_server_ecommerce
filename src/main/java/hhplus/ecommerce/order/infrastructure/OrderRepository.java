@@ -2,7 +2,7 @@ package hhplus.ecommerce.order.infrastructure;
 
 import hhplus.ecommerce.order.domain.Order;
 import hhplus.ecommerce.order.dto.request.OrderReq;
-import hhplus.ecommerce.order.component.OrderStatus;
+import hhplus.ecommerce.order.domain.component.OrderStatus;
 import hhplus.ecommerce.user.domain.User;
 
 public interface OrderRepository {

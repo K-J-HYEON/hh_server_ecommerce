@@ -3,7 +3,7 @@ package hhplus.ecommerce.payment.infrastructure;
 
 import hhplus.ecommerce.payment.domain.Payment;
 import hhplus.ecommerce.payment.entity.PaymentEntity;
-import hhplus.ecommerce.payment.component.PayType;
+import hhplus.ecommerce.payment.domain.component.PayType;
 import org.springframework.stereotype.Repository;
 
 @Repository

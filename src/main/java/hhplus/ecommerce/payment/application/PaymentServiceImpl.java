@@ -2,17 +2,17 @@ package hhplus.ecommerce.payment.application;
 
 
 import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.component.OrderReader;
-import hhplus.ecommerce.order.component.OrderStatus;
-import hhplus.ecommerce.order.component.OrderUpdater;
-import hhplus.ecommerce.order.component.OrderValidator;
+import hhplus.ecommerce.order.domain.component.OrderReader;
+import hhplus.ecommerce.order.domain.component.OrderStatus;
+import hhplus.ecommerce.order.domain.component.OrderUpdater;
+import hhplus.ecommerce.order.domain.component.OrderValidator;
 import hhplus.ecommerce.payment.domain.Payment;
 import hhplus.ecommerce.payment.dto.request.PaymentReq;
-import hhplus.ecommerce.payment.component.PaymentAppender;
+import hhplus.ecommerce.payment.domain.component.PaymentAppender;
 import hhplus.ecommerce.user.domain.User;
 import hhplus.ecommerce.user.infrastructure.UserPointManager;
-import hhplus.ecommerce.user.component.UserPointValidator;
-import hhplus.ecommerce.user.component.UserReader;
+import hhplus.ecommerce.user.domain.component.UserPointValidator;
+import hhplus.ecommerce.user.domain.component.UserReader;
 import org.springframework.stereotype.Service;
 
 @Service

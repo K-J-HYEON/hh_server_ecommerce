@@ -1,6 +1,6 @@
 package hhplus.ecommerce.product.infrastructure;
 
-import hhplus.ecommerce.order.component.OrderStatus;
+import hhplus.ecommerce.order.domain.component.OrderStatus;
 import hhplus.ecommerce.product.domain.Product;
 import org.springframework.data.domain.Pageable;
 import java.time.LocalDateTime;

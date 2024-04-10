@@ -1,6 +1,6 @@
 package hhplus.ecommerce.product.application;
 
-import hhplus.ecommerce.product.component.ProductReader;
+import hhplus.ecommerce.product.domain.component.ProductReader;
 import hhplus.ecommerce.product.domain.Product;
 import org.springframework.stereotype.Service;
 import java.util.List;

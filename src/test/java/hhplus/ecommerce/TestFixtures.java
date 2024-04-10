@@ -1,7 +1,7 @@
 package hhplus.ecommerce;
 
 import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.component.OrderStatus;
+import hhplus.ecommerce.order.domain.component.OrderStatus;
 import hhplus.ecommerce.product.domain.Product;
 import hhplus.ecommerce.user.domain.User;
 import jakarta.persistence.EntityNotFoundException;

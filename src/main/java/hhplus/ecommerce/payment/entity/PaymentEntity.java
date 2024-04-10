@@ -3,7 +3,7 @@ package hhplus.ecommerce.payment.entity;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
 import hhplus.ecommerce.payment.domain.Payment;
-import hhplus.ecommerce.payment.component.PayType;
+import hhplus.ecommerce.payment.domain.component.PayType;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
