@@ -6,7 +6,7 @@ public record ProductInfoDetailRes(
         Long productId,
         String name,
         int price,
-        int stock,
+        Long stockCount,
         String size,
         String color
 ) {
@@ -15,7 +15,7 @@ public record ProductInfoDetailRes(
                 product.productId(),
                 product.name(),
                 product.price(),
-                product.stock(),
+                product.stockCount(),
                 product.size(),
                 product.color()
         );
