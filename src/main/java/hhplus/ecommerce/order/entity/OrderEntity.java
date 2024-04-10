@@ -2,7 +2,7 @@ package hhplus.ecommerce.order.entity;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
 import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.util.OrderStatus;
+import hhplus.ecommerce.order.component.OrderStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
