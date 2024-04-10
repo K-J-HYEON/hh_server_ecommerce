@@ -17,7 +17,7 @@ public class ProductEntity extends BaseTimeEntity {
     private Long productId;
 
     @Column(nullable = false)
-    private String name;
+    private String productName;
 
     @Column(nullable = false)
     private Long price;
@@ -36,7 +36,7 @@ public class ProductEntity extends BaseTimeEntity {
     }
 
     public Product toProduct() {
-        return new Product(getId(), name, price, stockCount, size, color);
+        return new Product(getId(), productName, price, stockCount, size, color);
     }
 
     private Object getProductId() {
