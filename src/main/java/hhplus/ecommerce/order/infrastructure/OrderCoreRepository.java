@@ -5,7 +5,7 @@ import hhplus.ecommerce.order.domain.Order;
 import hhplus.ecommerce.order.dto.request.OrderReq;
 import hhplus.ecommerce.order.dto.request.Receiver;
 import hhplus.ecommerce.order.entity.OrderEntity;
-import hhplus.ecommerce.order.util.OrderStatus;
+import hhplus.ecommerce.order.component.OrderStatus;
 import hhplus.ecommerce.user.domain.User;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
@@ -13,11 +13,11 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 
 @Repository
-public class OrderKeyRepository implements OrderRepository {
+public class OrderCoreRepository implements OrderRepository {
 
     private final OrderJpaRepository orderJpaRepository;
 
-    public OrderKeyRepository(OrderJpaRepository orderJpaRepository) {
+    public OrderCoreRepository(OrderJpaRepository orderJpaRepository) {
         this.orderJpaRepository = orderJpaRepository;
     }
 
