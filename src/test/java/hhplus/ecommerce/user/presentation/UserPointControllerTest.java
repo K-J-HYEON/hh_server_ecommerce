@@ -16,8 +16,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(PointController.class)
-class PointControllerTest {
+@WebMvcTest(UserPointController.class)
+class UserPointControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
