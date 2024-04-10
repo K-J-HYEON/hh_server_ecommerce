@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "포인트", description = "포인트 충전 & 조회 관련 api 입니다.")
 @RestController
 @RequestMapping("/ecommerce/api/point")
-public class PointController {
+public class UserPointController {
 
     private final UserPointService userPointService;
 
-    public PointController(UserPointService userPointService) {
+    public UserPointController(UserPointService userPointService) {
         this.userPointService = userPointService;
     }
 
