@@ -11,7 +11,7 @@ import lombok.Getter;
 public record ProductInfoRes(
         Long productId,
         String name,
-        int price) {
+        Long price) {
     public static ProductInfoRes from(Product product) {
         return new ProductInfoRes(
                 product.productId(),
