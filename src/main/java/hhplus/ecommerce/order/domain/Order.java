@@ -1,5 +1,7 @@
 package hhplus.ecommerce.order.domain;
 
+import hhplus.ecommerce.order.domain.component.OrderStatus;
+
 import java.time.LocalDateTime;
 
 public record Order(
@@ -10,10 +12,6 @@ public record Order(
         String address,
         String phoneNumber,
         String orderStatus,
-        LocalDateTime orderedAt,
-        String productName,
-        Long count,
-        Long price,
-        Long totalPrice
+        LocalDateTime orderedAt
 ) {
 }
