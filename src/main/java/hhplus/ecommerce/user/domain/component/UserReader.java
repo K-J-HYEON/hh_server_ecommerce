@@ -1,4 +1,4 @@
-package hhplus.ecommerce.user.component;
+package hhplus.ecommerce.user.domain.component;
 
 import hhplus.ecommerce.user.domain.User;
 import hhplus.ecommerce.user.infrastructure.UserRepository;

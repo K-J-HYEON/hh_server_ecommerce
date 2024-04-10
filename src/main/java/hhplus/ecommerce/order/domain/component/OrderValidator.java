@@ -1,4 +1,4 @@
-package hhplus.ecommerce.order.component;
+package hhplus.ecommerce.order.domain.component;
 
 
 import hhplus.ecommerce.order.domain.Order;

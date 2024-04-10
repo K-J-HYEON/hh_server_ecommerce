@@ -1,8 +1,8 @@
-package hhplus.ecommerce.user.component;
+package hhplus.ecommerce.user.domain.component;
 
 import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.component.OrderStatus;
-import hhplus.ecommerce.order.component.OrderUpdater;
+import hhplus.ecommerce.order.domain.component.OrderStatus;
+import hhplus.ecommerce.order.domain.component.OrderUpdater;
 import hhplus.ecommerce.user.domain.User;
 import org.springframework.stereotype.Component;
 
