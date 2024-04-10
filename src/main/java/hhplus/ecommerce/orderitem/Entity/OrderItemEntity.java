@@ -3,9 +3,7 @@ package hhplus.ecommerce.orderitem.Entity;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
 import hhplus.ecommerce.orderitem.domain.OrderItem;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +13,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItemEntity extends BaseTimeEntity {
+
+    @Id
+    @GeneratedValue
+    private Long orderItemId;
+
     @Column(name = "orderId")
     private Long orderId;
 
@@ -32,6 +35,10 @@ public class OrderItemEntity extends BaseTimeEntity {
 
     @Column(name = "totalPrice")
     private Long totalPrice;
+
+    public Long getId() {
+        return orderItemId;
+    }
 
     public OrderItemEntity(Long orderId, Long productId, String productName, Long count, Long price, Long totalPrice) {
         this.orderId = orderId;
