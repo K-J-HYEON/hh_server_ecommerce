@@ -1,6 +1,6 @@
 package hhplus.ecommerce.product.application;
 
-import hhplus.ecommerce.product.TestFixtures;
+import hhplus.ecommerce.TestFixtures;
 import hhplus.ecommerce.product.domain.Product;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -32,7 +32,7 @@ class ProductServiceImplTest {
         // given
         Product sample1 = TestFixtures.product("신발");
         Product sample2 = TestFixtures.product("바지");
-        given(productRetrieve.readAll()).willReturn(List.of(sample1, sample2));
+        given(productRetrieve.retrieveAll()).willReturn(List.of(sample1, sample2));
 
         // when
         List<Product> products = productService.readProductInfo();
@@ -56,7 +56,7 @@ class ProductServiceImplTest {
 
         Product product = TestFixtures.product("신발");
 
-        given(productRetrieve.readById(any())).willReturn(product);
+        given(productRetrieve.retrieveById(any())).willReturn(product);
 
         // when
         Product productDetail = productService.readProductInfoDetail(productId);
@@ -64,7 +64,7 @@ class ProductServiceImplTest {
         // then
         assertThat(productDetail.name()).isEqualTo("나이키 에어포스");
         assertThat(productDetail.price()).isEqualTo(90000);
-        assertThat(productDetail.stock()).isEqualTo(10);
+        assertThat(productDetail.stockCount()).isEqualTo(10);
         assertThat(productDetail.size()).isEqualTo("270");
         assertThat(productDetail.color()).isEqualTo("화이트");
     }
