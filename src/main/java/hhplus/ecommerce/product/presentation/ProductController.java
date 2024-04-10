@@ -27,7 +27,7 @@ public class ProductController {
     }
 
 
-    @Operation(summary = "상품 조회 메서드", description = "상품 조회 메서드입니다.", tags = "상품")	// (2)
+    @Operation(summary = "상품 조회 메서드", description = "상품 조회 메서드입니다.", tags = "상품")	// (1)
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = ProductInfoRes.class))),
             @ApiResponse(responseCode = "400", description = "bad request operation", content = @Content(schema = @Schema(implementation = ProductInfoRes.class)))
@@ -51,5 +51,20 @@ public class ProductController {
     public ProductInfoDetailRes readProductInfoDetail(@PathVariable Long productId) {
         Product product = productService.readProductInfoDetail(productId);
         return ProductInfoDetailRes.from(product);
+    }
+
+    @Operation(summary = "인기 상품 조회 메서드", description = "인기 상품 조회 메서드입니다.", tags = "상품")	// (3)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = ProductInfoRes.class))),
+            @ApiResponse(responseCode = "400", description = "bad request operation", content = @Content(schema = @Schema(implementation = ProductInfoRes.class)))
+    })
+    @GetMapping("/popular")
+    public ProductListRes popularProducts() {
+        List<Product> products = productService.readPopularProduct();
+
+        List<ProductInfoRes> productInfoResList = products.stream()
+                .map(ProductInfoRes::from)
+                .toList();
+        return new ProductListRes(productInfoResList);
     }
 }
