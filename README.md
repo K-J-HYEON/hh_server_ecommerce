@@ -621,7 +621,7 @@ gantt
 ![hh_3wk_server_setting](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e339aef7-6ea5-4cec-b29f-600c0eb80aa3)
 
 ## ERD 초안
-![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e618b49d-209e-4bfc-b408-7c90ad466416)
+<img width="1083" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b33ed170-fc68-48b1-86f2-bd4b3e437f26">
 
 ## Swagger - No operations defined in spec! Error 해결 중
-<img width="1083" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b33ed170-fc68-48b1-86f2-bd4b3e437f26">
+![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/3efa128b-e40f-4096-9548-fb87db69b438)
