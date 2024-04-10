@@ -17,14 +17,14 @@ public class UserPointServiceImpl implements UserPointService {
 
     @Override
     public Long chargePoint(Long userId, Long amount) {
-        User user = userRetrieve.readByUserId(userId);
+        User user = userRetrieve.retrieveByUserId(userId);
         User chargedUser = userPointManager.chargePoint(user, amount);
         return chargedUser.point();
     }
 
     @Override
     public Long readPoint(Long userId) {
-        User user = userRetrieve.readByUserId(userId);
+        User user = userRetrieve.retrieveByUserId(userId);
         return user.point();
     }
 }
