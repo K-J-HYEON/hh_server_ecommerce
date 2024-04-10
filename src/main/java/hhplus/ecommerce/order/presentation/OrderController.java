@@ -4,7 +4,6 @@ import hhplus.ecommerce.order.application.OrderService;
 import hhplus.ecommerce.order.domain.Order;
 import hhplus.ecommerce.order.dto.request.OrderReq;
 import hhplus.ecommerce.order.dto.response.OrderRes;
-import hhplus.ecommerce.product.application.ProductService;
 import hhplus.ecommerce.product.dto.res.ProductInfoRes;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -15,7 +14,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 
 @Tag(name = "상품 주문", description = "상품 주문 관련 api 입니다.")
 @RestController
