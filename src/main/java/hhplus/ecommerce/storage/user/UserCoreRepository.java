@@ -23,8 +23,8 @@ public class UserCoreRepository implements UserRepository {
 
     @Override
     public User updateUserPoint(User user) {
-        UserEntity userEntity = userJpaRepository.findById(user.id())
-                .orElseThrow(() -> new EntityNotFoundException("사용자가 존재하지 않습니다. - id: " + user.id()));
+        UserEntity userEntity = userJpaRepository.findById(user.userId())
+                .orElseThrow(() -> new EntityNotFoundException("사용자가 존재하지 않습니다. - id: " + user.userId()));
         userEntity.updatePoint(user);
         return userJpaRepository.save(userEntity).toUser();
     }
