@@ -27,10 +27,6 @@ public class PaymentEntity extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private PayType paymentMethod;
 
-    public Long getId() {
-        return paymentId;
-    }
-
     public PaymentEntity(Long orderId, Long payAmount, PayType paymentMethod) {
         this.orderId = orderId;
         this.payAmount = payAmount;
@@ -38,6 +34,6 @@ public class PaymentEntity extends BaseTimeEntity {
     }
 
     public Payment toPayment() {
-        return new Payment(getId(), orderId, payAmount, paymentMethod.toString(), getCreateAt());
+        return new Payment(paymentId, orderId, payAmount, paymentMethod.toString(), getCreateAt());
     }
 }
