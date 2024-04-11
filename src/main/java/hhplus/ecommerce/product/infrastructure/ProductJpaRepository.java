@@ -13,12 +13,12 @@ import java.util.List;
 public interface ProductJpaRepository extends JpaRepository<ProductEntity, Long> {
     List<ProductEntity> findByIdIn(List<Long> productIds);
 
-    @Query("SELECT pe FROM ProductEntity pe JOIN OrderItemEntity oi ON pe.productId = oi.productId " +
-            "JOIN OrderEntity oe ON oi.orderId = oe.productId " +
+    @Query("SELECT pe FROM ProductEntity pe JOIN OrderItemEntity oie ON pe.productId = oie.productId " +
+            "JOIN OrderEntity oe ON oie.orderId = oe.productId " +
             "WHERE oe.orderStatus = :orderStatus " +
-            "AND oe.orderedAt Between :startDate AND :endDate " +
+            "AND oe.orderedAt BETWEEN :startDate AND :endDate " +
             "GROUP BY pe.productId " +
-            "ORDER BY SUM(oi.count) DESC")
+            "ORDER BY SUM(oie.count) DESC")
 
     Page<ProductEntity> readPopularSellingProducts(@Param("orderStatus") OrderStatus orderStatus,
                                                 @Param("startDate") LocalDateTime startDate,
