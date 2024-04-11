@@ -1,8 +1,9 @@
 package hhplus.ecommerce.product.presentation;
 
 import hhplus.ecommerce.TestFixtures;
-import hhplus.ecommerce.product.application.ProductServiceImpl;
-import hhplus.ecommerce.product.domain.Product;
+import hhplus.ecommerce.api.controller.ProductController;
+import hhplus.ecommerce.domain.product.ProductServiceImpl;
+import hhplus.ecommerce.domain.product.Product;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

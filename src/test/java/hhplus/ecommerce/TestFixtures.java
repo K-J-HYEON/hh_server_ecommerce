@@ -1,9 +1,9 @@
 package hhplus.ecommerce;
 
-import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.domain.component.OrderStatus;
-import hhplus.ecommerce.product.domain.Product;
-import hhplus.ecommerce.user.domain.User;
+import hhplus.ecommerce.domain.order.Order;
+import hhplus.ecommerce.storage.order.OrderStatus;
+import hhplus.ecommerce.domain.product.Product;
+import hhplus.ecommerce.domain.user.User;
 import jakarta.persistence.EntityNotFoundException;
 
 import java.time.LocalDateTime;

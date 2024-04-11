@@ -1,6 +1,7 @@
 package hhplus.ecommerce.user.presentation;
 
-import hhplus.ecommerce.user.application.UserPointService;
+import hhplus.ecommerce.api.controller.UserPointController;
+import hhplus.ecommerce.domain.user.UserPointService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

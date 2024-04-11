@@ -1,9 +1,10 @@
 package hhplus.ecommerce.user.application;
 
 import hhplus.ecommerce.TestFixtures;
-import hhplus.ecommerce.user.domain.User;
-import hhplus.ecommerce.user.domain.component.UserReader;
-import hhplus.ecommerce.user.infrastructure.UserPointManager;
+import hhplus.ecommerce.domain.user.UserPointServiceImpl;
+import hhplus.ecommerce.domain.user.User;
+import hhplus.ecommerce.domain.user.UserReader;
+import hhplus.ecommerce.domain.user.UserPointManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
