@@ -39,10 +39,6 @@ public class OrderEntity extends BaseTimeEntity {
     @Column(name = "orderAt")
     private LocalDateTime orderAt;
 
-    public Long getId() {
-        return orderId;
-    }
-
     public OrderEntity(Long userId,
                        Long payAmount,
                        String receiverName,
@@ -60,7 +56,7 @@ public class OrderEntity extends BaseTimeEntity {
     }
 
     public Order toOrder() {
-        return new Order(getId(), userId, payAmount, receiverName, address, phoneNumber, orderStatus.toString(), orderAt);
+        return new Order(orderId, userId, payAmount, receiverName, address, phoneNumber, orderStatus.toString(), orderAt);
     }
 
     public void updateStatus(OrderStatus orderStatus) {

@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class OrderItemEntity extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderItemId;
 
     @Column(name = "orderId")
@@ -36,10 +36,6 @@ public class OrderItemEntity extends BaseTimeEntity {
     @Column(name = "totalPrice")
     private Long totalPrice;
 
-    public Long getId() {
-        return orderItemId;
-    }
-
     public OrderItemEntity(Long orderId, Long productId, String productName, Long count, Long price, Long totalPrice) {
         this.orderId = orderId;
         this.productId = productId;
@@ -51,7 +47,7 @@ public class OrderItemEntity extends BaseTimeEntity {
 
     public OrderItem toOrderItem() {
         return new OrderItem(
-                getId(),
+                orderItemId,
                 orderId,
                 productId,
                 productName,

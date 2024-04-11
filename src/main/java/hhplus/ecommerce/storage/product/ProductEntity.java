@@ -31,12 +31,8 @@ public class ProductEntity extends BaseTimeEntity {
     @Column(nullable = false)
     private String color;
 
-    public Long getId() {
-        return productId;
-    }
-
     public Product toProduct() {
-        return new Product(getId(), productName, price, stockCount, size, color);
+        return new Product(productId, productName, price, stockCount, size, color);
     }
 
     private Object getProductId() {
