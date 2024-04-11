@@ -1,4 +1,4 @@
-package hhplus.ecommerce.orderitem.Entity;
+package hhplus.ecommerce.orderitem.entity;
 
 
 import hhplus.ecommerce.config.BaseTimeEntity;
@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class OrderItemEntity extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderItemId;
 
     @Column(name = "orderId")
