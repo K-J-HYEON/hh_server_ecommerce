@@ -1,7 +1,7 @@
 package hhplus.ecommerce.orderitem.domain;
 
 public record OrderItem(
-        Long id,
+        Long orderItemId,
         Long orderId,
         Long productId,
         String productName,

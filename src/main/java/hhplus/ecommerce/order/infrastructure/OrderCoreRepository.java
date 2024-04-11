@@ -25,7 +25,7 @@ public class OrderCoreRepository implements OrderRepository {
     public Order order(User user, OrderReq req) {
         Receiver receiver = req.receiver();
         OrderEntity orderEntity = new OrderEntity(
-                user.id(),
+                user.userId(),
                 req.paymentAmount(),
                 receiver.name(),
                 receiver.address(),
