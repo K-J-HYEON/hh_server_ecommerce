@@ -1,7 +1,7 @@
 package hhplus.ecommerce.domain.user;
 
 public record User (
-    Long id,
+    Long userId,
     String name,
     String address,
     String phoneNumber,
@@ -9,10 +9,10 @@ public record User (
 ) { ;
 
     public User addPoint(Long chargePoint) {
-        return new User(id, name, address, phoneNumber, point + chargePoint);
+        return new User(userId, name, address, phoneNumber, point + chargePoint);
     }
 
     public User decreasePoint(Long amount) {
-        return new User(id, name, address, phoneNumber, point - amount);
+        return new User(userId, name, address, phoneNumber, point - amount);
     }
 }
