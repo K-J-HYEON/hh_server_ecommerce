@@ -50,7 +50,7 @@ public class ProductCoreRepository implements ProductRepository {
 
     @Override
     public List<Product> readPopularSellingProducts(OrderStatus orderStatus, LocalDateTime startDate, LocalDateTime endDate, Pageable pageable) {
-        return productJpaRepository.readBestSellingProducts(orderStatus, startDate, endDate, pageable)
+        return productJpaRepository.readPopularSellingProducts(orderStatus, startDate, endDate, pageable)
                 .map(ProductEntity::toProduct)
                 .toList();
     }
