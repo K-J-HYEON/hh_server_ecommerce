@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "OrderProductList")
+@Table(name = "OrderItem")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItemEntity extends BaseTimeEntity {
