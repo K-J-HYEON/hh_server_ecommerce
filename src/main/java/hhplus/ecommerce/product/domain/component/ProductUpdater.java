@@ -1,12 +1,10 @@
 package hhplus.ecommerce.product.domain.component;
 
-
 import hhplus.ecommerce.order.dto.request.OrderReq;
 import hhplus.ecommerce.product.domain.Product;
 import hhplus.ecommerce.product.infrastructure.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 @Component
@@ -27,6 +25,5 @@ public class ProductUpdater {
             Product decreasedProduct = product.decreaseStock(orderRequest.quantity());
             productRepository.updateStock(decreasedProduct);
         }
-
     }
 }
