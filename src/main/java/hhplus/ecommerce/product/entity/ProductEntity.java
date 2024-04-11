@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProductEntity extends BaseTimeEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long productId;
 
     @Column(nullable = false)
     private String productName;
@@ -31,9 +31,9 @@ public class ProductEntity extends BaseTimeEntity {
     @Column(nullable = false)
     private String color;
 
-    public Long getId() {
-        return productId;
-    }
+//    public Long getId() {
+//        return productId;
+//    }
 
     public Product toProduct() {
         return new Product(getId(), productName, price, stockCount, size, color);
