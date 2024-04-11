@@ -28,12 +28,8 @@ public class UserEntity extends BaseTimeEntity {
     @Column(name = "point")
     private Long point;
 
-    public Long getId() {
-        return userId;
-    }
-
     public User toUser() {
-        return new User(getId(), name, address, phoneNumber, point);
+        return new User(userId, name, address, phoneNumber, point);
     }
 
     public void updatePoint(User user) {
