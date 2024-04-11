@@ -39,10 +39,6 @@ public class ProductEntity extends BaseTimeEntity {
         return new Product(getId(), productName, price, stockCount, size, color);
     }
 
-    private Object getProductId() {
-        return null;
-    }
-
     public void updateStock(Long stockCount) {
         this.stockCount = stockCount;
     }
