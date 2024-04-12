@@ -2,14 +2,8 @@ package hhplus.ecommerce.order.presentation;
 
 import hhplus.ecommerce.order.application.OrderService;
 import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.dto.request.OrderReq;
-import hhplus.ecommerce.order.dto.response.OrderRes;
-import hhplus.ecommerce.product.dto.res.ProductInfoRes;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import hhplus.ecommerce.order.presentation.dto.request.OrderReq;
+import hhplus.ecommerce.order.presentation.dto.response.OrderRes;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -25,12 +19,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-
-    @Operation(summary = "상품 주문 메서드", description = "상품 주문 메서드입니다.", tags = "주문")	// (1)
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = ProductInfoRes.class))),
-            @ApiResponse(responseCode = "400", description = "bad request operation", content = @Content(schema = @Schema(implementation = ProductInfoRes.class)))
-    })
+    @Tag(name = "상품 주문 및 결제 API", description = "상품주문 & 결제 API입니다.")
     @PostMapping("/{orderId}/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
     public OrderRes order(@PathVariable Long userId,

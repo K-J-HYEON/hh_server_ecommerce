@@ -3,9 +3,9 @@ package hhplus.ecommerce.payment.presentation;
 
 import hhplus.ecommerce.payment.application.PaymentService;
 import hhplus.ecommerce.payment.domain.Payment;
-import hhplus.ecommerce.payment.dto.request.PaymentReq;
-import hhplus.ecommerce.payment.dto.response.PaymentRes;
-import hhplus.ecommerce.product.dto.res.ProductInfoRes;
+import hhplus.ecommerce.payment.presentation.dto.request.PaymentReq;
+import hhplus.ecommerce.payment.presentation.dto.response.PaymentRes;
+import hhplus.ecommerce.product.presentation.dto.res.ProductInfoRes;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,9 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 
-@Tag(name = "상품 결제", description = "상품 결제 관련 api 입니다.")
 @RestController
-@RequestMapping("/ecommerce/api/payments")
+@RequestMapping("/ecommerce/api/order")
 public class PaymentController {
 
     private final PaymentService paymentService;
@@ -29,12 +28,8 @@ public class PaymentController {
     }
 
 
-    @Operation(summary = "상품 결제 메서드", description = "상품 결제 메서드입니다.", tags = "결제")	// (1)
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = ProductInfoRes.class))),
-            @ApiResponse(responseCode = "400", description = "bad request operation", content = @Content(schema = @Schema(implementation = ProductInfoRes.class)))
-    })
-    @PostMapping("/{paymentId}/{userId}")
+    @Tag(name = "상품 주문 및 결제 API", description = "상품주문 & 결제 API입니다.")
+    @PostMapping("/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
     public PaymentRes pay(@PathVariable Long userId,
                           @Valid @RequestBody PaymentReq req) {
