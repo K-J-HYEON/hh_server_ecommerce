@@ -80,7 +80,7 @@ class OrderServiceImplTest {
         given(orderUpdater.changeStatus(any(), any())).willReturn(completedOrder);
 
         // when
-        Order order = orderService.order(user.id(), orderReq);
+        Order order = orderService.order(user.userId(), orderReq);
 
         // then
         assertThat(order).isNotNull();
