@@ -1,7 +1,7 @@
 package hhplus.ecommerce.order.application;
 
 import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.dto.request.OrderReq;
+import hhplus.ecommerce.order.presentation.dto.request.OrderReq;
 import hhplus.ecommerce.order.domain.component.OrderProcessor;
 import hhplus.ecommerce.order.domain.component.OrderStatus;
 import hhplus.ecommerce.order.domain.component.OrderUpdater;

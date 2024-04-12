@@ -7,7 +7,7 @@ import hhplus.ecommerce.order.domain.component.OrderStatus;
 import hhplus.ecommerce.order.domain.component.OrderUpdater;
 import hhplus.ecommerce.order.domain.component.OrderValidator;
 import hhplus.ecommerce.payment.domain.Payment;
-import hhplus.ecommerce.payment.dto.request.PaymentReq;
+import hhplus.ecommerce.payment.presentation.dto.request.PaymentReq;
 import hhplus.ecommerce.payment.domain.component.PaymentAppender;
 import hhplus.ecommerce.user.domain.User;
 import hhplus.ecommerce.user.infrastructure.UserPointManager;

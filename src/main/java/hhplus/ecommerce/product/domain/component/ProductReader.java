@@ -1,6 +1,6 @@
 package hhplus.ecommerce.product.domain.component;
 
-import hhplus.ecommerce.order.dto.request.OrderReq;
+import hhplus.ecommerce.order.presentation.dto.request.OrderReq;
 import hhplus.ecommerce.order.domain.component.OrderStatus;
 import hhplus.ecommerce.product.domain.Product;
 import hhplus.ecommerce.product.infrastructure.ProductRepository;

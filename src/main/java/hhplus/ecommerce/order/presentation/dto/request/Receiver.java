@@ -1,4 +1,4 @@
-package hhplus.ecommerce.order.dto.request;
+package hhplus.ecommerce.order.presentation.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 

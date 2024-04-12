@@ -2,8 +2,8 @@ package hhplus.ecommerce.order.infrastructure;
 
 
 import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.dto.request.OrderReq;
-import hhplus.ecommerce.order.dto.request.Receiver;
+import hhplus.ecommerce.order.presentation.dto.request.OrderReq;
+import hhplus.ecommerce.order.presentation.dto.request.Receiver;
 import hhplus.ecommerce.order.entity.OrderEntity;
 import hhplus.ecommerce.order.domain.component.OrderStatus;
 import hhplus.ecommerce.user.domain.User;

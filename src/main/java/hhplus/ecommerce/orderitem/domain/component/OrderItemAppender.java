@@ -2,7 +2,7 @@ package hhplus.ecommerce.orderitem.domain.component;
 
 
 import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.dto.request.OrderReq;
+import hhplus.ecommerce.order.presentation.dto.request.OrderReq;
 import hhplus.ecommerce.orderitem.entity.OrderItemEntity;
 import hhplus.ecommerce.orderitem.domain.OrderItem;
 import hhplus.ecommerce.orderitem.infrastructure.OrderItemRepository;
