@@ -618,10 +618,11 @@ gantt
 ![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/4884ff2d-e19c-4404-8cef-26e6e82803c2)
 
 ## 플로우 차트
-![hh_3wk_server_setting](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/e339aef7-6ea5-4cec-b29f-600c0eb80aa3)
+<img width="1013" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/66b17aed-254b-4dd2-8304-5eb66b548492">
 
 ## ERD 초안
 <img width="1083" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b33ed170-fc68-48b1-86f2-bd4b3e437f26">
 
-## Swagger - No operations defined in spec! Error 해결 중
-![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/3efa128b-e40f-4096-9548-fb87db69b438)
+## Swagger
+<img width="1058" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/ebfd36b8-f52a-45f2-8596-a90145c92870">
+
