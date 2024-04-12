@@ -612,7 +612,7 @@ gantt
 ![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/2407b477-75d0-4cde-bc67-57d35c8652cc)
 
 ### 상품 주문 결제
-![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/2581e168-b319-4acb-ba1e-608250950789)
+<img width="525" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/5f0ff425-6855-4240-a267-cd72916c8a3e">
 
 ### 장바구니 추가/삭제/조회
 ![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/4884ff2d-e19c-4404-8cef-26e6e82803c2)
