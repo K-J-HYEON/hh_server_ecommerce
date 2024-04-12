@@ -1,4 +1,3 @@
-## Environment
 - Spring Boot 3.2.4
 - Java 17
 - Junit & AssertJ
@@ -556,5 +555,4 @@ gantt
 <img width="1083" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b33ed170-fc68-48b1-86f2-bd4b3e437f26">
 
 ## Swagger
-![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/7ccdc0be-aaa4-4242-8727-d838e4c2887f)
-
+![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b13d2a49-f815-4a31-be26-86211fc421f6)
