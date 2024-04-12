@@ -283,7 +283,7 @@ gantt
 
 
 <details>
-    <summary><b>상품 주문</b></summary>
+    <summary><b>상품 주문 및 결제</b></summary>
     
 - Request
     - Method: POST
@@ -341,11 +341,11 @@ gantt
                 ]
             }
         ```
-    - 400 Bad Request: 주문 상품이 적절하지 않은 경우
+    - 400 Bad Request: 주문 상품 재고가 부족한 경우
         ```json
         {
             "code": "BAD_REQUEST",
-            "message": "Order Product List is not valid"
+            "message": "This OrderItem is out of stock. "
         }
         ```
     - 404 Not Found User: 유저 정보가 없는 경우
@@ -355,78 +355,11 @@ gantt
             "message": "User Information is missing"
         }
         ```
-    - 404 Not Found Product: 상품 정보가 없는 경우
+    - 404 Not Found Product: 주문 상품 정보가 없는 경우
         ```json
         {
             "code": "NOT_FOUND_PRODUCT",
-            "message": "Product Information is not found"
-        }
-        ```
-    - 404 Bad Request: 포인트가 없는 경우
-        ```json
-        {
-            "code": "NOT_FOUND_POINT",
-            "message": "Point is not found"
-        }
-        ```
-</details>
-
-<details>
-    <summary><b>상품 결제</b></summary>
-    
-- Request
-    - Method: POST
-    - URL: /ecommerce/payment/{paymentId}/{userId}
-    - Headers:
-      - Content-Type: application/json
-    
-- Body:
-  ```json
-    
-        [
-            {
-                "orderId": 1,
-                "amount" : 50000,
-                "paymentMethod" : "CARD"
-            },
-        
-            {
-                "orderId": 2,
-                "amount" : 100000,
-                "paymentMethod" : "ACCOUNT_TRANSFER"
-            }
-        ]
-  ```
-  
-- Response
-    - 200 OK: 성공적으로 주문 및 결제
-        ```json
-            {
-                "transactionId": 1,
-                "message": "상품 결제가 완료되었습니다",
-                "status": "SUCCESS",
-                "paidAt": "2024-04-01 11:00:00",
-            }
-        ```
-    - 400 Bad Request: 주문 상품이 적절하지 않은 경우
-        ```json
-        {
-            "code": "BAD_REQUEST",
-            "message": "Order Product List is not valid"
-        }
-        ```
-    - 404 Not Found User: 유저 정보가 없는 경우
-        ```json
-        {
-            "code": "NOT_FOUND_USER",
-            "message": "User Information is missing"
-        }
-        ```
-    - 404 Not Found Product: 상품 정보가 없는 경우
-        ```json
-        {
-            "code": "NOT_FOUND_PRODUCT",
-            "message": "Product Information is not found"
+            "message": "This OrderItem Information is not found"
         }
         ```
     - 404 Bad Request: 포인트가 없는 경우
@@ -437,7 +370,6 @@ gantt
         }
         ```
 </details>
-
 
 
 <details>
@@ -611,8 +543,8 @@ gantt
 ### 인기 판매 상품 조회
 ![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/2407b477-75d0-4cde-bc67-57d35c8652cc)
 
-### 상품 주문 결제
-![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/2581e168-b319-4acb-ba1e-608250950789)
+### 상품 주문 및 결제
+<img width="525" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/5f0ff425-6855-4240-a267-cd72916c8a3e">
 
 ### 장바구니 추가/삭제/조회
 ![image](https://github.com/K-J-HYEON/SSG_SSAG_BE_5Group/assets/77037051/4884ff2d-e19c-4404-8cef-26e6e82803c2)
