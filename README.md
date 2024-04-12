@@ -623,5 +623,6 @@ gantt
 ## ERD 초안
 <img width="1083" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b33ed170-fc68-48b1-86f2-bd4b3e437f26">
 
-## Swagger - No operations defined in spec! Error 해결 중
-![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/3efa128b-e40f-4096-9548-fb87db69b438)
+## Swagger
+<img width="1058" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/ebfd36b8-f52a-45f2-8596-a90145c92870">
+
