@@ -341,11 +341,11 @@ gantt
                 ]
             }
         ```
-    - 400 Bad Request: 주문 상품이 적절하지 않은 경우
+    - 400 Bad Request: 주문 상품 재고가 부족한 경우
         ```json
         {
             "code": "BAD_REQUEST",
-            "message": "Order Product List is not valid"
+            "message": "This OrderItem is out of stock. "
         }
         ```
     - 404 Not Found User: 유저 정보가 없는 경우
@@ -355,11 +355,11 @@ gantt
             "message": "User Information is missing"
         }
         ```
-    - 404 Not Found Product: 상품 정보가 없는 경우
+    - 404 Not Found Product: 주문 상품 정보가 없는 경우
         ```json
         {
             "code": "NOT_FOUND_PRODUCT",
-            "message": "Product Information is not found"
+            "message": "This OrderItem Information is not found"
         }
         ```
     - 404 Bad Request: 포인트가 없는 경우
