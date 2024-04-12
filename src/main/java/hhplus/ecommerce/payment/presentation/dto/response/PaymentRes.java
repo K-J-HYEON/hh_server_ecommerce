@@ -1,4 +1,4 @@
-package hhplus.ecommerce.payment.dto.response;
+package hhplus.ecommerce.payment.presentation.dto.response;
 
 import hhplus.ecommerce.payment.domain.Payment;
 

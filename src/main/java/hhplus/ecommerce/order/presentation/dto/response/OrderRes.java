@@ -1,7 +1,7 @@
-package hhplus.ecommerce.order.dto.response;
+package hhplus.ecommerce.order.presentation.dto.response;
 
 import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.dto.request.Receiver;
+import hhplus.ecommerce.order.presentation.dto.request.Receiver;
 import java.time.format.DateTimeFormatter;
 
 public record OrderRes(

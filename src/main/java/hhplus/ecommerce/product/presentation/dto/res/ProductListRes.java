@@ -1,4 +1,4 @@
-package hhplus.ecommerce.product.dto.res;
+package hhplus.ecommerce.product.presentation.dto.res;
 
 import java.util.List;
 

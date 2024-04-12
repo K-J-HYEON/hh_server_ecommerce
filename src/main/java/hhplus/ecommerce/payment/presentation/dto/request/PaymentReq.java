@@ -1,4 +1,4 @@
-package hhplus.ecommerce.payment.dto.request;
+package hhplus.ecommerce.payment.presentation.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -1,4 +1,4 @@
-package hhplus.ecommerce.user.dto.req;
+package hhplus.ecommerce.user.presentation.dto.req;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

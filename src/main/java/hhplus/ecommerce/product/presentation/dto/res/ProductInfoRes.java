@@ -1,4 +1,4 @@
-package hhplus.ecommerce.product.dto.res;
+package hhplus.ecommerce.product.presentation.dto.res;
 
 import hhplus.ecommerce.product.domain.Product;
 import lombok.AllArgsConstructor;
