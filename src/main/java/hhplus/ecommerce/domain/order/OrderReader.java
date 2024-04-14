@@ -1,20 +1,16 @@
-package hhplus.ecommerce.order.domain.component;
+package hhplus.ecommerce.domain.order;
 
-
-import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.infrastructure.OrderRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OrderReader {
-
     private final OrderRepository orderRepository;
 
     public OrderReader(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
-    public Order retrieveByOrderId(Long orderId) {
+    public Order readById(Long orderId) {
         return orderRepository.findById(orderId);
     }
 }
