@@ -1,8 +1,7 @@
-package hhplus.ecommerce.orderitem.entity;
-
+package hhplus.ecommerce.storage.orderitem;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
-import hhplus.ecommerce.orderitem.domain.OrderItem;
+import hhplus.ecommerce.domain.orderitem.OrderItem;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -13,40 +12,39 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItemEntity extends BaseTimeEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderItemId;
+    private Long id;
 
-    @Column(name = "orderId")
+    @Column(name = "order_id")
     private Long orderId;
 
-    @Column(name = "productId")
+    @Column(name = "product_id")
     private Long productId;
 
     @Column(name = "productName")
     private String productName;
 
-    @Column(name = "count")
-    private Long count;
-
-    @Column(name = "price")
-    private Long price;
+    @Column(name = "unitPrice")
+    private Long unitPrice;
 
     @Column(name = "totalPrice")
     private Long totalPrice;
 
+    @Column(name = "quantity")
+    private Long quantity;
+
     public Long getId() {
-        return orderItemId;
+        return id;
     }
 
-    public OrderItemEntity(Long orderId, Long productId, String productName, Long count, Long price, Long totalPrice) {
+    public OrderItemEntity(Long orderId, Long productId, String productName, Long unitPrice, Long totalPrice, Long quantity) {
         this.orderId = orderId;
         this.productId = productId;
         this.productName = productName;
-        this.count = count;
-        this.price = price;
+        this.unitPrice = unitPrice;
         this.totalPrice = totalPrice;
+        this.quantity = quantity;
     }
 
     public OrderItem toOrderItem() {
@@ -55,9 +53,9 @@ public class OrderItemEntity extends BaseTimeEntity {
                 orderId,
                 productId,
                 productName,
-                price,
+                unitPrice,
                 totalPrice,
-                count
+                quantity
         );
     }
 }
