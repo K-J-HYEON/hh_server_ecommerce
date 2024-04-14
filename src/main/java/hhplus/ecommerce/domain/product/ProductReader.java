@@ -1,9 +1,7 @@
-package hhplus.ecommerce.product.domain.component;
+package hhplus.ecommerce.domain.product;
 
-import hhplus.ecommerce.order.presentation.dto.request.OrderReq;
-import hhplus.ecommerce.order.domain.component.OrderStatus;
-import hhplus.ecommerce.product.domain.Product;
-import hhplus.ecommerce.product.infrastructure.ProductRepository;
+import hhplus.ecommerce.api.dto.request.OrderRequest;
+import hhplus.ecommerce.storage.order.OrderStatus;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
@@ -23,22 +21,22 @@ public class ProductReader {
         return productRepository.findAll();
     }
 
-    public Product retrieveById(Long produtId) {
-        return productRepository.findById(produtId);
+    public Product retrieveById(Long productId) {
+        return productRepository.findById(productId);
     }
 
-    public List<Product> retrieveAllByIds(List<OrderReq.ProductOrderReq> products) {
+    public List<Product> retrieveAllByIds(List<OrderRequest.ProductOrderRequest> products) {
         return productRepository.findByIdIn(products.stream()
-                .map(OrderReq.ProductOrderReq::id)
+                .map(OrderRequest.ProductOrderRequest::id)
                 .toList()
         );
     }
 
-    public List<Product> readPopularSellingProducts() {
+    public List<Product> retrievePopularProducts() {
         LocalDateTime endDate = LocalDateTime.now();
         LocalDateTime startDate = endDate.minusDays(3);
         Pageable topFive = PageRequest.of(0, 5);
 
-        return productRepository.readPopularSellingProducts(OrderStatus.PAID, startDate, endDate, topFive);
+        return productRepository.findTopSellingProducts(OrderStatus.PAID, startDate, endDate, topFive);
     }
 }
