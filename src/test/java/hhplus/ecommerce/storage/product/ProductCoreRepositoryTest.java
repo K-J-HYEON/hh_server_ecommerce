@@ -19,12 +19,11 @@ class ProductCoreRepositoryTest {
     @InjectMocks
     private ProductCoreRepository productCoreRepository;
 
-//    @BeforeEach
-//    void setUp() {
-//        productJpaRepository = mock(ProductJpaRepository.class);
-//
-//        productCoreRepository = new ProductCoreRepository(productJpaRepository);
-//    }
+    @BeforeEach
+    void setUp() {
+        productJpaRepository = mock(ProductJpaRepository.class);
+        productCoreRepository = new ProductCoreRepository(productJpaRepository);
+    }
 
     @Test
     @DisplayName("상품을 찾지 못하였을 경우 에러 발생")
