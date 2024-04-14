@@ -1,13 +1,12 @@
-package hhplus.ecommerce.product.infrastructure;
+package hhplus.ecommerce.domain.product;
 
-import hhplus.ecommerce.order.domain.component.OrderStatus;
-import hhplus.ecommerce.product.domain.Product;
+import hhplus.ecommerce.storage.order.OrderStatus;
 import org.springframework.data.domain.Pageable;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ProductRepository {
-
     List<Product> findAll();
 
     Product findById(Long productId);
@@ -16,7 +15,7 @@ public interface ProductRepository {
 
     void updateStock(Product product);
 
-    List<Product> readPopularSellingProducts(OrderStatus orderStatus,
+    List<Product> findTopSellingProducts(OrderStatus orderStatus,
                                          LocalDateTime startDate,
                                          LocalDateTime endDate,
                                          Pageable pageable);
