@@ -1,12 +1,11 @@
-package hhplus.ecommerce.payment.infrastructure;
+package hhplus.ecommerce.storage.payment;
 
-import hhplus.ecommerce.payment.domain.Payment;
-import hhplus.ecommerce.payment.entity.PaymentEntity;
-import hhplus.ecommerce.payment.domain.component.PayType;
+import hhplus.ecommerce.domain.payment.Payment;
+import hhplus.ecommerce.domain.payment.PaymentRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class PaymentCoreRepository implements PaymentRepository{
+public class PaymentCoreRepository implements PaymentRepository {
     private final PaymentJpaRepository paymentJpaRepository;
 
     public PaymentCoreRepository(PaymentJpaRepository paymentJpaRepository) {
