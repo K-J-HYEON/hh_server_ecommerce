@@ -1,21 +1,21 @@
-package hhplus.ecommerce.user.entity;
+package hhplus.ecommerce.storage.user;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
-import hhplus.ecommerce.user.domain.User;
+import hhplus.ecommerce.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "User")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
+@Table(name = "User")
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -23,14 +23,14 @@ public class UserEntity extends BaseTimeEntity {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "phone_number")
+    @Column(name = "phoneNumber")
     private String phoneNumber;
 
     @Column(name = "point")
     private Long point;
 
     public Long getId() {
-        return userId;
+        return id;
     }
 
     public User toUser() {
