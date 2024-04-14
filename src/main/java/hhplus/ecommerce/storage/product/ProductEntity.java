@@ -26,7 +26,7 @@ public class ProductEntity extends BaseTimeEntity {
     private Long price;
 
     @Column(name = "stockQuantity")
-    private Long stockQuantity;
+    private Long stockCount;
 
     @Column(name = "size")
     private String size;
@@ -45,10 +45,10 @@ public class ProductEntity extends BaseTimeEntity {
     }
 
     public Product toProduct() {
-        return new Product(getId(), name, price, stockQuantity, size, color);
+        return new Product(getId(), name, price, stockCount, size, color);
     }
 
     public void updateStock(Long stockQuantity) {
-        this.stockQuantity = stockQuantity;
+        this.stockCount = stockQuantity;
     }
 }
