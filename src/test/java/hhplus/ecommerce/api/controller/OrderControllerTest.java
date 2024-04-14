@@ -39,7 +39,7 @@ class OrderControllerTest {
 
     @Test
     @DisplayName("주문 요청")
-    void postOrder() throws Exception {
+    void post_order() throws Exception {
         // Given
         Long userId = 1L;
 
@@ -86,7 +86,7 @@ class OrderControllerTest {
 
     @Test
     @DisplayName("받는 사람 정보가 없을 경우 주문 요청 실패")
-    void receiverNotExistThenFailedOrder() throws Exception {
+    void receiver_not_exist_then_failed_order() throws Exception {
         // Given
         Long userId = 1L;
 
@@ -117,7 +117,7 @@ class OrderControllerTest {
 
     @Test
     @DisplayName("상품 주문 없는 경우 주문 요청 실패")
-    void orderProductNotExistThenFailedOrder() throws Exception {
+    void order_product_not_exist_then_failed_order() throws Exception {
         // Given
         Long userId = 1L;
 
@@ -147,7 +147,7 @@ class OrderControllerTest {
 
     @Test
     @DisplayName("결제 수단 없는 경우 주문 요청 실패")
-    void paymentMethodNotExistThenFailedOrder() throws Exception {
+    void payment_method_not_exist_then_failed_order() throws Exception {
         // Given
         Long userId = 1L;
 
@@ -177,7 +177,7 @@ class OrderControllerTest {
 
     @Test
     @DisplayName("결제 금액 없는 경우 주문 요청 실패")
-    void paymentAmountNotExistThenFailedOrder() throws Exception {
+    void payment_amount_not_exist_then_failed_order() throws Exception {
         // Given
         Long userId = 1L;
 

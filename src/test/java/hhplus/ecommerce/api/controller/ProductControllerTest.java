@@ -27,7 +27,7 @@ class ProductControllerTest {
 
     @Test
     @DisplayName("상품목록 조회 성공")
-    void readProductInfoSuccess() throws Exception {
+    void read_product_info_success() throws Exception {
 
         // given
         Product sample1 = TestFixtures.product("신발");
@@ -49,7 +49,7 @@ class ProductControllerTest {
 
     @Test
     @DisplayName("상품정보 상세조회 성공")
-    void readProductInfoDetailSuccess() throws Exception {
+    void read_product_info_detail_success() throws Exception {
 
         // given
         Long productId = 1L;
@@ -69,7 +69,7 @@ class ProductControllerTest {
 
     @Test
     @DisplayName("인기 상품 조회 성공")
-    void readPopularProductsInfoSuccess() throws Exception {
+    void read_popular_product_info_success() throws Exception {
         // Given
         Product product1 = TestFixtures.product("신발");
         Product product2 = TestFixtures.product("바지");

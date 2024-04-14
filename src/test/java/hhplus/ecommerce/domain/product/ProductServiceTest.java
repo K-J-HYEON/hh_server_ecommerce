@@ -31,7 +31,7 @@ class ProductServiceTest {
 
     @Test
     @DisplayName("상품 목록 조회")
-    void readProductInfo() {
+    void read_product_info() {
 
         // given
         Product sample1 = TestFixtures.product("신발");
@@ -53,7 +53,7 @@ class ProductServiceTest {
 
     @Test
     @DisplayName("상품 상세 정보 조회")
-    void readProductInfoDetails() {
+    void read_product_info_detail() {
 
         // given
         Long productId = 1L;
@@ -76,7 +76,7 @@ class ProductServiceTest {
 
     @Test
     @DisplayName("인기 상품 정보 조회")
-    void readPopularProducts() {
+    void read_popular_products() {
         // Given
         Product product1 = TestFixtures.product("신발");
         Product product2 = TestFixtures.product("바지");

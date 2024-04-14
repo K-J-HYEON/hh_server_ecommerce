@@ -26,7 +26,7 @@ class UserPointControllerTest {
 
     @Test
     @DisplayName("포인트 충전 성공")
-    void pointChargeSuccess() throws Exception {
+    void point_charge_success() throws Exception {
 
         // Given
         Long userId = 1L;
@@ -48,7 +48,7 @@ class UserPointControllerTest {
 
     @Test
     @DisplayName("음수 입력 시 포인트 충전 실패")
-    void negativePointChargeFail() throws Exception {
+    void negative_point_charge_fail() throws Exception {
         // Given
         Long userId = 1L;
 
@@ -65,7 +65,7 @@ class UserPointControllerTest {
 
     @Test
     @DisplayName("0원 입력 시 포인트 충전 실패")
-    void zeroPointChargeFail() throws Exception {
+    void zero_point_charge_fail() throws Exception {
         // Given
         Long userId = 1L;
 
@@ -82,7 +82,7 @@ class UserPointControllerTest {
 
     @Test
     @DisplayName("잔액 조회 성공")
-    void readUserPointSuccess() throws Exception {
+    void read_user_point_success() throws Exception {
         // Given
         Long userId = 1L;
         Long point = 5000L;

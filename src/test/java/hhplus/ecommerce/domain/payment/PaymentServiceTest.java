@@ -67,7 +67,7 @@ class PaymentServiceTest {
 
     @Test
     @DisplayName("계좌이체 결제 성공")
-    void accountTransferSucceed() {
+    void account_transfer_success() {
 
         // Given
         Payment payment = TestFixtures.payment(orderId);
@@ -88,7 +88,7 @@ class PaymentServiceTest {
 
     @Test
     @DisplayName("주문 상태가 결제 대기 상태가 아니면 결제 실패")
-    void orderStatusIsNotPendingForPayThenPaymentFailad() {
+    void order_status_not_pending_forpay_then_payment_failed() {
         // Given
         Order order = TestFixtures.order(OrderStatus.PAY_FAILED);
 

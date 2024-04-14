@@ -26,7 +26,7 @@ class PaymentCoreRepositoryTest {
 
     @Test
     @DisplayName("결제 정보를 찾지 못하였을 경우 에러 발생")
-    void paymentNotFoundThenError() {
+    void payment_not_found_then_error() {
         // Given
         Long paymentId = 100L;
 

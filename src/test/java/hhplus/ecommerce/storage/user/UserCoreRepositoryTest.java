@@ -26,8 +26,7 @@ class UserCoreRepositoryTest {
 
     @Test
     @DisplayName("사용자 정보를 찾지 못하였을 경우 에러 발생")
-    void userNotFoundThenError() {
-
+    void user_not_found_then_error() {
         // Given
         Long userId = 999L;
 

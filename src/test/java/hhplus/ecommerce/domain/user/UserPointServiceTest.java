@@ -26,7 +26,7 @@ class UserPointServiceTest {
 
     @Test
     @DisplayName("잔액 충전 성공")
-    void pointcharge_success() {
+    void point_charge_success() {
         // Given
         Long userId = 1L;
         Long chargingPoint = 1000L;
@@ -45,7 +45,7 @@ class UserPointServiceTest {
 
     @Test
     @DisplayName("잔액 조회 성공")
-    void retrieve_point_success() {
+    void read_point_success() {
         // Given
         Long userId = 1L;
 

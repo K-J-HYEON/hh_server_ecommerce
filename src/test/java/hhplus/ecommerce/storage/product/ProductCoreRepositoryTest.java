@@ -27,7 +27,7 @@ class ProductCoreRepositoryTest {
 
     @Test
     @DisplayName("상품을 찾지 못하였을 경우 에러 발생")
-    void productNotFoundThenError() {
+    void product_not_found_then_error() {
 
         // Given
         Long productId = 100L;
