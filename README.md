@@ -1,7 +1,7 @@
 - Spring Boot 3.2.4
 - Java 17
 - Junit & AssertJ
-- MySQL
+- H2 DataBase
 - JPA
 - gradle
 
@@ -552,7 +552,7 @@ gantt
 <img width="1013" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/66b17aed-254b-4dd2-8304-5eb66b548492">
 
 ## ERD
-<img width="1083" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b33ed170-fc68-48b1-86f2-bd4b3e437f26">
+![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b245ab71-e3fd-4471-8ccd-ea421ef7e018)
 
 ## Swagger
 ![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b13d2a49-f815-4a31-be26-86211fc421f6)
