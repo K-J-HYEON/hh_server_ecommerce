@@ -1,35 +1,41 @@
-package hhplus.ecommerce.payment.entity;
+package hhplus.ecommerce.storage.payment;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
-import hhplus.ecommerce.payment.domain.Payment;
-import hhplus.ecommerce.payment.domain.component.PayType;
+import hhplus.ecommerce.domain.payment.Payment;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "payments")
+@Table(name = "Payment")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PaymentEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long paymentId;
+    private Long id;
 
-    @Column(name = "orderId")
+    @Column(name = "order_id")
     private Long orderId;
 
     @Column(name = "payAmount")
     private Long payAmount;
 
-    @Column(name = "payment_method")
+    @Column(name = "paymentMethod")
     @Enumerated(EnumType.STRING)
     private PayType paymentMethod;
 
+    private LocalDateTime createAt;
+
     public Long getId() {
-        return paymentId;
+        return id;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createAt;
     }
 
     public PaymentEntity(Long orderId, Long payAmount, PayType paymentMethod) {
@@ -39,6 +45,6 @@ public class PaymentEntity extends BaseTimeEntity {
     }
 
     public Payment toPayment() {
-        return new Payment(getId(), orderId, payAmount, paymentMethod.toString(), getCreateAt());
+        return new Payment(getId(), orderId, payAmount, paymentMethod.toString(), getCreatedAt());
     }
 }
