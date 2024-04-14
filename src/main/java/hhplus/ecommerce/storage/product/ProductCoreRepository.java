@@ -1,8 +1,8 @@
-package hhplus.ecommerce.product.infrastructure;
+package hhplus.ecommerce.storage.product;
 
-import hhplus.ecommerce.order.domain.component.OrderStatus;
-import hhplus.ecommerce.product.domain.Product;
-import hhplus.ecommerce.product.entity.ProductEntity;
+import hhplus.ecommerce.domain.product.Product;
+import hhplus.ecommerce.domain.product.ProductRepository;
+import hhplus.ecommerce.storage.order.OrderStatus;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
@@ -12,7 +12,6 @@ import java.util.List;
 
 @Repository
 public class ProductCoreRepository implements ProductRepository {
-
     private final ProductJpaRepository productJpaRepository;
 
     public ProductCoreRepository(ProductJpaRepository productJpaRepository) {
@@ -22,7 +21,7 @@ public class ProductCoreRepository implements ProductRepository {
     @Override
     public List<Product> findAll() {
         return productJpaRepository.findAll().stream()
-                .sorted(Comparator.comparing(ProductEntity::getCreateAt).reversed())
+                .sorted(Comparator.comparing(ProductEntity::getCreatedAt).reversed())
                 .map(ProductEntity::toProduct)
                 .toList();
     }
@@ -43,14 +42,14 @@ public class ProductCoreRepository implements ProductRepository {
 
     @Override
     public void updateStock(Product product) {
-        ProductEntity productEntity = productJpaRepository.findById(product.productId())
-                .orElseThrow(() -> new EntityNotFoundException("상품 정보를 찾지 못하였습니다. - id: " + product.productId()));
+        ProductEntity productEntity = productJpaRepository.findById(product.id())
+                .orElseThrow(() -> new EntityNotFoundException("상품 정보를 찾지 못했습니다. - id: " + product.id()));
         productEntity.updateStock(product.stockCount());
     }
 
     @Override
-    public List<Product> readPopularSellingProducts(OrderStatus orderStatus, LocalDateTime startDate, LocalDateTime endDate, Pageable pageable) {
-        return productJpaRepository.readPopularSellingProducts(orderStatus, startDate, endDate, pageable)
+    public List<Product> findTopSellingProducts(OrderStatus orderStatus, LocalDateTime startDate, LocalDateTime endDate, Pageable pageable) {
+        return productJpaRepository.findPopularSellingProducts(orderStatus, startDate, endDate, pageable)
                 .map(ProductEntity::toProduct)
                 .toList();
     }
