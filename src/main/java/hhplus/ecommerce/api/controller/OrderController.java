@@ -3,7 +3,7 @@ package hhplus.ecommerce.api.controller;
 import hhplus.ecommerce.api.dto.OrderPaidResult;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.api.dto.response.OrderResponse;
-import hhplus.ecommerce.application.order.OrderUseCase;
+import hhplus.ecommerce.application.OrderUseCase;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

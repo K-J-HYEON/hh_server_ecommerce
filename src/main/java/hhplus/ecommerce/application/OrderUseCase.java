@@ -1,4 +1,4 @@
-package hhplus.ecommerce.application.order;
+package hhplus.ecommerce.application;
 
 import hhplus.ecommerce.api.dto.OrderEventForStatistics;
 import hhplus.ecommerce.api.dto.OrderPaidResult;
