@@ -1,11 +1,11 @@
-package hhplus.ecommerce.product.application;
+package hhplus.ecommerce.domain.product;
 
 import hhplus.ecommerce.TestFixtures;
-import hhplus.ecommerce.product.domain.component.ProductReader;
-import hhplus.ecommerce.product.domain.Product;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 
 import java.util.List;
 
@@ -14,16 +14,19 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.BDDMockito.given;
 import static org.assertj.core.api.Assertions.*;
 
-class ProductServiceImplTest {
+class ProductServiceTest {
 
-    private ProductServiceImpl productService;
     private ProductReader productReader;
+    private ProductUpdater productUpdater;
+    private ProductService productService;
 
     @BeforeEach
     void setUp() {
-        productReader = mock(ProductReader.class);
 
-        productService = new ProductServiceImpl(productReader);
+        productReader = mock(ProductReader.class);
+        productUpdater = mock(ProductUpdater.class);
+
+        productService = new ProductService(productReader, productUpdater);
     }
 
     @Test
@@ -68,5 +71,24 @@ class ProductServiceImplTest {
         assertThat(productDetail.stockCount()).isEqualTo(10);
         assertThat(productDetail.size()).isEqualTo("270");
         assertThat(productDetail.color()).isEqualTo("화이트");
+    }
+
+
+    @Test
+    @DisplayName("인기 상품 정보 조회")
+    void readPopularProducts() {
+        // Given
+        Product product1 = TestFixtures.product("신발");
+        Product product2 = TestFixtures.product("바지");
+
+        given(productReader.retrievePopularProducts()).willReturn(
+                List.of(product1, product2)
+        );
+
+        // When
+        List<Product> popularProducts = productService.readPopularProducts();
+
+        // Then
+        assertThat(popularProducts.size()).isEqualTo(2);
     }
 }
