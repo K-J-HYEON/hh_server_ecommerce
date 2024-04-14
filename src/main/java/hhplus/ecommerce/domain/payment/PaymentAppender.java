@@ -1,14 +1,10 @@
-package hhplus.ecommerce.payment.domain.component;
+package hhplus.ecommerce.domain.payment;
 
-
-import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.payment.domain.Payment;
-import hhplus.ecommerce.payment.infrastructure.PaymentRepository;
+import hhplus.ecommerce.domain.order.Order;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PaymentAppender {
-
     private final PaymentRepository paymentRepository;
 
     public PaymentAppender(PaymentRepository paymentRepository) {
@@ -16,6 +12,6 @@ public class PaymentAppender {
     }
 
     public Payment create(Order order, Long payAmount, String paymentMethod) {
-        return paymentRepository.create(order.orderId(), payAmount, paymentMethod);
+        return paymentRepository.create(order.id(), payAmount, paymentMethod);
     }
 }
