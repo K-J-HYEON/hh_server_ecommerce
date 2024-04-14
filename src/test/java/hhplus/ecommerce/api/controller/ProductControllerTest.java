@@ -1,8 +1,8 @@
-package hhplus.ecommerce.product.presentation;
+package hhplus.ecommerce.api.controller;
 
 import hhplus.ecommerce.TestFixtures;
-import hhplus.ecommerce.product.application.ProductServiceImpl;
-import hhplus.ecommerce.product.domain.Product;
+import hhplus.ecommerce.domain.product.ProductService;
+import hhplus.ecommerce.domain.product.Product;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ class ProductControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private ProductServiceImpl productsService;
+    private ProductService productService;
 
     @Test
     @DisplayName("상품목록 조회 성공")
@@ -33,11 +33,11 @@ class ProductControllerTest {
         Product sample1 = TestFixtures.product("신발");
         Product sample2 = TestFixtures.product("바지");
 
-        given(productsService.readProductInfo()).willReturn(
+        given(productService.readProductInfo()).willReturn(
                 List.of(sample1, sample2));
 
         // when && // then
-        mockMvc.perform(get("/product"))
+        mockMvc.perform(get("/ecommerce/api/product"))
                 .andExpect(status().isOk())
                 .andExpectAll(
                         jsonPath("$.product[0].name").value("신발"),
@@ -56,14 +56,34 @@ class ProductControllerTest {
 
         Product product = TestFixtures.product("바지");
 
-        given(productsService.readProductInfoDetail(productId)).willReturn(product);
+        given(productService.readProductInfoDetail(productId)).willReturn(product);
 
         // when && then
-        mockMvc.perform(get("/product/" + productId))
+        mockMvc.perform(get("/ecommerce/api/product/" + productId))
                 .andExpect(status().isOk())
                 .andExpectAll(
                         jsonPath("$.name").value("와이드 팬츠"),
                         jsonPath(".price").value(50000)
+                );
+    }
+
+    @Test
+    @DisplayName("인기 상품 조회 성공")
+    void readPopularProductsInfoSuccess() throws Exception {
+        // Given
+        Product product1 = TestFixtures.product("신발");
+        Product product2 = TestFixtures.product("바지");
+
+        given(productService.readPopularProducts()).willReturn(
+                List.of(product1, product2)
+        );
+
+        // When && Then
+        mockMvc.perform(get("/ecommerce/api/product"))
+                .andExpect(status().isOk())
+                .andExpectAll(
+                        jsonPath("$.products[0].name").value("나이키 에어포스"),
+                        jsonPath("$.products[1].name").value("맨투맨")
                 );
     }
 }
