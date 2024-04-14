@@ -1,7 +1,7 @@
 - Spring Boot 3.2.4
 - Java 17
 - Junit & AssertJ
-- MySQL
+- H2 DataBase
 - JPA
 - gradle
 
