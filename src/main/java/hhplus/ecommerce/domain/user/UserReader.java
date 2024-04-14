@@ -1,7 +1,5 @@
-package hhplus.ecommerce.user.domain.component;
+package hhplus.ecommerce.domain.user;
 
-import hhplus.ecommerce.user.domain.User;
-import hhplus.ecommerce.user.infrastructure.UserRepository;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +11,6 @@ public class UserReader {
     }
 
     public User retrieveByUserId(Long userId) {
-        return userRepository.findByUserId(userId);
+        return userRepository.findById(userId);
     }
 }
