@@ -1,6 +1,4 @@
-package hhplus.ecommerce.payment.infrastructure;
-
-import hhplus.ecommerce.payment.domain.Payment;
+package hhplus.ecommerce.domain.payment;
 
 public interface PaymentRepository {
     Payment create(Long orderId, Long payAmount, String paymentMethod);
