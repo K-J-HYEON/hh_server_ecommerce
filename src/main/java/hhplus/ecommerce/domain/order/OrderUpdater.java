@@ -1,8 +1,6 @@
-package hhplus.ecommerce.order.domain.component;
+package hhplus.ecommerce.domain.order;
 
-
-import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.infrastructure.OrderRepository;
+import hhplus.ecommerce.storage.order.OrderStatus;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,6 +12,7 @@ public class OrderUpdater {
     }
 
     public Order changeStatus(Order order, OrderStatus orderStatus) {
-        return orderRepository.updateStatus(order, orderStatus);
+        Order changedStatusOrder = order.changeStatus(orderStatus);
+        return orderRepository.updateStatus(changedStatusOrder, orderStatus);
     }
 }

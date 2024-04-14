@@ -1,14 +1,15 @@
-package hhplus.ecommerce.order.domain.component;
+package hhplus.ecommerce.storage.order;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public enum OrderStatus {
-    READY("ready"),
-    PAID("paid"),
-    PAY_FAILED("pay failed"),
-    COMPLETE("complete"),
-    CANCELED("canceled");
+    READY("READY"),
+    PAID("PAID"),
+    PAY_FAILED("PAY FAILED"),
+    PENDING_FOR_PAY("PENDING FOR PAY"),
+    COMPLETE("COMPLETE"),
+    CANCELED("CANCELED");
 
     private final String value;
 
@@ -24,6 +25,6 @@ public enum OrderStatus {
         return Arrays.stream(OrderStatus.values())
                 .filter(orderStatus -> orderStatus.value.equals(value))
                 .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("주문상태가 존재하지 않습니다."));
+                .orElseThrow(() -> new NoSuchElementException("존재 하지 않는 주문 상태 입니다."));
     }
 }
