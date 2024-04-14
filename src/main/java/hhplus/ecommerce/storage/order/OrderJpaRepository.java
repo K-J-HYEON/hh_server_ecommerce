@@ -1,6 +1,5 @@
-package hhplus.ecommerce.order.infrastructure;
+package hhplus.ecommerce.storage.order;
 
-import hhplus.ecommerce.order.entity.OrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OrderJpaRepository extends JpaRepository<OrderEntity, Long> {
