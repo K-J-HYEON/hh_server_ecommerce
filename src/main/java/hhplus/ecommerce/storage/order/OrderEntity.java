@@ -1,12 +1,13 @@
-package hhplus.ecommerce.order.entity;
+package hhplus.ecommerce.storage.order;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
-import hhplus.ecommerce.order.domain.Order;
-import hhplus.ecommerce.order.domain.component.OrderStatus;
+import hhplus.ecommerce.domain.order.Order;
+import hhplus.ecommerce.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,9 +18,13 @@ public class OrderEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
+    private Long id;
 
-    @Column(name = "userId")
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
+
+    @Column(name = "user_id")
     private Long userId;
 
     @Column(name = "payAmount")
@@ -30,6 +35,7 @@ public class OrderEntity extends BaseTimeEntity {
 
     @Column(name = "address")
     private String address;
+
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
@@ -37,12 +43,8 @@ public class OrderEntity extends BaseTimeEntity {
     @Column(name = "orderStatus")
     private OrderStatus orderStatus;
 
-    @Column(name = "orderAt")
-    private LocalDateTime orderAt;
-
-    public Long getId() {
-        return orderId;
-    }
+    @Column(name = "orderedAt")
+    private LocalDateTime orderedAt;
 
     public OrderEntity(Long userId,
                        Long payAmount,
@@ -50,18 +52,22 @@ public class OrderEntity extends BaseTimeEntity {
                        String address,
                        String phoneNumber,
                        OrderStatus orderStatus,
-                       LocalDateTime orderAt) {
+                       LocalDateTime orderedAt) {
         this.userId = userId;
         this.payAmount = payAmount;
         this.receiverName = receiverName;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.orderStatus = orderStatus;
-        this.orderAt = orderAt;
+        this.orderedAt = orderedAt;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Order toOrder() {
-        return new Order(getId(), userId, payAmount, receiverName, address, phoneNumber, orderStatus.toString(), orderAt);
+        return new Order(getId(), userId, payAmount, receiverName, address, phoneNumber, orderStatus.toString(), orderedAt);
     }
 
     public void updateStatus(OrderStatus orderStatus) {
