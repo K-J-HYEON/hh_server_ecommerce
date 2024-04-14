@@ -1,31 +1,31 @@
-package hhplus.ecommerce.user.application;
+package hhplus.ecommerce.domain.user;
 
 import hhplus.ecommerce.TestFixtures;
-import hhplus.ecommerce.user.domain.User;
-import hhplus.ecommerce.user.domain.component.UserReader;
-import hhplus.ecommerce.user.infrastructure.UserPointManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
-class UserPointServiceImplTest {
-    private UserPointServiceImpl userPointService;
+class UserPointServiceTest {
+
     private UserReader userReader;
     private UserPointManager userPointManager;
+    private UserPointService userPointService;
 
     @BeforeEach
     void setUp() {
         userReader = mock(UserReader.class);
         userPointManager = mock(UserPointManager.class);
-        userPointService = new UserPointServiceImpl(userReader, userPointManager);
+        userPointService = new UserPointService(userReader, userPointManager);
     }
 
     @Test
-    @DisplayName("포인트 충전 성공")
+    @DisplayName("잔액 충전 성공")
     void pointcharge_success() {
         // Given
         Long userId = 1L;
@@ -44,7 +44,7 @@ class UserPointServiceImplTest {
     }
 
     @Test
-    @DisplayName("포인트 조회 성공")
+    @DisplayName("잔액 조회 성공")
     void retrieve_point_success() {
         // Given
         Long userId = 1L;
