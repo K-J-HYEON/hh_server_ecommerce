@@ -1,10 +1,12 @@
-package hhplus.ecommerce.orderitem.infrastructure;
+package hhplus.ecommerce.storage.orderitem;
 
-import hhplus.ecommerce.orderitem.entity.OrderItemEntity;
-import hhplus.ecommerce.orderitem.domain.OrderItem;
+import hhplus.ecommerce.domain.orderitem.OrderItem;
+import hhplus.ecommerce.domain.orderitem.OrderItemRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class OrderItemCoreRepository implements OrderItemRepository {
     private final OrderItemJpaRepository orderItemJpaRepository;
 
@@ -16,6 +18,13 @@ public class OrderItemCoreRepository implements OrderItemRepository {
     public List<OrderItem> createOrderItem(List<OrderItemEntity> orderItemEntities) {
         return orderItemJpaRepository.saveAll(orderItemEntities)
                 .stream().map(OrderItemEntity::toOrderItem)
+                .toList();
+    }
+
+    @Override
+    public List<OrderItem> findAllByOrderId(Long orderId) {
+        return orderItemJpaRepository.findAllByOrderId(orderId).stream()
+                .map(OrderItemEntity::toOrderItem)
                 .toList();
     }
 }
