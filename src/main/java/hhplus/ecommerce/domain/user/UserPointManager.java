@@ -1,6 +1,5 @@
-package hhplus.ecommerce.user.infrastructure;
+package hhplus.ecommerce.domain.user;
 
-import hhplus.ecommerce.user.domain.User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,6 +15,6 @@ public class UserPointManager {
     }
 
     public User usePoint(User user, Long payAmount) {
-        return userRepository.updateUserPoint(user.decreasePoint(payAmount));
+        return userRepository.updateUserPoint(user.minusPoint(payAmount));
     }
 }
