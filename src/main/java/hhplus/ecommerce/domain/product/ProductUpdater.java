@@ -1,10 +1,10 @@
-package hhplus.ecommerce.product.domain.component;
+package hhplus.ecommerce.domain.product;
 
-import hhplus.ecommerce.order.presentation.dto.request.OrderReq;
-import hhplus.ecommerce.product.domain.Product;
-import hhplus.ecommerce.product.infrastructure.ProductRepository;
+import hhplus.ecommerce.api.dto.request.OrderRequest;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -15,14 +15,14 @@ public class ProductUpdater {
         this.productRepository = productRepository;
     }
 
-    public void updateStock(List<Product> products, List<OrderReq.ProductOrderReq> productOrderRequests) {
-        for (OrderReq.ProductOrderReq orderRequest : productOrderRequests) {
+    public void updateStock(List<Product> products, List<OrderRequest.ProductOrderRequest> req) {
+        for (OrderRequest.ProductOrderRequest orderRequest : req) {
             Product product = products.stream()
-                    .filter(p -> p.productId().equals(orderRequest.id()))
+                    .filter(p -> p.id().equals(orderRequest.id()))
                     .findFirst()
                     .orElseThrow(() -> new EntityNotFoundException(orderRequest.id() + " 상품의 정보를 찾지 못했습니다."));
 
-            Product decreasedProduct = product.decreaseStock(orderRequest.quantity());
+            Product decreasedProduct = product.decreaseStock(orderRequest.orderCount());
             productRepository.updateStock(decreasedProduct);
         }
     }
