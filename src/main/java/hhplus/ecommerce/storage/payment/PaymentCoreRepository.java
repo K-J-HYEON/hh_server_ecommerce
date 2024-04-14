@@ -2,6 +2,7 @@ package hhplus.ecommerce.storage.payment;
 
 import hhplus.ecommerce.domain.payment.Payment;
 import hhplus.ecommerce.domain.payment.PaymentRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -10,6 +11,13 @@ public class PaymentCoreRepository implements PaymentRepository {
 
     public PaymentCoreRepository(PaymentJpaRepository paymentJpaRepository) {
         this.paymentJpaRepository = paymentJpaRepository;
+    }
+
+    @Override
+    public Payment findById(Long paymentId) {
+        return paymentJpaRepository.findById(paymentId)
+                .orElseThrow(() -> new EntityNotFoundException("결제 정보를 찾지 못했습니다. - id: " + paymentId))
+                .toPayment();
     }
 
     @Override
