@@ -12,6 +12,6 @@ public class PaymentAppender {
     }
 
     public Payment create(Order order, Long payAmount, String paymentMethod) {
-        return paymentRepository.create(order.id(), payAmount, paymentMethod);
+        return paymentRepository.create(payAmount, paymentMethod);
     }
 }

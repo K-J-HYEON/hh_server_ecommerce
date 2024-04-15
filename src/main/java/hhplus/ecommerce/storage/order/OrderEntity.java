@@ -3,14 +3,16 @@ package hhplus.ecommerce.storage.order;
 import hhplus.ecommerce.config.BaseTimeEntity;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.user.User;
-
-
+import hhplus.ecommerce.storage.orderitem.OrderItemEntity;
+import hhplus.ecommerce.storage.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Order")
@@ -22,12 +24,13 @@ public class OrderEntity extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity userEntity;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @OneToMany
+    @JoinColumn(name = "orderitem_id")
+    private List<OrderItemEntity> orderItemEntities = new ArrayList<>();
 
     @Column(name = "payAmount")
     private Long payAmount;
@@ -48,14 +51,12 @@ public class OrderEntity extends BaseTimeEntity {
     @Column(name = "orderedAt")
     private LocalDateTime orderedAt;
 
-    public OrderEntity(Long userId,
-                       Long payAmount,
+    public OrderEntity(Long payAmount,
                        String receiverName,
                        String address,
                        String phoneNumber,
                        OrderStatus orderStatus,
                        LocalDateTime orderedAt) {
-        this.userId = userId;
         this.payAmount = payAmount;
         this.receiverName = receiverName;
         this.address = address;
@@ -69,7 +70,7 @@ public class OrderEntity extends BaseTimeEntity {
     }
 
     public Order toOrder() {
-        return new Order(getId(), userId, payAmount, receiverName, address, phoneNumber, orderStatus.toString(), orderedAt);
+        return new Order(getId(), payAmount, receiverName, address, phoneNumber, orderStatus.toString(), orderedAt);
     }
 
     public void updateStatus(OrderStatus orderStatus) {

@@ -21,8 +21,8 @@ public class PaymentCoreRepository implements PaymentRepository {
     }
 
     @Override
-    public Payment create(Long orderId, Long payAmount, String paymentMethod) {
-        PaymentEntity paymentEntity = new PaymentEntity(orderId, payAmount, PayType.of(paymentMethod));
+    public Payment create(Long payAmount, String paymentMethod) {
+        PaymentEntity paymentEntity = new PaymentEntity(payAmount, PayType.of(paymentMethod));
         return paymentJpaRepository.save(paymentEntity).toPayment();
     }
 }

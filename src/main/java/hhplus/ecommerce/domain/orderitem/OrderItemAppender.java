@@ -32,8 +32,8 @@ public class OrderItemAppender {
 
             orderItemEntities.add(
                     new OrderItemEntity(
-                            order.id(),
-                            product.id(),
+//                            order.id(),
+//                            product.id(),
                             product.name(),
                             product.price(),
                             product.orderTotalPrice(orderRequest.orderCount()),

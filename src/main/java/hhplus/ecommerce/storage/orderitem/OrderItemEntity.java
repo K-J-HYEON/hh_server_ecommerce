@@ -1,7 +1,11 @@
 package hhplus.ecommerce.storage.orderitem;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
+import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.orderitem.OrderItem;
+import hhplus.ecommerce.domain.product.Product;
+import hhplus.ecommerce.storage.order.OrderEntity;
+import hhplus.ecommerce.storage.product.ProductEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -16,11 +20,13 @@ public class OrderItemEntity extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "order_id")
-    private Long orderId;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private OrderEntity orderEntity;
 
-    @Column(name = "product_id")
-    private Long productId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private ProductEntity productEntity;
 
     @Column(name = "productName")
     private String productName;
@@ -38,9 +44,7 @@ public class OrderItemEntity extends BaseTimeEntity {
         return id;
     }
 
-    public OrderItemEntity(Long orderId, Long productId, String productName, Long unitPrice, Long totalPrice, Long quantity) {
-        this.orderId = orderId;
-        this.productId = productId;
+    public OrderItemEntity(String productName, Long unitPrice, Long totalPrice, Long quantity) {
         this.productName = productName;
         this.unitPrice = unitPrice;
         this.totalPrice = totalPrice;
@@ -50,8 +54,6 @@ public class OrderItemEntity extends BaseTimeEntity {
     public OrderItem toOrderItem() {
         return new OrderItem(
                 getId(),
-                orderId,
-                productId,
                 productName,
                 unitPrice,
                 totalPrice,

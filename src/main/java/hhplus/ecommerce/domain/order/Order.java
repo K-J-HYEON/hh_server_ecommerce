@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 
 public record Order(
         Long id,
-        Long userId,
         Long payAmount,
         String receiverName,
         String address,
@@ -14,6 +13,6 @@ public record Order(
         LocalDateTime orderedAt
 ) {
     public Order changeStatus(OrderStatus orderStatus) {
-        return new Order(id, userId, payAmount, receiverName, address, phoneNumber, orderStatus.toString(), orderedAt);
+        return new Order(id, payAmount, receiverName, address, phoneNumber, orderStatus.toString(), orderedAt);
     }
 }

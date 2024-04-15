@@ -2,6 +2,8 @@ package hhplus.ecommerce.storage.payment;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
 import hhplus.ecommerce.domain.payment.Payment;
+import hhplus.ecommerce.storage.order.OrderEntity;
+import hhplus.ecommerce.storage.product.ProductEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -18,8 +20,12 @@ public class PaymentEntity extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "order_id")
-    private Long orderId;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private OrderEntity orderEntity;
+
+//    @Column(name = "order_id")
+//    private Long orderId;
 
     @Column(name = "payAmount")
     private Long payAmount;
@@ -38,13 +44,13 @@ public class PaymentEntity extends BaseTimeEntity {
         return createAt;
     }
 
-    public PaymentEntity(Long orderId, Long payAmount, PayType paymentMethod) {
-        this.orderId = orderId;
+    public PaymentEntity(Long payAmount, PayType paymentMethod) {
+//        this.orderId = orderId;
         this.payAmount = payAmount;
         this.paymentMethod = paymentMethod;
     }
 
     public Payment toPayment() {
-        return new Payment(getId(), orderId, payAmount, paymentMethod.toString(), getCreatedAt());
+        return new Payment(getId(), payAmount, paymentMethod.toString(), getCreatedAt());
     }
 }
