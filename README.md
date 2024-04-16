@@ -1,4 +1,4 @@
-- Spring Boot 3.2.4
+## 개발 환경
 - Java 17
 - Junit & AssertJ
 - H2 DataBase
@@ -552,7 +552,7 @@ gantt
 <img width="1013" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/66b17aed-254b-4dd2-8304-5eb66b548492">
 
 ## ERD
-![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b245ab71-e3fd-4471-8ccd-ea421ef7e018)
+<img width="1138" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/c1a1a885-f98d-4249-8cbd-d78833c83792">
 
 ## Swagger
 ![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b13d2a49-f815-4a31-be26-86211fc421f6)
