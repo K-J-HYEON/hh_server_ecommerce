@@ -25,7 +25,7 @@ public class ProductEntity extends BaseTimeEntity {
     @Column(name = "price")
     private Long price;
 
-    @Column(name = "stockQuantity")
+    @Column(name = "stockCount")
     private Long stockCount;
 
     @Column(name = "size")

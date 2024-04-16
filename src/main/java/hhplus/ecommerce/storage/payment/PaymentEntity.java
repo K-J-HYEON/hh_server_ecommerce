@@ -18,7 +18,7 @@ public class PaymentEntity extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "order_id")
+    @Column(name = "orderId")
     private Long orderId;
 
     @Column(name = "payAmount")
