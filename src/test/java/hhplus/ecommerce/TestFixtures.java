@@ -14,11 +14,27 @@ import java.time.LocalDateTime;
 public class TestFixtures {
     public static Product product(String name) {
         if (name.equals("신발")) {
-            return new Product(1L, "나이키 에어포스", 90000L, 10L, "270", "화이트");
+            return new Product(1L, "신발", 90_000L, 10L, "270", "화이트");
         }
 
         if (name.equals("바지")) {
-            return new Product(10L, "와이드 팬츠", 10000L, 50L, "28", "베이직");
+            return new Product(2L, "바지", 10_000L, 50L, "28", "베이직");
+        }
+
+        if (name.equals("아우터")) {
+            return new Product(3L, "아우터", 200_000L, 100L, "FREE", "블랙");
+        }
+
+        if (name.equals("박스티")) {
+            return new Product(4L, "박스티", 10_000L, 200L, "FREE", "차콜");
+        }
+
+        if (name.equals("티셔트")) {
+            return new Product(5L, "티셔트", 20_000L, 400L, "FREE", "화이트");
+        }
+
+        if (name.equals("와이드 청바지")) {
+            return new Product(6L, "와이드 청바지", 50_000L, 200L, "30", "연청");
         }
 
         throw new EntityNotFoundException("There is no product there. - name: " + name);
@@ -33,7 +49,7 @@ public class TestFixtures {
 
     public static Order order(OrderStatus orderStatus) {
         if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "ready", LocalDateTime.now());
+            return new Order(1L, 1L, 200_000L, "김아무개", "서울특별시 마포구", "01012344321", "ready", LocalDateTime.now());
         }
 
         if (orderStatus.equals(OrderStatus.READY)) {
