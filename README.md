@@ -552,7 +552,7 @@ gantt
 <img width="1013" alt="image" src="https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/66b17aed-254b-4dd2-8304-5eb66b548492">
 
 ## ERD
-![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b245ab71-e3fd-4471-8ccd-ea421ef7e018)
+![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/37a59ef8-023b-46f1-9173-d21f8958209c)
 
 ## Swagger
 ![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/b13d2a49-f815-4a31-be26-86211fc421f6)
