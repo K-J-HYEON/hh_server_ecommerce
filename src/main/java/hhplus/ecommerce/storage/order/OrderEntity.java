@@ -26,7 +26,7 @@ public class OrderEntity extends BaseTimeEntity {
 //    @JoinColumn(name = "user_id")
 //    private User user;
 
-    @Column(name = "user_id")
+    @Column(name = "userId")
     private Long userId;
 
     @Column(name = "payAmount")
