@@ -1,6 +1,6 @@
-package hhplus.ecommerce.api;//package com.hanghae.ecommerce.api;
+//package hhplus.ecommerce.api;
 //
-//import com.hanghae.ecommerce.api.dto.OrderEventForStatistics;
+//import hhplus.ecommerce.api.dto.OrderEventForStatistics;
 //import lombok.extern.log4j.Log4j2;
 //import okhttp3.MediaType;
 //import okhttp3.OkHttpClient;
@@ -27,7 +27,7 @@ package hhplus.ecommerce.api;//package com.hanghae.ecommerce.api;
 //        try {
 //            client.newCall(request).execute();
 //        } catch (Exception e) {
-//            log.error("API 요청 실패, {}", e.getMessage());
+////            log.error("API 요청 실패, {}", e.getMessage());
 //        }
 //    }
 //}
