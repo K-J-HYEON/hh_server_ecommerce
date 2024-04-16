@@ -3,9 +3,7 @@ package hhplus.ecommerce.api.dto.response;
 import hhplus.ecommerce.api.dto.OrderPaidResult;
 import hhplus.ecommerce.api.dto.request.Receiver;
 import io.swagger.v3.oas.annotations.media.Schema;
-
 import java.time.format.DateTimeFormatter;
-
 
 @Schema(description = "주문 응답 DTO")
 public record OrderResponse(
