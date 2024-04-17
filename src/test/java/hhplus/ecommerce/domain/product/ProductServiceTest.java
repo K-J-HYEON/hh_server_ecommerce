@@ -4,9 +4,6 @@ import hhplus.ecommerce.TestFixtures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -17,7 +14,9 @@ import static org.assertj.core.api.Assertions.*;
 class ProductServiceTest {
 
     private ProductReader productReader;
+
     private ProductUpdater productUpdater;
+
     private ProductService productService;
 
     @BeforeEach
@@ -25,7 +24,6 @@ class ProductServiceTest {
 
         productReader = mock(ProductReader.class);
         productUpdater = mock(ProductUpdater.class);
-
         productService = new ProductService(productReader, productUpdater);
     }
 
@@ -45,9 +43,9 @@ class ProductServiceTest {
         // then
         assertThat(products).isNotNull();
         assertThat(products.size()).isEqualTo(2);
-        assertThat(products.get(0).name()).isEqualTo("나이키 에어포스");
+        assertThat(products.get(0).name()).isEqualTo("신발");
         assertThat(products.get(0).price()).isEqualTo(90000);
-        assertThat(products.get(1).name()).isEqualTo("와이드 팬츠");
+        assertThat(products.get(1).name()).isEqualTo("바지");
         assertThat(products.get(1).price()).isEqualTo(10000);
     }
 
@@ -66,7 +64,7 @@ class ProductServiceTest {
         Product productDetail = productService.readProductInfoDetail(productId);
 
         // then
-        assertThat(productDetail.name()).isEqualTo("나이키 에어포스");
+        assertThat(productDetail.name()).isEqualTo("신발");
         assertThat(productDetail.price()).isEqualTo(90000);
         assertThat(productDetail.stockCount()).isEqualTo(10);
         assertThat(productDetail.size()).isEqualTo("270");
