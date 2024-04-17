@@ -4,9 +4,7 @@ import hhplus.ecommerce.TestFixtures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-
+import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
@@ -14,7 +12,9 @@ import static org.mockito.Mockito.mock;
 class UserPointServiceTest {
 
     private UserReader userReader;
+
     private UserPointManager userPointManager;
+
     private UserPointService userPointService;
 
     @BeforeEach
