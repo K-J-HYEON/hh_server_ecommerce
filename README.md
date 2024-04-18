@@ -2,7 +2,8 @@
 
 ## 개발 환경
 - Java 17
-- Junit & AssertJ
+- Spring Boot 3.2.4
+- Junit & AssertJ & Mockito
 - H2 DataBase
 - JPA
 - gradle
