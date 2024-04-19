@@ -17,6 +17,8 @@ class ProductServiceTest {
 
     private ProductUpdater productUpdater;
 
+    private ProductValidator productValidator;
+
     private ProductService productService;
 
     @BeforeEach
@@ -24,7 +26,7 @@ class ProductServiceTest {
 
         productReader = mock(ProductReader.class);
         productUpdater = mock(ProductUpdater.class);
-        productService = new ProductService(productReader, productUpdater);
+        productService = new ProductService(productReader, productUpdater, productValidator);
     }
 
     @Test
