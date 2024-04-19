@@ -13,10 +13,10 @@ import static org.mockito.Mockito.mock;
 @SpringBootTest
 class ProductCoreRepositoryTest {
 
-    @Mock
+//    @Mock
     private ProductJpaRepository productJpaRepository;
 
-    @InjectMocks
+//    @InjectMocks
     private ProductCoreRepository productCoreRepository;
 
     @BeforeEach
