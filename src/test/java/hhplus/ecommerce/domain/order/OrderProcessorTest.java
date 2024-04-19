@@ -21,15 +21,17 @@ import static org.assertj.core.api.Assertions.*;
 
 class OrderProcessorTest {
 
+    @MockBean
     private OrderRepository orderRepository;
 
+    @InjectMocks
     private OrderProcessor orderProcessor;
 
-    @BeforeEach
-    void setUp() {
-        orderRepository = mock(OrderRepository.class);
-        orderProcessor = new OrderProcessor(orderRepository);
-    }
+//    @BeforeEach
+//    void setUp() {
+//        orderRepository = mock(OrderRepository.class);
+//        orderProcessor = new OrderProcessor(orderRepository);
+//    }
 
     @Test
     @DisplayName("주문 생성")
