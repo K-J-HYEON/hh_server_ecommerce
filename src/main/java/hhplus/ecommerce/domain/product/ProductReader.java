@@ -25,11 +25,8 @@ public class ProductReader {
         return productRepository.findById(productId);
     }
 
-    public List<Product> retrieveAllByIds(List<OrderRequest.ProductOrderRequest> products) {
-        return productRepository.findByIdIn(products.stream()
-                .map(OrderRequest.ProductOrderRequest::id)
-                .toList()
-        );
+    public List<Product> retrieveAllByIds(List<Long> productIds) {
+        return productRepository.findByIdIn(productIds);
     }
 
     public List<Product> retrievePopularProducts() {
