@@ -1,23 +1,25 @@
 package hhplus.ecommerce.domain.product;
 
-import hhplus.ecommerce.api.dto.request.OrderRequest;
+import hhplus.ecommerce.domain.cart.cartitem.NewCartItem;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 @Component
 public class ProductValidator {
+    private final ProductRepository productRepository;
 
-    public void checkProductStockCountForOrder(List<Product> products,
-                                                     List<OrderRequest.ProductOrderRequest> productsOrderRequest) {
-        for (OrderRequest.ProductOrderRequest orderRequest : productsOrderRequest) {
-            Product product = products.stream()
-                    .filter(p -> p.id().equals(orderRequest.id()))
-                    .findFirst()
-                    .orElseThrow(() -> new EntityNotFoundException(orderRequest.id() + " 상품의 정보를 찾지 못했습니다."));
+    public ProductValidator(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
-            product.isEnoughProductStockQuantityForOrder(orderRequest.orderCount());
+    public void checkPossibleAddToCart(List<NewCartItem> newCartItems) {
+        for (NewCartItem newCartItem : newCartItems) {
+            Product product = productRepository.findById(newCartItem.productId())
+                    .orElseThrow(() -> new EntityNotFoundException("상품 정보를 찾지 못했습니다. - id: " + newCartItem.productId()))
+                    .toProduct();
+
+            product.isEnoughProductStockQuantityForOrder(newCartItem.quantity());
         }
     }
 }
