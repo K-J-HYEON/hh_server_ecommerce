@@ -73,10 +73,12 @@ class ProductReaderTest {
                 TestFixtures.product("바지")
         );
 
+        List<Long> productIds = productOrderRequests.stream().map(OrderRequest.ProductOrderRequest::id).toList();
+
         given(productRepository.findByIdIn(any())).willReturn(products);
 
         // when
-        List<Product> foundProducts = productReader.retrieveAllByIds(productOrderRequests);
+        List<Product> foundProducts = productReader.retrieveAllByIds(productIds);
 
         // then
         assertThat(foundProducts).isNotNull();
