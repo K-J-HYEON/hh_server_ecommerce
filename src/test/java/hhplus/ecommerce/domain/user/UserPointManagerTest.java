@@ -8,17 +8,18 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 
 class UserPointManagerTest {
 
-    @MockBean
+//    @MockBean
     private UserRepository userRepository;
 
     private UserPointManager userPointManager;
 
     @BeforeEach
     void setUp() {
-//        userRepository = mock(UserRepository.class);
+        userRepository = mock(UserRepository.class);
         userPointManager = new UserPointManager(userRepository);
     }
 
