@@ -8,10 +8,6 @@ import hhplus.ecommerce.storage.order.OrderStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
