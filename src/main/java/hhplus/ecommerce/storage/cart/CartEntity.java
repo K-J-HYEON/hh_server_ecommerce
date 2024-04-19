@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,9 +21,9 @@ public class CartEntity extends BaseTimeEntity {
     @Column(name = "userId")
     private Long userId;
 
-//    private LocalDateTime createAt;
-//
-//    private LocalDateTime updateAt;
+    private LocalDateTime createAt;
+
+    private LocalDateTime updateAt;
 
     public Long getId() {
         return id;
