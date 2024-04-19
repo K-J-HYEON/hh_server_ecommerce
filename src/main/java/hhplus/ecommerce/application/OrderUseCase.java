@@ -40,7 +40,9 @@ public class OrderUseCase {
     @Transactional
     public OrderPaidResult order(Long userId, OrderRequest req) {
         User user = userService.getUser(userId);
-        List<Product> products = productService.readProductsByIds(req.products());
+        List<Product> products = productService.readProductsByIds(req.products().stream()
+                .map(OrderRequest.ProductOrderRequest::id)
+                .toList());
 
         Order order = orderService.order(user, products, req);
         Payment payment = paymentService.pay(user, order, req);
