@@ -6,16 +6,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 class PaymentCoreRepositoryTest {
 
-    @Mock
+//    @MockBean
     private PaymentJpaRepository paymentJpaRepository;
 
-    @InjectMocks
+//    @InjectMocks
     private PaymentCoreRepository paymentCoreRepository;
 
     @BeforeEach
