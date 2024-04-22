@@ -1,7 +1,5 @@
 package hhplus.ecommerce.domain.product;
 
-import hhplus.ecommerce.storage.product.ProductEntity;
-
 public record Product(
         Long id,
         String name,
@@ -10,8 +8,8 @@ public record Product(
         String size,
         String color
 ) {
-    public Long orderTotalPrice(Long quantity) {
-        return price * quantity;
+    public Long orderTotalPrice(Long orderQuantity) {
+        return price * orderQuantity;
     }
 
     public Product updateStock(Long stockCount) {
@@ -23,8 +21,8 @@ public record Product(
     }
 
     public void isEnoughProductStockQuantityForOrder(Long orderQuantity) {
-        if (stockCount < orderQuantity) {
-            throw new IllegalArgumentException(id + " 상품의 재고가 부족합니다.");
+        if (this.stockCount < orderQuantity) {
+            throw new IllegalArgumentException(" 상품의 재고가 부족합니다.");
         }
     }
 }
