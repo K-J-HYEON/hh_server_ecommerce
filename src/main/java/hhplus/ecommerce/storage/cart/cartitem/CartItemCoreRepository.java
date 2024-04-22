@@ -5,7 +5,6 @@ import hhplus.ecommerce.domain.cart.cartitem.CartItem;
 import hhplus.ecommerce.domain.cart.cartitem.CartItemRepository;
 import hhplus.ecommerce.domain.cart.cartitem.NewCartItem;
 import org.springframework.stereotype.Repository;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
