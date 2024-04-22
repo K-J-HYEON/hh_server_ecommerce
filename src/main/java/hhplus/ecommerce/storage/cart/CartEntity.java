@@ -34,6 +34,6 @@ public class CartEntity extends BaseTimeEntity {
     }
 
     public Cart toCart() {
-        return new Cart(getId(), userId, getCreateAt(), getUpdateAt());
+        return new Cart(getId(), userId);
     }
 }
