@@ -38,6 +38,6 @@ public class ProductService {
     }
 
     public void verifyProductStockForAddToCart(List<NewCartItem> cartItems) {
-        productValidator.verifyProductStockForAddToCart(cartItems);
+        productValidator.checkPossibleAddToCart(cartItems);
     }
 }
