@@ -404,7 +404,7 @@
   <summary>장바구니 상품 삭제</summary>
 
 - Request
-    - Method:DELETE
+    - Method: POST
     - URL: /ecommerce/api/cart/{cartId}/user/{userId}
     - Headers:
         - Content-Type: application/json
