@@ -4,7 +4,6 @@ import hhplus.ecommerce.TestFixtures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
@@ -46,7 +45,7 @@ class UserPointServiceTest {
     @Test
     @DisplayName("잔액 조회 성공")
     void read_point_success() {
-        // Given
+        // given
         Long userId = 1L;
 
         given(userReader.retrieveByUserId(userId)).willReturn(TestFixtures.user(userId));
