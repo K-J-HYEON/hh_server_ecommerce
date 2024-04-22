@@ -4,6 +4,7 @@ import hhplus.ecommerce.TestFixtures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -12,9 +13,10 @@ import static org.mockito.Mockito.mock;
 
 class UserPointManagerTest {
 
-//    @MockBean
+    @MockBean
     private UserRepository userRepository;
 
+    @InjectMocks
     private UserPointManager userPointManager;
 
     @BeforeEach
