@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ProductCoreRepository implements ProductRepository {
@@ -27,10 +28,8 @@ public class ProductCoreRepository implements ProductRepository {
     }
 
     @Override
-    public Product findById(Long productId) {
-        return productJpaRepository.findById(productId)
-                .orElseThrow(() -> new EntityNotFoundException("상품 정보를 찾지 못했습니다. - id: " + productId))
-                .toProduct();
+    public Optional<ProductEntity> findById(Long productId) {
+        return productJpaRepository.findById(productId);
     }
 
     @Override
