@@ -1,7 +1,7 @@
 package hhplus.ecommerce.domain.product;
 
-import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.storage.order.OrderStatus;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
@@ -22,7 +22,9 @@ public class ProductReader {
     }
 
     public Product retrieveById(Long productId) {
-        return productRepository.findById(productId);
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new EntityNotFoundException("상품 정보를 찾지 못했습니다. - id: " + productId))
+                .toProduct();
     }
 
     public List<Product> retrieveAllByIds(List<Long> productIds) {
