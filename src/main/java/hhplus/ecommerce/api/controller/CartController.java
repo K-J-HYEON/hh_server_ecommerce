@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/ecommerce/api")
+@RequestMapping("/ecommerce/api/cart")
 public class CartController {
 
     private CartUseCase cartUseCase;
@@ -24,7 +24,7 @@ public class CartController {
     }
 
     @Tag(name = "장바구니 조회 API", description = "장바구니 조회 API 입니다.")
-    @GetMapping("/cart/{cartId}/user/{userId}")
+    @GetMapping("/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
     public CartItemResponse cart(@PathVariable Long cartId, Long userId) {
         CartItemResult cartItemResult = cartUseCase.getCartItems(cartId, userId);
@@ -32,7 +32,7 @@ public class CartController {
     }
 
     @Tag(name = "장바구니 추가 API", description = "장바구니 추가 API 입니다.")
-    @PostMapping("/cart/{cartId}/user/{userId}")
+    @PostMapping("/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
     public AddCartItemResponse addCartItems(@PathVariable Long cartId, Long userId,
                                             @RequestBody CartItemRequest cartItemRequest) {
@@ -41,7 +41,7 @@ public class CartController {
     }
 
     @Tag(name = "장바구니 삭제 API", description = "장바구니 삭제 API 입니다.")
-    @PostMapping("/cart/{cartId}/user/{userId}")
+    @PostMapping("/deleteCart/{userId}")
     public DeleteCartItemResponse deleteCartItems(@PathVariable Long cartId, Long userId,
                                                   @RequestBody DeleteCartItemRequest cartItemRequest) {
 
