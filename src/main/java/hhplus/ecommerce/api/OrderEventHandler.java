@@ -3,7 +3,7 @@ package hhplus.ecommerce.api;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.order.event.OrderCreatedEvent;
 import hhplus.ecommerce.domain.payment.Payment;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.log4j.Log4j;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -12,7 +12,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@Log4j2
+@Log4j
 public class OrderEventHandler {
     private final OkHttpClient client = new OkHttpClient();
 
@@ -33,10 +33,10 @@ public class OrderEventHandler {
                 .post(body)
                 .build();
 
-        try {
-            client.newCall(request).execute();
-        } catch (Exception e) {
-            log.error("API 요청 실패, {}", e.getMessage());
-        }
+//        try {
+//            client.newCall(request).execute();
+//        } catch (Exception e) {
+//            log.error("API 요청 실패, {}", e.getMessage());
+//        }
     }
 }
