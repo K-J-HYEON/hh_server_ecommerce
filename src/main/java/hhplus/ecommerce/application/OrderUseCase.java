@@ -1,10 +1,10 @@
 package hhplus.ecommerce.application;
 
-import hhplus.ecommerce.api.dto.OrderEventForStatistics;
 import hhplus.ecommerce.api.dto.OrderPaidResult;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.order.OrderService;
+import hhplus.ecommerce.domain.order.event.OrderCreatedEvent;
 import hhplus.ecommerce.domain.payment.Payment;
 import hhplus.ecommerce.domain.payment.PaymentService;
 import hhplus.ecommerce.domain.product.Product;
@@ -45,9 +45,10 @@ public class OrderUseCase {
                 .toList());
 
         Order order = orderService.order(user, products, req);
+
         Payment payment = paymentService.pay(user, order, req);
 
-        applicationEventPublisher.publishEvent(new OrderEventForStatistics(order, payment));
+        applicationEventPublisher.publishEvent(new OrderCreatedEvent(products, req.products(), order, payment));
         return OrderPaidResult.of(order, payment);
     }
 }
