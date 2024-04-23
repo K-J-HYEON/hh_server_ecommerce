@@ -14,3 +14,4 @@
 - ### [MockAPI](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/main/docs/MockAPI.md)
 - ### [Swagger & ERD](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/main/docs/SwaggerAndERD.md)
 - ### [API Spec](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/main/docs/APISpec.md)
+- ### [Git Branch 전략](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/feature/git_workflow_cicd/docs/GitBranch.md)
