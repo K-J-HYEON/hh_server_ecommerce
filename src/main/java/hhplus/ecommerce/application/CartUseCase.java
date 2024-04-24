@@ -26,7 +26,7 @@ public class CartUseCase {
         this.productService = productService;
     }
 
-    public CartItemResult getCartItems(Long cartId, Long userId) {
+    public CartItemResult getCartItems(Long userId) {
         User user = userService.getUser(userId);
 
         Cart cart = cartService.getCart(user);
@@ -39,7 +39,7 @@ public class CartUseCase {
     }
 
     @Transactional
-    public void addItem(Long cartId, Long userId, List<NewCartItem> cartItems) {
+    public void addItem(Long userId, List<NewCartItem> cartItems) {
         User user = userService.getUser(userId);
 
         Cart cart = cartService.getCart(user);
@@ -50,7 +50,7 @@ public class CartUseCase {
     }
 
     @Transactional
-    public void deleteItem(Long cartId, Long userId, List<Long> cartItemsIds) {
+    public void deleteItem(Long userId, List<Long> cartItemsIds) {
         User user = userService.getUser(userId);
 
         Cart cart = cartService.getCart(user);
