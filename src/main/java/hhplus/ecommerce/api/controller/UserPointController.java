@@ -18,16 +18,16 @@ public class UserPointController {
         this.userPointService = userPointService;
     }
 
-    @Tag(name = "잔액 조회 API", description = "사용자의 잔액 조회 API입니다.")
+    @Tag(name = "잔액 조회 API", description = "사용자의 잔액 조회하는 API입니다.")
     @GetMapping("/{userId}")
-    public BalanceResponse getBalance(@PathVariable Long userId) {
+    public BalanceResponse getBalance(@PathVariable("userId") Long userId) {
         Long balance = userPointService.readPoint(userId);
         return BalanceResponse.from(balance);
     }
 
-    @Tag(name = "잔액 충전 API", description = "사용자의 잔액을 충전 API입니다.")
+    @Tag(name = "잔액 충전 API", description = "사용자의 잔액을 충전하는 API입니다.")
     @PostMapping("/charge/{userId}")
-    public ChargePointResponse charge(@PathVariable Long userId,
+    public ChargePointResponse charge(@PathVariable("userId") Long userId,
                                       @Valid @RequestBody ChargePointRequest request) {
         Long balance = userPointService.chargePoint(userId, request.point());
         return ChargePointResponse.from(balance);
