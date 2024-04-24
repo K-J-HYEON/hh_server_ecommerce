@@ -56,7 +56,7 @@ class CartUseCaseTest {
         );
 
         // when
-        cartUseCase.addItem(cartId, userId, cartItems);
+        cartUseCase.addItem(userId, cartItems);
 
         // then
         verify(productService, atLeastOnce()).verifyProductStockForAddToCart(any());
@@ -80,7 +80,7 @@ class CartUseCaseTest {
         ));
 
         // when
-        cartUseCase.deleteItem(cartId, userId, cartItemIds);
+        cartUseCase.deleteItem(userId, cartItemIds);
 
         // then
         verify(cartService, atLeastOnce()).deleteItem(any());
@@ -116,7 +116,7 @@ class CartUseCaseTest {
         given(productService.readProductsByIds(any())).willReturn(products);
 
         // when
-        CartItemResult foundCartItems = cartUseCase.getCartItems(cartId, userId);
+        CartItemResult foundCartItems = cartUseCase.getCartItems(userId);
 
         // then
 
