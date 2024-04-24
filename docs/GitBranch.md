@@ -19,12 +19,16 @@
 1. 제품으로 출시될 수 있는 최종 브랜치
 2. 배포 이력을 관리하기 위해 사용, 배포 가능한 상태만을 관리
 
-##
 
-### 전체적인 github workflow
-#### Main -> Hotfix -> Release -> Develop -> Feature1 -> Feature2 -> etc...
 
 ##
+
+
+
+## 현업에서 전체적인 github workflow
+#### Main <- Hotfix <- Release <- Develop <- Feature1, Feature2 -> etc...
+
+
 
 ### 브랜치 생성규칙
 1. main -> 하나의 main 브랜치만 사용, 배포 시 Tag 및 업데이터 내용 추가 작성, 추가 생성하지 않음.
@@ -47,7 +51,9 @@
 9. github에서 feature branch -> develop branch(방향으로) Pull Request 진행
 10. 리뷰가 종료되고 모두 Approve 된다면 Merge 진행.
 
+
 ##
+
 
 #### 배포 후 hotfix가 필요할 때
 1. git checkout main: 현재 배포 중인 main 브랜치로 이동
@@ -62,6 +68,7 @@
 
 
 ##
+
 
 #### release 준비
 1. 원격 저장소의 develop 브랜치에 이번 버전에 업데이트할 모든 feature가 머지되었는지 확인
