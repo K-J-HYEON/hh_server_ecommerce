@@ -26,9 +26,9 @@
 
 
 ## 현업에서 전체적인 github workflow
-#### Main -> Hotfix -> Release -> Develop -> Feature1 -> Feature2 -> etc...
+#### Main <- Hotfix <- Release <- Develop <- Feature1, Feature2 -> etc...
 
-##
+
 
 ### 브랜치 생성규칙
 1. main -> 하나의 main 브랜치만 사용, 배포 시 Tag 및 업데이터 내용 추가 작성, 추가 생성하지 않음.
