@@ -34,8 +34,8 @@ public class ProductController {
 
     @Tag(name = "상품 세부 정보 조회 API", description = "상품 세부 정보를 조회하는 API입니다.")
     @GetMapping("/{productId}")
-    public ProductDetailResponse getProduct(@PathVariable Long id) {
-        Product product = productService.readProductInfoDetail(id);
+    public ProductDetailResponse getProduct(@PathVariable("productId") Long productId) {
+        Product product = productService.readProductInfoDetail(productId);
         return ProductDetailResponse.from(product);
     }
 
