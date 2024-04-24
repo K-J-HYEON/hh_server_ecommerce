@@ -26,26 +26,26 @@ public class CartController {
     @Tag(name = "장바구니 조회 API", description = "장바구니 조회 API 입니다.")
     @GetMapping("/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public CartItemResponse cart(@PathVariable Long cartId, Long userId) {
-        CartItemResult cartItemResult = cartUseCase.getCartItems(cartId, userId);
+    public CartItemResponse cart(@PathVariable("userId") Long userId) {
+        CartItemResult cartItemResult = cartUseCase.getCartItems(userId);
         return CartItemResponse.from(cartItemResult);
     }
 
     @Tag(name = "장바구니 추가 API", description = "장바구니 추가 API 입니다.")
     @PostMapping("/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public AddCartItemResponse addCartItems(@PathVariable Long cartId, Long userId,
+    public AddCartItemResponse addCartItems(@PathVariable("userId") Long userId,
                                             @RequestBody CartItemRequest cartItemRequest) {
-        cartUseCase.addItem(cartId, userId, cartItemRequest.toNewCartItem());
+        cartUseCase.addItem(userId, cartItemRequest.toNewCartItem());
         return AddCartItemResponse.from("장바구니에 상품이 추가되었습니다.");
     }
 
     @Tag(name = "장바구니 삭제 API", description = "장바구니 삭제 API 입니다.")
     @PostMapping("/deleteCart/{userId}")
-    public DeleteCartItemResponse deleteCartItems(@PathVariable Long cartId, Long userId,
+    public DeleteCartItemResponse deleteCartItems(@PathVariable("userId") Long userId,
                                                   @RequestBody DeleteCartItemRequest cartItemRequest) {
 
-        cartUseCase.deleteItem(cartId, userId, cartItemRequest.cartItemIdList());
+        cartUseCase.deleteItem(userId, cartItemRequest.cartItemIdList());
         return DeleteCartItemResponse.from("장바구니에서 상품이 삭제되었습니다.");
     }
 }
