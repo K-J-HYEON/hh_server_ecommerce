@@ -21,7 +21,7 @@ public class OrderController {
     @Tag(name = "상품 주문 및 결제 API", description = "상품주문 & 결제 API입니다.")
     @PostMapping("/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public OrderResponse order(@PathVariable Long userId,
+    public OrderResponse order(@PathVariable("userId") Long userId,
                                @Valid @RequestBody OrderRequest request) {
         OrderPaidResult orderPaidResult = orderUseCase.order(userId, request);
         return OrderResponse.from(orderPaidResult);
