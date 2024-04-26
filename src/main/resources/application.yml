@@ -1,4 +1,10 @@
 spring:
+  group:
+    logging: local, log
+  profiles:
+    active: logging
+  #    active: local
+
   application:
     name: hhplus_ecommerce
   datasource:
@@ -6,20 +12,20 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password:
+  h2:
+    console:
+      enabled: 'true'
+
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-#    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     properties:
       hibernate:
         globally_quoted_identifiers: true
         format_sql: true
+        show_sql: true
     defer-datasource-initialization: true
-
-#logging:
-#  level:
-#    org.hibernate.SQL: debug
 
 springdoc:
   api-docs:
