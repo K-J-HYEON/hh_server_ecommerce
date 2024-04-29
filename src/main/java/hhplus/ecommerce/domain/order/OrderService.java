@@ -28,4 +28,8 @@ public class OrderService {
         List<OrderItem> orderItems = orderItemAppender.create(order, products, request.products());
         return orderUpdater.changeStatus(order, OrderStatus.PENDING_FOR_PAY);
     }
+
+    public void updateOrderStatus(Order order, OrderStatus orderStatus) {
+        orderUpdater.changeStatus(order, orderStatus);
+    }
 }
