@@ -7,6 +7,7 @@ public enum OrderStatus {
     READY("READY"),
     PAID("PAID"),
     PAY_FAILED("PAY FAILED"),
+    OUT_OF_STOCK("OUT OF STOCK"),
     PENDING_FOR_PAY("PENDING FOR PAY"),
     COMPLETE("COMPLETE"),
     CANCELED("CANCELED");
