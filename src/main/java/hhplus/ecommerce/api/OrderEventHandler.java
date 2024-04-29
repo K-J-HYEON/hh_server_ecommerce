@@ -1,9 +1,10 @@
 package hhplus.ecommerce.api;
 
 import hhplus.ecommerce.domain.order.Order;
-import hhplus.ecommerce.domain.order.event.OrderCreatedEvent;
+import hhplus.ecommerce.domain.order.event.OrderPaidEvent;
 import hhplus.ecommerce.domain.payment.Payment;
 import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -12,12 +13,12 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@Log4j
+@Slf4j
 public class OrderEventHandler {
     private final OkHttpClient client = new OkHttpClient();
 
     @EventListener
-    public void orderEventHandler(OrderCreatedEvent event) {
+    public void orderEventHandler(OrderPaidEvent event) {
         String url = "https://mockapi.com";
 
         Order order = event.order();
