@@ -2,10 +2,13 @@ package hhplus.ecommerce.domain.product;
 
 import hhplus.ecommerce.TestFixtures;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
+import hhplus.ecommerce.storage.product.ProductEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -49,7 +52,9 @@ class ProductReaderTest {
 
         Product product = TestFixtures.product("신발");
 
-        given(productRepository.findById(any())).willReturn(product);
+        given(productRepository.findById(any())).willReturn(Optional.of(
+                new ProductEntity(product.name(), product.price(), product.stockCount(), product.size(), product.color())
+        ));
 
         // when
         Product foundProduct = productReader.retrieveById(productId);
