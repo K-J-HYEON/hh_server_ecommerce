@@ -36,6 +36,14 @@ public class ProductEntity extends BaseTimeEntity {
 
     private LocalDateTime createAt;
 
+    public ProductEntity(String name, Long price, Long stockCount, String size, String color) {
+        this.name = name;
+        this.price = price;
+        this.stockCount = stockCount;
+        this.size = size;
+        this.color = color;
+    }
+
     public Long getId() {
         return id;
     }
