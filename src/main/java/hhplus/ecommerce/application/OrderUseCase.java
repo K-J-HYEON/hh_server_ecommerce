@@ -48,7 +48,7 @@ public class OrderUseCase {
 
         Payment payment = paymentService.pay(user, order, req);
 
-        applicationEventPublisher.publishEvent(new OrderCreatedEvent(products, req.products(), order, payment));
+        applicationEventPublisher.publishEvent(new OrderCreatedEvent(user, products, req, order));
         return OrderPaidResult.of(order, payment);
     }
 }
