@@ -3,6 +3,7 @@ package hhplus.ecommerce.storage.cart;
 import hhplus.ecommerce.TestFixtures;
 import hhplus.ecommerce.domain.cart.Cart;
 import hhplus.ecommerce.domain.user.User;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,7 +21,6 @@ class CartCoreRepositoryTest {
 
     @InjectMocks
     private CartCoreRepository cartCoreRepository;
-
 
     @Test
     @DisplayName("사용자 장바구니가 없으면 장바구니를 만듬")
