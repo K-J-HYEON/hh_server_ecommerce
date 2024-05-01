@@ -8,7 +8,8 @@ import hhplus.ecommerce.domain.product.Product;
 import java.util.List;
 
 public record OrderPaidEvent(
-        Order order, Payment payment,
+        Order order,
+        Payment payment,
         List<Product> products,
         OrderRequest orderRequest
 ) {
