@@ -17,6 +17,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
@@ -119,6 +120,12 @@ class CartUseCaseTest {
         CartItemResult foundCartItems = cartUseCase.getCartItems(userId);
 
         // then
-
+        assertThat(foundCartItems).isNotNull();
+        assertThat(foundCartItems.cartItems().size()).isEqualTo(2);
+//        assertThat(foundCartItems.cartItems().getFirst().productName()).isEqualTo("신발");
+//        assertThat(foundCartItems.cartItems().getFirst().unitPrice()).isEqualTo(90_000L);
+//        assertThat(foundCartItems.cartItems().getLast().productName()).isEqualTo("바지");
+//        assertThat(foundCartItems.cartItems().getLast().unitPrice()).isEqualTo(10_000L);
+//        assertThat(foundCartItems.totalPrice()).isEqualTo(90_000L + 10_000L);
     }
 }
