@@ -15,7 +15,7 @@ class ProductServiceTest {
 
     private ProductReader productReader;
 
-    private ProductUpdater productUpdater;
+    private ProductUpdator productUpdator;
 
     private ProductValidator productValidator;
 
@@ -25,8 +25,8 @@ class ProductServiceTest {
     void setUp() {
 
         productReader = mock(ProductReader.class);
-        productUpdater = mock(ProductUpdater.class);
-        productService = new ProductService(productReader, productUpdater, productValidator);
+        productUpdator = mock(ProductUpdator.class);
+        productService = new ProductService(productReader, productUpdator, productValidator);
     }
 
     @Test
