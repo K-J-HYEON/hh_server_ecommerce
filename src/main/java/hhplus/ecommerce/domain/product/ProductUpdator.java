@@ -4,14 +4,13 @@ import hhplus.ecommerce.api.dto.request.OrderRequest;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ProductUpdater {
+public class ProductUpdator {
     private final ProductRepository productRepository;
 
-    public ProductUpdater(ProductRepository productRepository) {
+    public ProductUpdator(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
