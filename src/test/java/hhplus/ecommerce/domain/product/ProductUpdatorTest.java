@@ -8,15 +8,14 @@ import org.mockito.InjectMocks;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.mockito.Mockito.*;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
 
-class ProductUpdaterTest {
+class ProductUpdatorTest {
 
     @MockBean
     private ProductRepository productRepository;
 
     @InjectMocks
-    private ProductUpdater productUpdater;
+    private ProductUpdator productUpdator;
 
     @Test
     @DisplayName("상품 재고 업데이트")
@@ -34,7 +33,7 @@ class ProductUpdaterTest {
         );
 
         // when
-        productUpdater.updateStock(products, productOrderRequest);
+        productUpdator.updateStock(products, productOrderRequest);
 
         // then
         verify(productRepository, atLeast(2)).updateStock(any());
