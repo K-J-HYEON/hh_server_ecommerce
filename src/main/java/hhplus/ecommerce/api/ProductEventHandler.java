@@ -3,6 +3,7 @@ package hhplus.ecommerce.api;
 
 import hhplus.ecommerce.domain.order.event.OrderPaidEvent;
 import hhplus.ecommerce.domain.product.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +11,7 @@ import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 
 @Component
+@Slf4j
 public class ProductEventHandler {
     private final ProductService productService;
 
@@ -19,7 +21,7 @@ public class ProductEventHandler {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
-    public void onProductStockChanged(OrderPaidEvent orderPaidEvent) {
-        productService.updateStockCount(orderPaidEvent.products(), orderPaidEvent.orderRequest().products());
+    public void onProductStockUpdate(OrderPaidEvent event) {
+        productService.updateStockCount(event.products(), event.orderRequest().products());
     }
 }
