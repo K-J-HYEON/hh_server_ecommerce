@@ -8,12 +8,12 @@ import java.util.List;
 @Service
 public class ProductService {
     private final ProductReader productReader;
-    private final ProductUpdater productUpdater;
+    private final ProductUpdator productUpdator;
     private final ProductValidator productValidator;
 
-    public ProductService(ProductReader productReader, ProductUpdater productUpdater, ProductValidator productValidator) {
+    public ProductService(ProductReader productReader, ProductUpdator productUpdator, ProductValidator productValidator) {
         this.productReader = productReader;
-        this.productUpdater = productUpdater;
+        this.productUpdator = productUpdator;
         this.productValidator = productValidator;
     }
 
@@ -33,8 +33,8 @@ public class ProductService {
         return productReader.retrieveAllByIds(productIds);
     }
 
-    public void updateStockCount(List<Product> products, List<OrderRequest.ProductOrderRequest> req) {
-        productUpdater.updateStock(products, req);
+    public void updateStockCount(List<Product> products, List<OrderRequest.ProductOrderRequest> orderRequests) {
+        productUpdator.updateStock(products, orderRequests);
     }
 
     public void verifyProductStockForAddToCart(List<NewCartItem> cartItems) {
