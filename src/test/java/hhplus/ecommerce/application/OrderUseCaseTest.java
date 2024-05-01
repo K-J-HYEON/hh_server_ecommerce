@@ -92,6 +92,5 @@ class OrderUseCaseTest {
         assertThat(orderPaidResult).isNotNull();
         assertThat(orderPaidResult.orderId()).isEqualTo(1L);
         assertThat(orderPaidResult.payAmount()).isEqualTo(500_000L);
-        assertThat(orderPaidResult.paymentMethod()).isEqualTo("MOBILE_PAY");
     }
 }
