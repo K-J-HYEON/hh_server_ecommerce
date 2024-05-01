@@ -13,7 +13,7 @@ public record Receiver(
         @Schema(description = "주소")
         @NotBlank String address,
 
-        @Schema(description = "휴대폰 번호   ")
+        @Schema(description = "휴대폰 번호")
         @NotBlank String phoneNumber
 ) {
 }
