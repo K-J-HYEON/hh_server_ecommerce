@@ -5,8 +5,6 @@ import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.order.OrderService;
 import hhplus.ecommerce.domain.order.event.OrderCreatedEvent;
-import hhplus.ecommerce.domain.payment.Payment;
-import hhplus.ecommerce.domain.payment.PaymentService;
 import hhplus.ecommerce.domain.product.Product;
 import hhplus.ecommerce.domain.product.ProductService;
 import hhplus.ecommerce.domain.user.User;
@@ -22,18 +20,15 @@ public class OrderUseCase {
     private final UserService userService;
     private final ProductService productService;
     private final OrderService orderService;
-    private final PaymentService paymentService;
     private final ApplicationEventPublisher applicationEventPublisher;
 
     public OrderUseCase(UserService userService,
                         ProductService productService,
                         OrderService orderService,
-                        PaymentService paymentService,
                         ApplicationEventPublisher applicationEventPublisher) {
         this.userService = userService;
         this.productService = productService;
         this.orderService = orderService;
-        this.paymentService = paymentService;
         this.applicationEventPublisher = applicationEventPublisher;
     }
 
@@ -46,9 +41,7 @@ public class OrderUseCase {
 
         Order order = orderService.order(user, products, req);
 
-        Payment payment = paymentService.pay(user, order, req);
-
         applicationEventPublisher.publishEvent(new OrderCreatedEvent(user, products, req, order));
-        return OrderPaidResult.of(order, payment);
+        return OrderPaidResult.from(order);
     }
 }
