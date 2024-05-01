@@ -3,6 +3,7 @@ package hhplus.ecommerce;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.orderitem.OrderItem;
 import hhplus.ecommerce.domain.payment.Payment;
+import hhplus.ecommerce.domain.product.Stock;
 import hhplus.ecommerce.storage.order.OrderStatus;
 import hhplus.ecommerce.domain.product.Product;
 import hhplus.ecommerce.domain.user.User;
@@ -83,5 +84,16 @@ public class TestFixtures {
         }
 
         throw new EntityNotFoundException("The payment has not been made - order id: " + orderId);
+    }
+
+    public static Stock stock(Long productId) {
+        if (productId.equals(1L)) {
+            return new Stock(1L, 1L, 10L);
+        }
+
+        if (productId.equals(2L)) {
+            return new Stock(2L, 2L, 10L);
+        }
+        throw new EntityNotFoundException("Product Stock Not Found - stock id: " + productId);
     }
 }
