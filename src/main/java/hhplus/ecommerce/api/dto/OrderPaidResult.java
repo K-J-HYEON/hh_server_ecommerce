@@ -3,8 +3,11 @@ package hhplus.ecommerce.api.dto;
 import hhplus.ecommerce.api.dto.request.Receiver;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.payment.Payment;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDateTime;
 
+@Transactional
 public record OrderPaidResult(
         Long orderId,
         Long paymentId,
