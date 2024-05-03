@@ -3,7 +3,6 @@ package hhplus.ecommerce.domain.product;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class StockUpdator {
         this.stockRepository = stockRepository;
     }
 
-    public List<Stock> decreaseStock(List<Stock> stocks, List<OrderRequest.ProductOrderRequest> products) {
+    public List<Stock> updateStockForOrder(List<Stock> stocks, List<OrderRequest.ProductOrderRequest> products) {
         List<Stock> stockList = new ArrayList<>();
         for (OrderRequest.ProductOrderRequest orderRequest : products) {
             Stock stock = stocks.stream()
@@ -28,19 +27,6 @@ public class StockUpdator {
             stockRepository.updateStock(decreaseStock);
             stockList.add(decreaseStock);
         }
-
-        return stockList;
+        return stocks;
     }
-
-    public void compensateStock(List<Stock> stocks, List<OrderRequest.ProductOrderRequest> products) {
-        for (OrderRequest.ProductOrderRequest orderRequest : products) {
-            Stock stock = stocks.stream().filter(s -> s.productId().equals(orderRequest.id()))
-                    .findFirst()
-                    .get();
-
-            Stock increaseStock = stock.increaseStock(orderRequest.orderCount());
-            stockRepository.updateStock(increaseStock);
-        }
-    }
-
 }
