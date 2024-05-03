@@ -3,7 +3,6 @@ spring:
     logging: local, log
   profiles:
     active: logging
-#    active: local
 
   application:
     name: hhplus_ecommerce
