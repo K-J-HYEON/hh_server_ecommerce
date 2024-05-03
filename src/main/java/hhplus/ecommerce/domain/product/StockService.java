@@ -2,6 +2,7 @@ package hhplus.ecommerce.domain.product;
 
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -24,12 +25,10 @@ public class StockService {
         return stockReader.readByProductIds(products);
     }
 
-    public List<Stock> decreaseProductStock(List<Stock> stocks, List<OrderRequest.ProductOrderRequest> request) {
-        stockValidator.checkProductStockCountForOrder(stocks, request);
-        return stockUpdator.decreaseStock(stocks, request);
-    }
-
-    public void compensateStock(List<Stock> decreaseStocks, OrderRequest request) {
-        stockUpdator.compensateStock(decreaseStocks, request.products());
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public List<Stock> decreaseProductStock(List<Product> products, OrderRequest request) {
+        List<Stock> stocks = stockReader.readByProductIds(products);
+        stockValidator.checkProductStockCountForOrder(stocks, request.products());
+        return stockUpdator.updateStockForOrder(stocks, request.products());
     }
 }
