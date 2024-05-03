@@ -7,11 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
 import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.BDDMockito.given;
 
@@ -74,20 +71,17 @@ class StockServiceTest {
 
         );
 
-        given(stockUpdator.decreaseStock(anyList(), anyList())).willReturn(List.of(
+        given(stockUpdator.updateStockForOrder(anyList(), anyList())).willReturn(List.of(
                 TestFixtures.stock(1L).decreaseStock(request.products().get(0).orderCount()),
                 TestFixtures.stock(2L).decreaseStock(request.products().get(1).orderCount())
         ));
 
         // when
-        List<Stock> decreaseProductStock = stockService.decreaseProductStock(stocks, request.products());
+        List<Stock> decreaseProductStock = stockService.decreaseProductStock(List.of(), request);
 
         // then
         assertThat(decreaseProductStock.size()).isEqualTo(2);
 //        assertThat(decreaseProductStock.getFirst().stockCount()).isEqualTo(5 - 1);
 //        assertThat(decreaseProductStock.getLast().stockCount()).isEqualTo(10L - 10L);
     }
-
-
-
 }
