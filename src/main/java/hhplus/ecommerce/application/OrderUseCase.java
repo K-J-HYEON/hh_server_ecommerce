@@ -33,7 +33,9 @@ public class OrderUseCase {
     public OrderUseCase(UserService userService,
                         ProductService productService,
                         OrderService orderService,
-                        ApplicationEventPublisher applicationEventPublisher, LockHandler handler, LockHandler lockHandler, StockService stockService, PaymentService paymentService) {
+                        ApplicationEventPublisher applicationEventPublisher,
+                        LockHandler lockHandler,
+                        StockService stockService, PaymentService paymentService) {
         this.userService = userService;
         this.productService = productService;
         this.orderService = orderService;
