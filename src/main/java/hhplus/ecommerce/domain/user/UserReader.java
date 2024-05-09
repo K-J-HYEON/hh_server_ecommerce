@@ -10,7 +10,11 @@ public class UserReader {
         this.userRepository = userRepository;
     }
 
-    public User retrieveByUserId(Long userId) {
+    public User readById(Long userId) {
         return userRepository.findById(userId);
+    }
+
+    public User readByIdWithLock(Long userId) {
+        return userRepository.findByIdWithLock(userId);
     }
 }
