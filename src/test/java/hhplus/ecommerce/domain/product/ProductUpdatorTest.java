@@ -2,11 +2,18 @@ package hhplus.ecommerce.domain.product;
 
 import hhplus.ecommerce.TestFixtures;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
+import hhplus.ecommerce.domain.order.Order;
+import hhplus.ecommerce.domain.orderitem.OrderItem;
+import hhplus.ecommerce.storage.order.OrderStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 class ProductUpdatorTest {
@@ -27,13 +34,24 @@ class ProductUpdatorTest {
                 TestFixtures.product("바지")
         );
 
-        List<OrderRequest.ProductOrderRequest> productOrderRequest = List.of(
-                new OrderRequest.ProductOrderRequest(1L, 10L),
-                new OrderRequest.ProductOrderRequest(2L, 50L)
-        );
+        Product product = mock(Product.class);
+
+        given(product.id()).willReturn(1L);
+
+        OrderItem item = new OrderItem(
+                1L, 1L,
+                product.id(), product.name(),
+                product.price(), product.orderTotalPrice(3L),
+                3L, "CREATED");
+
+        Order order = new Order(1L, 1L,
+                50_000L, List.of(item),
+                "이름", "주소",
+                "번호", OrderStatus.PAID.toString(),
+                LocalDateTime.now());
 
         // when
-        productUpdator.updateStock(products, productOrderRequest);
+        productUpdator.updateStock(products, order);
 
         // then
         verify(productRepository, atLeast(2)).updateStock(any());
