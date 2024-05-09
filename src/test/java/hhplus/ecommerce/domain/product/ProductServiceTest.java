@@ -4,8 +4,10 @@ import hhplus.ecommerce.TestFixtures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.util.List;
+import org.mockito.InjectMocks;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.BDDMockito.given;
@@ -13,17 +15,20 @@ import static org.assertj.core.api.Assertions.*;
 
 class ProductServiceTest {
 
+    @MockBean
     private ProductReader productReader;
 
+    @MockBean
     private ProductUpdator productUpdator;
 
+    @MockBean
     private ProductValidator productValidator;
 
+    @InjectMocks
     private ProductService productService;
 
     @BeforeEach
     void setUp() {
-
         productReader = mock(ProductReader.class);
         productUpdator = mock(ProductUpdator.class);
         productService = new ProductService(productReader, productUpdator, productValidator);
@@ -36,6 +41,7 @@ class ProductServiceTest {
         // given
         Product sample1 = TestFixtures.product("신발");
         Product sample2 = TestFixtures.product("바지");
+
         given(productReader.retrieveAll()).willReturn(List.of(sample1, sample2));
 
         // when
