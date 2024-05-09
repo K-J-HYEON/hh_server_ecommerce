@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "ProductStock")
+@Table(name = "product_stocks", indexes = @Index(name = "idx_product_id", columnList = "product_id"))
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StockEntity extends BaseTimeEntity {
