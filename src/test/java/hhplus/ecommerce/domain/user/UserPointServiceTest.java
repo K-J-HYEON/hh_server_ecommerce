@@ -1,6 +1,7 @@
 package hhplus.ecommerce.domain.user;
 
 import hhplus.ecommerce.TestFixtures;
+import hhplus.ecommerce.common.LockHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,16 +12,17 @@ import static org.mockito.Mockito.mock;
 class UserPointServiceTest {
 
     private UserReader userReader;
-
     private UserPointManager userPointManager;
-
     private UserPointService userPointService;
+    private LockHandler lockHandler;
 
     @BeforeEach
     void setUp() {
         userReader = mock(UserReader.class);
         userPointManager = mock(UserPointManager.class);
-        userPointService = new UserPointService(userReader, userPointManager);
+        lockHandler = mock(LockHandler.class);
+
+        userPointService = new UserPointService(userReader, userPointManager, lockHandler);
     }
 
     @Test
@@ -31,8 +33,8 @@ class UserPointServiceTest {
         Long chargingPoint = 1000L;
         User user = TestFixtures.user(userId);
 
-        given(userReader.retrieveByUserId(userId)).willReturn(user);
-        given(userPointManager.chargePoint(user, chargingPoint))
+        given(userReader.readById(userId)).willReturn(user);
+        given(userPointManager.chargePoint(userId, chargingPoint))
                 .willReturn(new User(user.id(), user.name(), user.address(), user.phoneNumber(), user.point() + chargingPoint));
 
         // When
@@ -48,7 +50,7 @@ class UserPointServiceTest {
         // given
         Long userId = 1L;
 
-        given(userReader.retrieveByUserId(userId)).willReturn(TestFixtures.user(userId));
+        given(userReader.readById(userId)).willReturn(TestFixtures.user(userId));
 
         // when
         Long point = userPointService.readPoint(userId);
