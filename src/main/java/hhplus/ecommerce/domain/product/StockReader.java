@@ -1,6 +1,7 @@
 package hhplus.ecommerce.domain.product;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,9 +13,14 @@ public class StockReader {
         this.stockRepository = stockRepository;
     }
 
-    public List<Stock> readByProductIds(List<Product> products) {
-        return stockRepository.findByProductIdIn(products.stream()
-                .map(Product::id)
-                .toList());
+    @Transactional
+    public Stock readByProductId(Long productId) {
+        return stockRepository.findByProductId(productId);
     }
+
+//    public List<Stock> readByProductIds(List<Product> products) {
+//        return stockRepository.findByProductIdIn(products.stream()
+//                .map(Product::id)
+//                .toList());
+//    }
 }
