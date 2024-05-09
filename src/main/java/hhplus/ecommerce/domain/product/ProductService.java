@@ -2,6 +2,8 @@ package hhplus.ecommerce.domain.product;
 
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.domain.cart.cartitem.NewCartItem;
+import hhplus.ecommerce.domain.order.Order;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -21,10 +23,12 @@ public class ProductService {
         return productReader.retrieveAll();
     }
 
+    @Cacheable(value = "products", key = "#productId", cacheManager = "cacheMager", condition = "#user.type == 'USER'")
     public Product readProductInfoDetail(Long productId) {
         return productReader.retrieveById(productId);
     }
 
+    @Cacheable(value = "products", key = "popular", cacheManager = "cacheMager", condition = "#user.type == 'USER'")
     public List<Product> readPopularProducts() {
         return productReader.retrievePopularProducts();
     }
@@ -33,11 +37,11 @@ public class ProductService {
         return productReader.retrieveAllByIds(productIds);
     }
 
-    public void updateStockCount(List<Product> products, List<OrderRequest.ProductOrderRequest> orderRequests) {
-        productUpdator.updateStock(products, orderRequests);
-    }
-
     public void verifyProductStockForAddToCart(List<NewCartItem> cartItems) {
         productValidator.checkPossibleAddToCart(cartItems);
+    }
+
+    public void updateStockCount(List<Product> products, Order order) {
+        productUpdator.updateStock(products, order);
     }
 }
