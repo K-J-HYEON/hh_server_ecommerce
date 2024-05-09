@@ -13,12 +13,12 @@ public class PaymentCoreRepository implements PaymentRepository {
         this.paymentJpaRepository = paymentJpaRepository;
     }
 
-    @Override
-    public Payment findById(Long paymentId) {
-        return paymentJpaRepository.findById(paymentId)
-                .orElseThrow(() -> new EntityNotFoundException("결제 정보를 찾지 못했습니다. - id: " + paymentId))
-                .toPayment();
-    }
+//    @Override
+//    public Payment findById(Long paymentId) {
+//        return paymentJpaRepository.findById(paymentId)
+//                .orElseThrow(() -> new EntityNotFoundException("결제 정보를 찾지 못했습니다. - id: " + paymentId))
+//                .toPayment();
+//    }
 
     @Override
     public Payment create(Long orderId, Long payAmount, String paymentMethod) {
