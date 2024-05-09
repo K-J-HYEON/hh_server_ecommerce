@@ -44,8 +44,11 @@ class OrderControllerTest {
 
         OrderPaidResult result = new OrderPaidResult(
                 1L,
+                1L,
                 10_00_000L,
                 new Receiver("김 아무개", "서울특별시 마포구", "01012344321"),
+                "CARD",
+                LocalDateTime.now(),
                 LocalDateTime.now()
         );
 

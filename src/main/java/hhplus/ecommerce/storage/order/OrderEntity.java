@@ -2,18 +2,17 @@ package hhplus.ecommerce.storage.order;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
 import hhplus.ecommerce.domain.order.Order;
-import hhplus.ecommerce.domain.user.User;
-
-
+import hhplus.ecommerce.domain.orderitem.OrderItem;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(name = "Order")
+@Table(name = "orders")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderEntity extends BaseTimeEntity {
@@ -68,8 +67,9 @@ public class OrderEntity extends BaseTimeEntity {
         return id;
     }
 
-    public Order toOrder() {
-        return new Order(getId(), userId, payAmount, receiverName, address, phoneNumber, orderStatus.toString(), orderedAt);
+    public Order toOrder(List<OrderItem> items) {
+        return new Order(getId(), userId, payAmount, items, receiverName, address, phoneNumber, orderStatus.toString(),
+                orderedAt);
     }
 
     public void updateStatus(OrderStatus orderStatus) {

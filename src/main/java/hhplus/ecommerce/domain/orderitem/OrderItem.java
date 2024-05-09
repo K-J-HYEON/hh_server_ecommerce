@@ -7,6 +7,7 @@ public record OrderItem(
         String productName,
         Long unitPrice,
         Long totalPrice,
-        Long quantity
+        Long quantity,
+        String status
 ) {
 }
