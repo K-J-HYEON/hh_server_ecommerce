@@ -6,22 +6,26 @@ import hhplus.ecommerce.storage.product.ProductEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import java.util.List;
 import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 
 class ProductReaderTest {
 
+    @MockBean
     private ProductRepository productRepository;
 
+    @InjectMocks
     private ProductReader productReader;
 
     @BeforeEach
     void setUp() {
-//        productRepository = mock(ProductRepository.class);
+        productRepository = mock(ProductRepository.class);
 
         productReader = new ProductReader(productRepository);
     }
@@ -96,19 +100,19 @@ class ProductReaderTest {
     @DisplayName("3일 동안 가장 많이 팔린 상품 5개 조회")
     void read_three_days_popular_products() {
         // given
-//        given(productRepository.findTopSellingProducts(any(), any(), any(), any())).willReturn(
-//                List.of(TestFixtures.product("신발")),
-//                List.of(TestFixtures.product("바지")),
-//                List.of(TestFixtures.product("아우터")),
-//                List.of(TestFixtures.product("박스티")),
-//                List.of(TestFixtures.product("티셔츠"))
-//        );
+        given(productRepository.findTopSellingProducts(any(), any(), any(), any())).willReturn(
+                List.of(TestFixtures.product("신발")),
+                List.of(TestFixtures.product("바지")),
+                List.of(TestFixtures.product("아우터")),
+                List.of(TestFixtures.product("박스티")),
+                List.of(TestFixtures.product("티셔츠"))
+        );
 
-        // when
-//        List<Product> popularProducts = productReader.retrievePopularProducts();
-//
-//        // then
-//        assertThat(popularProducts.size()).isEqualTo(5);
+//         when
+        List<Product> popularProducts = productReader.retrievePopularProducts();
+
+        // then
+        assertThat(popularProducts.size()).isEqualTo(5);
 //        assertThat(popularProducts.getFirst().name()).isEqualTo("신발");
 //        assertThat(popularProducts.getLast().name()).isEqualTo("티셔츠");
     }
