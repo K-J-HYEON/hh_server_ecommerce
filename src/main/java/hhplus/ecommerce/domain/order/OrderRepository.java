@@ -5,9 +5,11 @@ import hhplus.ecommerce.domain.user.User;
 import hhplus.ecommerce.storage.order.OrderStatus;
 
 public interface OrderRepository {
-    Order order(User user, OrderRequest request);
+//    Order order(User user, OrderRequest request);
 
-    Order updateStatus(Order order, OrderStatus orderStatus);
+    void updateStatus(Order order, OrderStatus orderStatus);
+
+    Order create(User user, OrderForm orderForm);
 
     Order findById(Long orderId);
 }

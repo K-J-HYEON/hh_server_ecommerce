@@ -2,9 +2,8 @@ package hhplus.ecommerce.domain.order;
 
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.api.dto.request.Receiver;
-import hhplus.ecommerce.domain.product.Product;
+import hhplus.ecommerce.domain.cart.Cart;
 import hhplus.ecommerce.storage.order.OrderStatus;
-import hhplus.ecommerce.domain.orderitem.OrderItemAppender;
 import hhplus.ecommerce.TestFixtures;
 import hhplus.ecommerce.domain.user.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,8 +20,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class OrderServiceTest {
     private OrderService orderService;
-    private OrderItemAppender orderItemAppender;
-    private OrderProcessor orderProcessor;
+    private OrderAppender orderAppender;
     private OrderUpdater orderUpdater;
 
     private User user;
@@ -30,11 +28,10 @@ class OrderServiceTest {
 
     @BeforeEach
     void setUp() {
-        orderItemAppender = mock(OrderItemAppender.class);
-        orderProcessor = mock(OrderProcessor.class);
+        orderAppender = mock(OrderAppender.class);
         orderUpdater = mock(OrderUpdater.class);
 
-        orderService = new OrderService(orderItemAppender, orderProcessor, orderUpdater);
+        orderService = new OrderService(orderAppender, orderUpdater);
 
         user = TestFixtures.user(1L);
         orderReq = new OrderRequest(
@@ -56,20 +53,30 @@ class OrderServiceTest {
     void order_success() {
 
         // given
-        List<Product> products = List.of();
         Order readyOrder = TestFixtures.order(OrderStatus.READY);
-        Order completedOrder = TestFixtures.order(OrderStatus.PENDING_FOR_PAY);
+        Cart cart = new Cart(1L, user.id(), List.of());
 
-        given(orderProcessor.order(any(), any())).willReturn(readyOrder);
-        given(orderUpdater.changeStatus(any(), any())).willReturn(completedOrder);
+        given(orderAppender.append(any(), any(), any())).willReturn(readyOrder);
 
         // when
-        Order order = orderService.order(user, products, orderReq);
+        Order order = orderService.order(user, cart, orderReq);
 
         // then
         assertThat(order).isNotNull();
         assertThat(order.payAmount()).isEqualTo(200_000L);
-        assertThat(order.orderStatus()).isEqualTo("PENDING FOR PAY");
+        assertThat(order.orderStatus()).isEqualTo("READY");
+    }
+
+    @Test
+    @DisplayName("주문 실패하면 주문 상태 변경")
+    void when_order_failed_then_order_status_is_failed() {
+        // given
+        Order order = TestFixtures.order(OrderStatus.READY);
+
+        // when
+        orderService.orderFailed(order);
+
+        // then
         verify(orderUpdater, atLeastOnce()).changeStatus(any(), any());
     }
 }

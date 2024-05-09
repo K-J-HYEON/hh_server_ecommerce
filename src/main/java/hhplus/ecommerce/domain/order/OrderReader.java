@@ -10,7 +10,11 @@ public class OrderReader {
         this.orderRepository = orderRepository;
     }
 
-    public Order readById(Long orderId) {
-        return orderRepository.findById(orderId);
+//    public Order readById(Long orderId) {
+//        return orderRepository.findById(orderId);
+//    }
+
+    public Order read(Order order) {
+        return orderRepository.findById(order.id());
     }
 }

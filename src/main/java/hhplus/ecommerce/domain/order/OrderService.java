@@ -1,35 +1,38 @@
 package hhplus.ecommerce.domain.order;
 
 import hhplus.ecommerce.api.dto.request.OrderRequest;
+import hhplus.ecommerce.domain.cart.Cart;
 import hhplus.ecommerce.domain.orderitem.OrderItem;
-import hhplus.ecommerce.domain.orderitem.OrderItemAppender;
-import hhplus.ecommerce.domain.product.Product;
 import hhplus.ecommerce.domain.user.User;
+import hhplus.ecommerce.storage.order.OrderItemStatus;
 import hhplus.ecommerce.storage.order.OrderStatus;
 import org.springframework.stereotype.Service;
-import java.util.List;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class OrderService {
 
-    private final OrderItemAppender orderItemAppender;
-    private final OrderProcessor orderProcessor;
+    private final OrderAppender orderAppender;
     private final OrderUpdater orderUpdater;
 
-    public OrderService(OrderItemAppender orderItemAppender, OrderProcessor orderProcessor, OrderUpdater orderUpdater) {
-        this.orderItemAppender = orderItemAppender;
-        this.orderProcessor = orderProcessor;
+    public OrderService(OrderAppender orderAppender, OrderUpdater orderUpdater) {
+        this.orderAppender = orderAppender;
         this.orderUpdater = orderUpdater;
     }
 
-    public Order order(User user, List<Product> products, OrderRequest request) {
-        Order order = orderProcessor.order(user, request);
-
-        List<OrderItem> orderItems = orderItemAppender.create(order, products, request.products());
-        return orderUpdater.changeStatus(order, OrderStatus.PENDING_FOR_PAY);
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public Order order(User user, Cart cart, OrderRequest request) {
+        return orderAppender.append(user, cart, request);
     }
 
-    public void updateOrderStatus(Order order, OrderStatus orderStatus) {
-        orderUpdater.changeStatus(order, orderStatus);
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void updateItemStatus(OrderItem item, OrderItemStatus status) {
+        orderUpdater.changeItemStatus(item, status);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void orderFailed(Order order) {
+        orderUpdater.changeStatus(order, OrderStatus.FAIL);
     }
 }

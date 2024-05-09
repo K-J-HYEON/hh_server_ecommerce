@@ -10,7 +10,8 @@ public enum OrderStatus {
     OUT_OF_STOCK("OUT OF STOCK"),
     PENDING_FOR_PAY("PENDING FOR PAY"),
     COMPLETE("COMPLETE"),
-    CANCELED("CANCELED");
+    CANCELED("CANCELED"),
+    FAIL("FAIL");
 
     private final String value;
 

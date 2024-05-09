@@ -2,78 +2,68 @@ package hhplus.ecommerce.application;
 
 import hhplus.ecommerce.api.dto.OrderPaidResult;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
-import hhplus.ecommerce.common.LockHandler;
+import hhplus.ecommerce.domain.cart.Cart;
+import hhplus.ecommerce.domain.cart.CartService;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.order.OrderService;
 import hhplus.ecommerce.domain.order.event.OrderCreatedEvent;
+import hhplus.ecommerce.domain.orderitem.OrderItem;
 import hhplus.ecommerce.domain.payment.Payment;
 import hhplus.ecommerce.domain.payment.PaymentService;
-import hhplus.ecommerce.domain.product.Product;
-import hhplus.ecommerce.domain.product.ProductService;
 import hhplus.ecommerce.domain.product.StockService;
 import hhplus.ecommerce.domain.user.User;
 import hhplus.ecommerce.domain.user.UserService;
+import hhplus.ecommerce.storage.order.OrderItemStatus;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
 
+@Slf4j
 @Component
 public class OrderUseCase {
 
     private final UserService userService;
-    private final ProductService productService;
+    private final CartService cartService;
     private final OrderService orderService;
-    private final ApplicationEventPublisher applicationEventPublisher;
-    private final LockHandler lockHandler;
     private final StockService stockService;
     private final PaymentService paymentService;
-    private static final String ORDER_LOCK_PREFIX = "ORDER_";
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     public OrderUseCase(UserService userService,
-                        ProductService productService,
+                        CartService cartService,
                         OrderService orderService,
                         ApplicationEventPublisher applicationEventPublisher,
-                        LockHandler lockHandler,
-                        StockService stockService, PaymentService paymentService) {
+                        StockService stockService,
+                        PaymentService paymentService) {
         this.userService = userService;
-        this.productService = productService;
+        this.cartService = cartService;
         this.orderService = orderService;
-        this.applicationEventPublisher = applicationEventPublisher;
-        this.lockHandler = lockHandler;
         this.stockService = stockService;
         this.paymentService = paymentService;
+        this.applicationEventPublisher = applicationEventPublisher;
     }
 
     @Transactional
-    public OrderPaidResult order(Long userId, OrderRequest req) {
+    public OrderPaidResult order(Long userId, OrderRequest request) {
         User user = userService.getUser(userId);
-        List<Product> products = productService.readProductsByIds(req.products().stream()
-                .map(OrderRequest.ProductOrderRequest::id)
-                .toList());
-
-        String key = createLockKey(products);
-
-        lockHandler.lock(key, 2, 1);
+        Cart cart = cartService.getCart(user);
+        Order order = orderService.order(user, cart, request);
 
         try {
-            stockService.decreaseProductStock(products, req);
-        } finally {
-            lockHandler.unlock(key);
+            for (OrderItem item : order.items()) {
+                stockService.decreaseProductStock(item);
+                orderService.updateItemStatus(item, OrderItemStatus.SUCCESS);
+            }
+            cartService.resetCart(user);
+            Payment payment = paymentService.pay(user, order, request);
+
+            applicationEventPublisher.publishEvent(new OrderCreatedEvent(order, payment));
+            return OrderPaidResult.of(order, payment);
+        } catch (Exception e) {
+            orderService.orderFailed(order);
+            stockService.compensationOrderStock(order);
+            throw new RuntimeException(e.getMessage());
         }
-
-        Order order = orderService.order(user, products, req);
-        Payment payment = paymentService.pay(user, order, req);
-
-        applicationEventPublisher.publishEvent(new OrderCreatedEvent(products, req.products(), order, payment));
-        return OrderPaidResult.from(order);
-    }
-
-    private String createLockKey(List<Product> products) {
-        StringBuilder key = new StringBuilder(ORDER_LOCK_PREFIX);
-        for (Product product : products) {
-            key.append(product.id());
-        }
-        return key.toString();
     }
 }

@@ -2,13 +2,14 @@ package hhplus.ecommerce.storage.orderitem;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
 import hhplus.ecommerce.domain.orderitem.OrderItem;
+import hhplus.ecommerce.storage.order.OrderItemStatus;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "OrderItem")
+@Table(name = "order_items")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItemEntity extends BaseTimeEntity {
@@ -35,17 +36,28 @@ public class OrderItemEntity extends BaseTimeEntity {
     @Column(name = "quantity")
     private Long quantity;
 
+    @Enumerated(EnumType.STRING)
+    private OrderItemStatus status;
+
     public Long getId() {
         return id;
     }
 
-    public OrderItemEntity(Long orderId, Long productId, String productName, Long unitPrice, Long totalPrice, Long quantity) {
+    public OrderItemEntity(
+            Long orderId,
+            Long productId,
+            String productName,
+            Long unitPrice,
+            Long totalPrice,
+            Long quantity,
+            OrderItemStatus status) {
         this.orderId = orderId;
         this.productId = productId;
         this.productName = productName;
         this.unitPrice = unitPrice;
         this.totalPrice = totalPrice;
         this.quantity = quantity;
+        this.status = status;
     }
 
     public OrderItem toOrderItem() {
@@ -56,7 +68,12 @@ public class OrderItemEntity extends BaseTimeEntity {
                 productName,
                 unitPrice,
                 totalPrice,
-                quantity
+                quantity,
+                status.toString()
         );
+    }
+
+    public void updateStatus(OrderItemStatus status) {
+        this.status= status;
     }
 }
