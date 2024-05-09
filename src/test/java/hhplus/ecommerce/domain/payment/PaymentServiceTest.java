@@ -3,6 +3,7 @@ package hhplus.ecommerce.domain.payment;
 import hhplus.ecommerce.TestFixtures;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.api.dto.request.Receiver;
+import hhplus.ecommerce.common.LockHandler;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.order.OrderUpdater;
 import hhplus.ecommerce.domain.order.OrderValidator;
@@ -14,10 +15,7 @@ import hhplus.ecommerce.storage.payment.PayType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -32,6 +30,7 @@ class PaymentServiceTest {
     private UserPointManager userPointManager;
     private UserPointValidator userPointValidator;
     private PaymentService paymentService;
+    private LockHandler lockHandler;
 
     private Long userId;
     private Long orderId;
@@ -46,7 +45,12 @@ class PaymentServiceTest {
         paymentAppender = mock(PaymentAppender.class);
         userPointManager = mock(UserPointManager.class);
         userPointValidator = mock(UserPointValidator.class);
-        paymentService = new PaymentService(orderUpdater, orderValidator, paymentAppender, userPointManager, userPointValidator);
+        lockHandler = mock(LockHandler.class);
+
+
+
+        paymentService =
+                new PaymentService(orderUpdater, paymentAppender, userPointManager);
 
         userId = 1L;
         orderId = 1L;
