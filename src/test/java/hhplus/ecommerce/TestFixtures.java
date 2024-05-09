@@ -11,6 +11,7 @@ import hhplus.ecommerce.storage.payment.PayType;
 import jakarta.persistence.EntityNotFoundException;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class TestFixtures {
     public static Product product(String name) {
@@ -50,30 +51,34 @@ public class TestFixtures {
 
     public static Order order(OrderStatus orderStatus) {
         if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L, "김아무개", "서울특별시 마포구", "01012344321", "ready", LocalDateTime.now());
+            return new Order(1L, 1L, 200_000L, List.of(
+                    new OrderItem(1L, 1L, 1L, "신발", 30_000L, 30_000L, 1L, "CREATED"),
+                    new OrderItem(1L, 1L, 1L, "후드티", 40_000L, 40_000L, 1L, "SUCCESS")
+            ),
+                    "김아무개", "서울특별시 마포구", "01012344321", "ready", LocalDateTime.now());
         }
 
         if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "complete", LocalDateTime.now());
+            return new Order(1L, 1L, 200_000L, List.of(), "이씨", "서울특별시 마포구", "01012344321", "complete", LocalDateTime.now());
         }
 
         if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "canceled", LocalDateTime.now());
+            return new Order(1L, 1L, 200_000L,List.of(), "박씨", "서울특별시 마포구", "01012344321", "canceled", LocalDateTime.now());
         }
 
         if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L, "Kwon Jae Hyeon", "서울특별시 마포구", "01012344321", "paid", LocalDateTime.now());
+            return new Order(1L, 1L, 200_000L,List.of(),"전씨", "서울특별시 마포구", "01012344321", "paid", LocalDateTime.now());
         }
         throw new EntityNotFoundException("Order Not Found - order status: " + orderStatus);
     }
 
     public static OrderItem orderItem(Long orderId, Long productId) {
         if (orderId.equals(1L) && productId.equals(1L)) {
-            return new OrderItem(1L, orderId, productId, "신발", 100_000L, 500_000L, 5L);
+            return new OrderItem(1L, orderId, productId, "신발", 100_000L, 500_000L, 5L, "CREATED");
         }
 
         if (orderId.equals(2L) && productId.equals(2L)) {
-            return new OrderItem(2L, orderId, productId, "바지", 30_000L , 90_000L, 3L);
+            return new OrderItem(2L, orderId, productId, "바지", 30_000L , 90_000L, 3L, "CREATED");
         }
         throw new EntityNotFoundException("The order item does not exist - order id: " + orderId + ", product id: " + productId);
     }
