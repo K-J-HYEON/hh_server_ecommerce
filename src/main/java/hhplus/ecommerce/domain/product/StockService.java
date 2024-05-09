@@ -1,34 +1,42 @@
 package hhplus.ecommerce.domain.product;
 
-import hhplus.ecommerce.api.dto.request.OrderRequest;
+import hhplus.ecommerce.domain.order.Order;
+import hhplus.ecommerce.domain.order.OrderReader;
+import hhplus.ecommerce.domain.orderitem.OrderItem;
+import hhplus.ecommerce.storage.order.OrderItemStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
-@Transactional
 public class StockService {
-
     private final StockReader stockReader;
     private final StockValidator stockValidator;
     private final StockUpdator stockUpdator;
+    private final OrderReader orderReader;
 
-    public StockService(StockReader stockReader, StockValidator stockValidator, StockUpdator stockUpdator) {
+    public StockService(StockReader stockReader, StockValidator stockValidator, StockUpdator stockUpdator, OrderReader orderReader) {
         this.stockReader = stockReader;
         this.stockValidator = stockValidator;
         this.stockUpdator = stockUpdator;
-    }
-
-    public List<Stock> getStocksByProductIds(List<Product> products) {
-        return stockReader.readByProductIds(products);
+        this.orderReader = orderReader;
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public List<Stock> decreaseProductStock(List<Product> products, OrderRequest request) {
-        List<Stock> stocks = stockReader.readByProductIds(products);
-        stockValidator.checkProductStockCountForOrder(stocks, request.products());
-        return stockUpdator.updateStockForOrder(stocks, request.products());
+    public void decreaseProductStock(OrderItem item) {
+        Stock stock = stockReader.readByProductId(item.productId());
+        stockValidator.checkProductStockCountForOrder(stock, item);
+        stockUpdator.decreaseStock(stock, item);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void compensationOrderStock(Order order) {
+        Order foundOrder = orderReader.read(order);
+        for (OrderItem item : foundOrder.items()) {
+            if (item.status().equals(OrderItemStatus.SUCCESS.toString())) {
+                Stock stock = stockReader.readByProductId(item.productId());
+                stockUpdator.increaseStock(stock, item);
+            }
+        }
     }
 }
