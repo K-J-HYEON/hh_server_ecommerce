@@ -4,13 +4,7 @@ import hhplus.ecommerce.TestFixtures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
@@ -35,7 +29,7 @@ class UserReaderTest {
         given(userRepository.findById(userId)).willReturn(user);
 
         // when
-        User foundUser = userReader.retrieveByUserId(userId);
+        User foundUser = userReader.readById(userId);
 
         // then
         assertThat(foundUser.name()).isEqualTo("김아무개");
