@@ -2,7 +2,6 @@ package hhplus.ecommerce.domain.product;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,14 +11,9 @@ class StockTest {
     @DisplayName("상품 재고 부족한 경우 에러 발생")
     void not_enough_stock_count_throws_error() {
 
-        // given
         Stock stock = new Stock(1L, 1L, 10L);
         Long orderCount = 20L;
 
-        // when
-
-
-        // then
         assertDoesNotThrow(() -> {
             stock.isEnoughProductStockCountForOrder(orderCount);
         });
