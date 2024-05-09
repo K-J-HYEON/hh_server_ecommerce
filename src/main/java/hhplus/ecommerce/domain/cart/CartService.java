@@ -3,6 +3,7 @@ package hhplus.ecommerce.domain.cart;
 import hhplus.ecommerce.domain.cart.cartitem.*;
 import hhplus.ecommerce.domain.user.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class CartService {
         this.cartItemRemover = cartItemRemover;
     }
 
+    @Transactional(readOnly = true)
     public Cart getCart(User user) {
         return cartFinder.findByUserId(user.id());
     }
@@ -42,5 +44,10 @@ public class CartService {
 
     public void deleteItem(List<CartItem> cartItems) {
         cartItemRemover.removeItems(cartItems);
+    }
+
+    @Transactional
+    public void resetCart(User user) {
+        cartItemRemover.resetCart(user);
     }
 }
