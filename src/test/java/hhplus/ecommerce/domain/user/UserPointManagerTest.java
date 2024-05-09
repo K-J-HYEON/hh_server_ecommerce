@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
@@ -15,14 +16,17 @@ class UserPointManagerTest {
 
     @MockBean
     private UserRepository userRepository;
-
+    @MockBean
+    private UserReader userReader;
     @InjectMocks
     private UserPointManager userPointManager;
 
     @BeforeEach
     void setUp() {
         userRepository = mock(UserRepository.class);
-        userPointManager = new UserPointManager(userRepository);
+        userReader = mock(UserReader.class);
+
+        userPointManager = new UserPointManager(userReader, userRepository);
     }
 
     @Test
@@ -35,10 +39,11 @@ class UserPointManagerTest {
 
         assertThat(user.point()).isEqualTo(10_00_000L);
 
+        given(userReader.readById(anyLong())).willReturn(user);
         given(userRepository.updateUserPoint(any())).willReturn(user.addPoint(chargePoint));
 
         // when
-        User chargedUser = userPointManager.chargePoint(user, chargePoint);
+        User chargedUser = userPointManager.chargePoint(user.id(), chargePoint);
 
         // then
         assertThat(chargedUser.point()).isEqualTo(11_00_000L);
@@ -52,6 +57,7 @@ class UserPointManagerTest {
         User user = TestFixtures.user(1L);
         Long payAmount = 400_000L;
 
+        given(userReader.readByIdWithLock(anyLong())).willReturn(user);
         given(userRepository.updateUserPoint(any())).willReturn(user.minusPoint(payAmount));
 
         // when
