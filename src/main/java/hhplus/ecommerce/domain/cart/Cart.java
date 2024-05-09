@@ -1,9 +1,11 @@
 package hhplus.ecommerce.domain.cart;
 
-import java.time.LocalDateTime;
+import hhplus.ecommerce.domain.cart.cartitem.CartItem;
+import java.util.List;
 
 public record Cart(
         Long id,
-        Long userId
+        Long userId,
+        List<CartItem> items
 ) {
 }

@@ -1,15 +1,18 @@
 package hhplus.ecommerce.domain.cart.cartitem;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import hhplus.ecommerce.domain.cart.CartRepository;
+import hhplus.ecommerce.domain.user.User;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 @Component
 public class CartItemRemover {
+
+    private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
 
-    public CartItemRemover(CartItemRepository cartItemRepository) {
+    public CartItemRemover(CartRepository cartRepository, CartItemRepository cartItemRepository) {
+        this.cartRepository = cartRepository;
         this.cartItemRepository = cartItemRepository;
     }
 
@@ -17,5 +20,9 @@ public class CartItemRemover {
         cartItemRepository.removeItems(cartItems.stream()
                 .map(CartItem::id)
                 .toList());
+    }
+
+    public void resetCart(User user) {
+        cartRepository.resetCart(user);
     }
 }

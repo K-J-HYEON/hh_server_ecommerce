@@ -3,7 +3,6 @@ package hhplus.ecommerce.api.dto.request;
 import hhplus.ecommerce.domain.cart.cartitem.NewCartItem;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;

@@ -7,8 +7,10 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
-@Table(name = "cart_item")
+@Table(name = "cart_items")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CartItemEntity extends BaseTimeEntity {
@@ -28,10 +30,28 @@ public class CartItemEntity extends BaseTimeEntity {
     @Column(name = "quantity")
     private Long quantity;
 
+    private LocalDateTime createAt;
+
     public CartItemEntity(Long cartId, Long productId, Long quantity) {
         this.cartId = cartId;
         this.productId = productId;
         this.quantity = quantity;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public LocalDateTime getCreateAt() {
+        return createAt;
     }
 
     public void addQuntity(Long addedQuantity) {
@@ -42,12 +62,8 @@ public class CartItemEntity extends BaseTimeEntity {
         this.deleted = true;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public CartItem toCartItem() {
-        return new CartItem(getId(), cartId, productId, quantity);
+        return new CartItem(getId(), productId, quantity);
     }
 
     public boolean isDeleted() {

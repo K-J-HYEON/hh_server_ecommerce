@@ -2,14 +2,17 @@ package hhplus.ecommerce.storage.cart;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
 import hhplus.ecommerce.domain.cart.Cart;
+import hhplus.ecommerce.domain.cart.cartitem.CartItem;
+import hhplus.ecommerce.storage.cart.cartitem.CartItemEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(name = "Cart")
+@Table(name = "carts")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CartEntity extends BaseTimeEntity {
@@ -21,10 +24,6 @@ public class CartEntity extends BaseTimeEntity {
     @Column(name = "userId")
     private Long userId;
 
-    private LocalDateTime createAt;
-
-    private LocalDateTime updateAt;
-
     public Long getId() {
         return id;
     }
@@ -33,7 +32,13 @@ public class CartEntity extends BaseTimeEntity {
         this.userId = userId;
     }
 
-    public Cart toCart() {
-        return new Cart(getId(), userId);
+    public Cart toCart(List<CartItemEntity> items) {
+        return new Cart(
+                getId(),
+                userId,
+                items.stream()
+                        .map(item -> new CartItem(item.getId(), item.getProductId(), item.getQuantity()))
+                        .toList()
+        );
     }
 }

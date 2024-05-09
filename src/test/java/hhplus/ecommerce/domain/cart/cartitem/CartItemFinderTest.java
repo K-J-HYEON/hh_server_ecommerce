@@ -41,7 +41,7 @@ class CartItemFinderTest {
         Long quantity = 1L;
 
         List<CartItem> cartItems = List.of(
-                new CartItem(1L, cartId, productId, quantity)
+                new CartItem(1L, cartId, quantity)
         );
 
         given(cartItemRepository.findAllByCartId(any())).willReturn(cartItems);

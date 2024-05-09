@@ -9,11 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
@@ -38,8 +35,10 @@ class CartItemAppenderTest {
     void when_already_added_cart_then_add_quantity_cart_item() {
 
         // given
-        Cart cart = new Cart(1L, 1L);
         Product product = TestFixtures.product("신발");
+        Cart cart = new Cart(1L, 1L, List.of(
+                new CartItem(1L, product.id(), 5L)
+        ));
 
         List<NewCartItem> cartItems = List.of(
                 new NewCartItem(product.id(), 1L)
@@ -61,8 +60,10 @@ class CartItemAppenderTest {
     void not_exist_cart_item_then_create_cart_item() {
 
         // given
-        Cart cart = new Cart(1L, 1L);
         Product product = TestFixtures.product("신발");
+        Cart cart = new Cart(1L, 1L, List.of(
+                new CartItem(1L, product.id(), 5L)
+        ));
 
         List<NewCartItem> cartItems = List.of(
                 new NewCartItem(product.id(), 1L)
@@ -80,8 +81,6 @@ class CartItemAppenderTest {
     @Test
     @DisplayName("장바구니에 여러 상품 추가하면 해당 상품의 수 만큼 장바구니 아이템 생성")
     void add_many_product_to_cart_then_call_create_cart_item() {
-        Cart cart = new Cart(1L, 1L);
-
         Product sample1 = TestFixtures.product("신발");
         Product sample2 = TestFixtures.product("바지");
         Product sample3 = TestFixtures.product("아우터");
@@ -91,6 +90,12 @@ class CartItemAppenderTest {
                 new NewCartItem(sample2.id(), 1L),
                 new NewCartItem(sample3.id(), 1L)
         );
+
+        Cart cart = new Cart(1L, 1L, List.of(
+                new CartItem(1L, sample1.id(), 5L),
+                new CartItem(2L, sample2.id(), 5L),
+                new CartItem(3L, sample3.id(), 5L)
+        ));
 
         given(cartItemRepository.findByCartIdAndProductId(any(), any())).willReturn(Optional.empty());
 
