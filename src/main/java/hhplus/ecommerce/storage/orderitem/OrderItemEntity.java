@@ -2,7 +2,6 @@ package hhplus.ecommerce.storage.orderitem;
 
 import hhplus.ecommerce.config.BaseTimeEntity;
 import hhplus.ecommerce.domain.orderitem.OrderItem;
-import hhplus.ecommerce.storage.order.OrderItemStatus;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
