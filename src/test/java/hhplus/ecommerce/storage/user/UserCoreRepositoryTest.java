@@ -1,7 +1,6 @@
 package hhplus.ecommerce.storage.user;
 
 import jakarta.persistence.EntityNotFoundException;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 
 @SpringBootTest
-    class UserCoreRepositoryTest {
+class UserCoreRepositoryTest {
 
 //    @Mock
     private UserJpaRepository userJpaRepository;
