@@ -40,11 +40,13 @@ public class ProductCoreRepository implements ProductRepository {
     }
 
     @Override
-    public void updateStock(Product product) {
+    public Product updateStock(Product product) {
         ProductEntity productEntity = productJpaRepository.findById(product.id())
                 .orElseThrow(() -> new EntityNotFoundException("상품 정보를 찾지 못했습니다. - id: " + product.id()));
         productEntity.updateStock(product.stockCount());
+        return productEntity.toProduct();
     }
+
 
     @Override
     public List<Product> findTopSellingProducts(OrderStatus orderStatus, LocalDateTime startDate, LocalDateTime endDate, Pageable pageable) {
