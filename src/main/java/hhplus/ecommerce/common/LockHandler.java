@@ -1,6 +1,7 @@
 package hhplus.ecommerce.common;
 
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.annotation.Around;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Component;
@@ -9,9 +10,10 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 @Slf4j
+
 public class LockHandler {
 
-    private static final String LOCK_KEY_PREFIX = "LOCK";
+    private static final String LOCK_KEY_PREFIX = "LOCK_";
     private final RedissonClient redissonClient;
 
     public LockHandler(RedissonClient redissonClient) {
