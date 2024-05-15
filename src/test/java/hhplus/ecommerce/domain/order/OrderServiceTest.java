@@ -40,9 +40,6 @@ class OrderServiceTest {
                         user.address(),
                         user.phoneNumber()
                 ),
-                List.of(
-                        new OrderRequest.ProductOrderRequest(1L, 1L)
-                ),
                 100_000L,
                 "MOBILE PAY"
         );
