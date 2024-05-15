@@ -1,15 +1,13 @@
 package hhplus.ecommerce.storage.order;
 
-import hhplus.ecommerce.api.dto.request.OrderRequest;
-import hhplus.ecommerce.api.dto.request.Receiver;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.order.OrderForm;
 import hhplus.ecommerce.domain.order.OrderRepository;
 import hhplus.ecommerce.domain.orderitem.OrderItem;
-import hhplus.ecommerce.domain.orderitem.OrderItemRepository;
 import hhplus.ecommerce.domain.user.User;
 import hhplus.ecommerce.storage.orderitem.OrderItemEntity;
 import hhplus.ecommerce.storage.orderitem.OrderItemJpaRepository;
+import hhplus.ecommerce.storage.orderitem.OrderItemStatus;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
