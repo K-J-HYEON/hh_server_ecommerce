@@ -72,17 +72,19 @@ class ProductReaderTest {
     @DisplayName("상품 id list 기반 상품 조회")
     void read_all_product_by_id() {
         // given
-        List<OrderRequest.ProductOrderRequest> productOrderRequests = List.of(
-                new OrderRequest.ProductOrderRequest(1L, 1L),
-                new OrderRequest.ProductOrderRequest(2L, 5L)
-        );
+//        List<OrderRequest.ProductOrderRequest> productOrderRequests = List.of(
+//                new OrderRequest.ProductOrderRequest(1L, 1L),
+//                new OrderRequest.ProductOrderRequest(2L, 5L)
+//        )List<Produ>
 
         List<Product> products = List.of(
                 TestFixtures.product("신발"),
                 TestFixtures.product("바지")
         );
 
-        List<Long> productIds = productOrderRequests.stream().map(OrderRequest.ProductOrderRequest::id).toList();
+//        List<Long> productIds = productOrderRequests.stream().map(OrderRequest.ProductOrderRequest::id).toList();
+
+        List<Long> productIds = products.stream().map(Product::id).toList();
 
         given(productRepository.findByIdIn(any())).willReturn(products);
 
