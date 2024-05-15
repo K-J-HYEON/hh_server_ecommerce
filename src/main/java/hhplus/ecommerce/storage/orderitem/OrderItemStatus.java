@@ -1,4 +1,4 @@
-package hhplus.ecommerce.storage.order;
+package hhplus.ecommerce.storage.orderitem;
 
 public enum OrderItemStatus {
     CREATED("CREATED"),
