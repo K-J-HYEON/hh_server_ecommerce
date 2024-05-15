@@ -1,6 +1,6 @@
 package hhplus.ecommerce.api.controller;
 
-import hhplus.ecommerce.application.CartUseCase;
+import hhplus.ecommerce.application.cart.CartUseCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
