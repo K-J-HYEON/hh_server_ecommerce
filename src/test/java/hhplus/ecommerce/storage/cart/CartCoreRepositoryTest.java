@@ -3,13 +3,11 @@ package hhplus.ecommerce.storage.cart;
 import hhplus.ecommerce.TestFixtures;
 import hhplus.ecommerce.domain.cart.Cart;
 import hhplus.ecommerce.domain.user.User;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 import static org.mockito.BDDMockito.given;
