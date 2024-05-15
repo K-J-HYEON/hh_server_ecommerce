@@ -63,7 +63,7 @@ class PaymentServiceTest {
                 user.name(),
                 user.address(),
                 user.phoneNumber()),
-                List.of(new OrderRequest.ProductOrderRequest(1L, 1L)),
+//                List.of(new OrderRequest.ProductOrderRequest(1L, 1L)),
                 payAmount,
                 paymentMethod
         );
