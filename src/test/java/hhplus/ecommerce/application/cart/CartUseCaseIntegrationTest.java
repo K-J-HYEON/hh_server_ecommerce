@@ -1,4 +1,4 @@
-package hhplus.ecommerce.application;
+package hhplus.ecommerce.application.cart;
 
 import hhplus.ecommerce.api.dto.CartItemResult;
 import hhplus.ecommerce.domain.cart.cartitem.NewCartItem;
@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
-
 import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
