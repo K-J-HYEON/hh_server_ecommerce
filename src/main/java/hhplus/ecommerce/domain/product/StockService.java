@@ -3,7 +3,7 @@ package hhplus.ecommerce.domain.product;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.order.OrderReader;
 import hhplus.ecommerce.domain.orderitem.OrderItem;
-import hhplus.ecommerce.storage.order.OrderItemStatus;
+import hhplus.ecommerce.storage.orderitem.OrderItemStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
