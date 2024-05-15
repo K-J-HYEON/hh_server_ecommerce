@@ -1,4 +1,4 @@
-package hhplus.ecommerce.application;
+package hhplus.ecommerce.application.order;
 
 import hhplus.ecommerce.api.dto.OrderPaidResult;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
@@ -13,7 +13,7 @@ import hhplus.ecommerce.domain.payment.PaymentService;
 import hhplus.ecommerce.domain.product.StockService;
 import hhplus.ecommerce.domain.user.User;
 import hhplus.ecommerce.domain.user.UserService;
-import hhplus.ecommerce.storage.order.OrderItemStatus;
+import hhplus.ecommerce.storage.orderitem.OrderItemStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
