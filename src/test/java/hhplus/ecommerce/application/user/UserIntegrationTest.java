@@ -1,4 +1,4 @@
-package hhplus.ecommerce.application;
+package hhplus.ecommerce.application.user;
 
 
 import hhplus.ecommerce.domain.user.User;
