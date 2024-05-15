@@ -32,3 +32,15 @@ services:
 #    depends_on:
 #      - db
 #      - redis
+
+#jump-to-db:
+#  image: oscarfonts/h2:latest
+#  container_name: h2-dev
+#  restart: always
+#  ports:
+#    - "1521:1521"
+#    - "8081:81"
+#  environment:
+#    H2_OPTIONS: -ifNotExists
+#  volumes:
+#    - /Users/Shared/data/h2-dev:/opt/h2-data
