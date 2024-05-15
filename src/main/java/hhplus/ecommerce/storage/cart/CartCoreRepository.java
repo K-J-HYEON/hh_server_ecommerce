@@ -5,7 +5,6 @@ import hhplus.ecommerce.domain.cart.CartRepository;
 import hhplus.ecommerce.domain.user.User;
 import hhplus.ecommerce.storage.cart.cartitem.CartItemEntity;
 import hhplus.ecommerce.storage.cart.cartitem.CartItemJpaRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import java.util.Comparator;
 import java.util.List;
