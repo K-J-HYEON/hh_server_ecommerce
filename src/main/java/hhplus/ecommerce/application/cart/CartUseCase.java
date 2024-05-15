@@ -1,4 +1,4 @@
-package hhplus.ecommerce.application;
+package hhplus.ecommerce.application.cart;
 
 import hhplus.ecommerce.api.dto.CartItemResult;
 import hhplus.ecommerce.domain.cart.Cart;
@@ -11,7 +11,6 @@ import hhplus.ecommerce.domain.user.User;
 import hhplus.ecommerce.domain.user.UserService;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Component
