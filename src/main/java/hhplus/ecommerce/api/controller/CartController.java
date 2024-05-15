@@ -6,7 +6,7 @@ import hhplus.ecommerce.api.dto.request.DeleteCartItemRequest;
 import hhplus.ecommerce.api.dto.response.AddCartItemResponse;
 import hhplus.ecommerce.api.dto.response.CartItemResponse;
 import hhplus.ecommerce.api.dto.response.DeleteCartItemResponse;
-import hhplus.ecommerce.application.CartUseCase;
+import hhplus.ecommerce.application.cart.CartUseCase;
 import hhplus.ecommerce.domain.cart.CartService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
