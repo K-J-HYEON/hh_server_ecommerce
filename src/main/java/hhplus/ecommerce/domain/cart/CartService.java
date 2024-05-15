@@ -2,6 +2,7 @@ package hhplus.ecommerce.domain.cart;
 
 import hhplus.ecommerce.domain.cart.cartitem.*;
 import hhplus.ecommerce.domain.user.User;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
