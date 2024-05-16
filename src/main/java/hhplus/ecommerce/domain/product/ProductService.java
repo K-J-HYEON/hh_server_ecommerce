@@ -1,6 +1,5 @@
 package hhplus.ecommerce.domain.product;
 
-import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.domain.cart.cartitem.NewCartItem;
 import hhplus.ecommerce.domain.order.Order;
 import org.springframework.cache.annotation.Cacheable;
