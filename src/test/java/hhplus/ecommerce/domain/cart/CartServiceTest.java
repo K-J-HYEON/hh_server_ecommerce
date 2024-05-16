@@ -47,7 +47,7 @@ class CartServiceTest {
         given(cartFinder.findByUserId(any())).willReturn(cart);
 
         // when
-        Cart cart2 = cartService.getCart(user);
+        Cart cart2 = cartService.getCart(user.id());
 
         // then
         assertThat(cart2).isNotNull();
@@ -156,7 +156,7 @@ class CartServiceTest {
         User user = TestFixtures.user(1L);
 
         // when
-        cartService.resetCart(user);
+        cartService.resetCart(user.id());
 
         // then
         verify(cartItemRemover, atLeastOnce()).resetCart(any());
