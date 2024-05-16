@@ -2,7 +2,7 @@ package hhplus.ecommerce.domain.order;
 
 import hhplus.ecommerce.domain.orderitem.OrderItem;
 import hhplus.ecommerce.domain.orderitem.OrderItemRepository;
-import hhplus.ecommerce.storage.order.OrderItemStatus;
+import hhplus.ecommerce.storage.orderitem.OrderItemStatus;
 import hhplus.ecommerce.storage.order.OrderStatus;
 import org.springframework.stereotype.Component;
 
