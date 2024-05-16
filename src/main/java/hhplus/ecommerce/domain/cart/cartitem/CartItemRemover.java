@@ -22,7 +22,7 @@ public class CartItemRemover {
                 .toList());
     }
 
-    public void resetCart(User user) {
-        cartRepository.resetCart(user);
+    public void resetCart(Long userId) {
+        cartRepository.resetCart(userId);
     }
 }
