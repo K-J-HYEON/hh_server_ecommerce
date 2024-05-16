@@ -40,6 +40,9 @@ public class OrderEntity extends BaseTimeEntity {
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
+    @Column(name = "paymentMethod")
+    private String paymentMethod;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "orderStatus")
     private OrderStatus orderStatus;
@@ -52,6 +55,7 @@ public class OrderEntity extends BaseTimeEntity {
                        String receiverName,
                        String address,
                        String phoneNumber,
+                       String paymentMethod,
                        OrderStatus orderStatus,
                        LocalDateTime orderedAt) {
         this.userId = userId;
@@ -59,6 +63,7 @@ public class OrderEntity extends BaseTimeEntity {
         this.receiverName = receiverName;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.paymentMethod = paymentMethod;
         this.orderStatus = orderStatus;
         this.orderedAt = orderedAt;
     }
@@ -68,8 +73,12 @@ public class OrderEntity extends BaseTimeEntity {
     }
 
     public Order toOrder(List<OrderItem> items) {
-        return new Order(getId(), userId, payAmount, items, receiverName, address, phoneNumber, orderStatus.toString(),
-                orderedAt);
+        return new Order(
+                getId(), userId,
+                payAmount, items,
+                receiverName, address,
+                phoneNumber, paymentMethod,
+                orderStatus.toString(), orderedAt);
     }
 
     public void updateStatus(OrderStatus orderStatus) {
