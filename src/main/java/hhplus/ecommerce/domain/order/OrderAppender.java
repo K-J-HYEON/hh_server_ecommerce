@@ -18,9 +18,9 @@ public class OrderAppender {
         this.orderProductReader = orderProductReader;
     }
 
-    public Order append(User user, Cart cart, OrderRequest request) {
+    public Order append(Long userId, Cart cart, OrderRequest request) {
         List<OrderProduct> orderProduct = orderProductReader.read(cart);
         OrderForm orderForm = OrderForm.of(request, orderProduct);
-        return orderRepository.create(user, orderForm);
+        return orderRepository.create(userId, orderForm);
     }
 }
