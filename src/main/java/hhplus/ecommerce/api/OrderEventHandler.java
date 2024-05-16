@@ -3,7 +3,6 @@ package hhplus.ecommerce.api;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.order.event.OrderPaidEvent;
 import hhplus.ecommerce.domain.payment.Payment;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
