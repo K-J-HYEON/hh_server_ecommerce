@@ -54,21 +54,38 @@ public class TestFixtures {
                     new OrderItem(1L, 1L, 1L, "신발", 30_000L, 30_000L, 1L, "CREATED"),
                     new OrderItem(1L, 1L, 1L, "후드티", 40_000L, 40_000L, 1L, "SUCCESS")
             ),
-                    "김아무개", "서울특별시 마포구", "01012344321", "ready", LocalDateTime.now());
+                    "김아무개", "서울특별시 마포구", "01012344321", "ready", OrderStatus.READY.toString(), LocalDateTime.now());
         }
 
-        if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L, List.of(), "이씨", "서울특별시 마포구", "01012344321", "complete", LocalDateTime.now());
+        if (orderStatus.equals(OrderStatus.PAID)) {
+            return new Order(1L, 1L, 200_000L, List.of(), "이씨", "서울특별시 마포구", "01012344321", OrderStatus.PAID.toString(),
+                    PayType.CARD.toString(),
+                    LocalDateTime.now());
         }
 
-        if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L,List.of(), "박씨", "서울특별시 마포구", "01012344321", "canceled", LocalDateTime.now());
+        if (orderStatus.equals(OrderStatus.PAY_FAILED)) {
+            return new Order(1L, 1L, 200_000L, List.of(), "박씨", "서울특별시 마포구", "01012344321",
+                    OrderStatus.PAY_FAILED.toString(),
+                    PayType.CARD.toString(),
+                    LocalDateTime.now());
         }
 
-        if (orderStatus.equals(OrderStatus.READY)) {
-            return new Order(1L, 1L, 200_000L,List.of(),"전씨", "서울특별시 마포구", "01012344321", "paid", LocalDateTime.now());
+        if (orderStatus.equals(OrderStatus.FAIL)) {
+            return new Order(1L, 1L, 200_000L,List.of(),"전씨", "서울특별시 마포구", "01012344321",
+                    OrderStatus.CANCELED.toString(),
+                    PayType.CARD.toString(),
+                    LocalDateTime.now());
         }
+
+        if (orderStatus.equals(OrderStatus.CANCELED)) {
+            return new Order(1L, 1L, 200_000L, List.of(), "유씨", "서울특별시 마포구", "01012344321",
+                    OrderStatus.CANCELED.toString(),
+                    PayType.CARD.toString(),
+                    LocalDateTime.now());
+        }
+
         throw new EntityNotFoundException("Order Not Found - order status: " + orderStatus);
+
     }
 
     public static OrderItem orderItem(Long orderId, Long productId) {
