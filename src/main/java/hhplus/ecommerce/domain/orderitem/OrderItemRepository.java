@@ -1,7 +1,6 @@
 package hhplus.ecommerce.domain.orderitem;
 
-import hhplus.ecommerce.storage.order.OrderItemStatus;
-import hhplus.ecommerce.storage.orderitem.OrderItemEntity;
+import hhplus.ecommerce.storage.orderitem.OrderItemStatus;
 
 import java.util.List;
 
