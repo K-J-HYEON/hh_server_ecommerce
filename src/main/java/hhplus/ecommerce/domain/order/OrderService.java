@@ -3,8 +3,7 @@ package hhplus.ecommerce.domain.order;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.domain.cart.Cart;
 import hhplus.ecommerce.domain.orderitem.OrderItem;
-import hhplus.ecommerce.domain.user.User;
-import hhplus.ecommerce.storage.order.OrderItemStatus;
+import hhplus.ecommerce.storage.orderitem.OrderItemStatus;
 import hhplus.ecommerce.storage.order.OrderStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -22,8 +21,8 @@ public class OrderService {
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public Order order(User user, Cart cart, OrderRequest request) {
-        return orderAppender.append(user, cart, request);
+    public Order order(Long userId, Cart cart, OrderRequest request) {
+        return orderAppender.append(userId, cart, request);
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
