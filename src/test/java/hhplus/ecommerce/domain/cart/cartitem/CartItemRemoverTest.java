@@ -49,7 +49,7 @@ class CartItemRemoverTest {
         User user = TestFixtures.user(1L);
 
         // When
-        cartItemRemover.resetCart(user);
+        cartItemRemover.resetCart(user.id());
 
         // Then
         verify(cartRepository, atLeastOnce()).resetCart(any());
