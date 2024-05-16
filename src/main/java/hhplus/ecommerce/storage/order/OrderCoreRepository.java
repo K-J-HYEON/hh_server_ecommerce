@@ -50,13 +50,14 @@ public class OrderCoreRepository implements OrderRepository {
     }
 
     @Override
-    public Order create(User user, OrderForm orderForm) {
+    public Order create(Long userId, OrderForm orderForm) {
         OrderEntity order = orderJpaRepository.save(new OrderEntity(
-                user.id(),
+                userId,
                 orderForm.payAmount(),
                 orderForm.receiveName(),
                 orderForm.address(),
                 orderForm.phoneNumber(),
+                orderForm.paymentMethod(),
                 OrderStatus.READY,
                 LocalDateTime.now()
         ));
