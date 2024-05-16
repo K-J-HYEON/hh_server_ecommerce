@@ -35,9 +35,9 @@ public class CartCoreRepository implements CartRepository {
     }
 
     @Override
-    public void resetCart(User user) {
-        CartEntity cartEntity = cartJpaRepository.findByUserId(user.id()).orElseGet(() -> {
-            CartEntity cart = new CartEntity(user.id());
+    public void resetCart(Long userId) {
+        CartEntity cartEntity = cartJpaRepository.findByUserId(userId).orElseGet(() -> {
+            CartEntity cart = new CartEntity(userId);
             cartJpaRepository.save(cart);
             return cart;
         });
