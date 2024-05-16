@@ -9,7 +9,8 @@ public record OrderForm(
         List<OrderProduct> orderProducts,
         String receiveName,
         String address,
-        String phoneNumber
+        String phoneNumber,
+        String paymentMethod
 ) {
     public static OrderForm of(OrderRequest request, List<OrderProduct> orderProducts) {
         return new OrderForm(
@@ -17,6 +18,7 @@ public record OrderForm(
                 orderProducts,
                 request.receiver().name(),
                 request.receiver().address(),
-                request.receiver().phoneNumber());
+                request.receiver().phoneNumber(),
+                request.paymentMethod());
     }
 }
