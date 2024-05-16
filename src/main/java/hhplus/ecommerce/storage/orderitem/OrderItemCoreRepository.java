@@ -2,7 +2,6 @@ package hhplus.ecommerce.storage.orderitem;
 
 import hhplus.ecommerce.domain.orderitem.OrderItem;
 import hhplus.ecommerce.domain.orderitem.OrderItemRepository;
-import hhplus.ecommerce.storage.order.OrderItemStatus;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 
