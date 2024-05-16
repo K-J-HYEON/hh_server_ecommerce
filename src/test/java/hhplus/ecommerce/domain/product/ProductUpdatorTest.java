@@ -1,7 +1,6 @@
 package hhplus.ecommerce.domain.product;
 
 import hhplus.ecommerce.TestFixtures;
-import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.orderitem.OrderItem;
 import hhplus.ecommerce.storage.order.OrderStatus;
@@ -48,7 +47,7 @@ class ProductUpdatorTest {
                 50_000L, List.of(item),
                 "이름", "주소",
                 "번호", OrderStatus.PAID.toString(),
-                LocalDateTime.now());
+                "CARD", LocalDateTime.now());
 
         // when
         productUpdator.updateStock(products, order);
