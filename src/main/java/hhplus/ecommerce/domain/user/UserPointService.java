@@ -1,6 +1,6 @@
 package hhplus.ecommerce.domain.user;
 
-import hhplus.ecommerce.common.LockHandler;
+import hhplus.ecommerce.config.LockHandler;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
