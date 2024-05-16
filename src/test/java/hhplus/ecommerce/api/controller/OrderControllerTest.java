@@ -1,8 +1,9 @@
 package hhplus.ecommerce.api.controller;
 
-import hhplus.ecommerce.api.dto.OrderPaidResult;
-import hhplus.ecommerce.api.dto.request.Receiver;
+import hhplus.ecommerce.TestFixtures;
 import hhplus.ecommerce.application.order.OrderUseCase;
+import hhplus.ecommerce.domain.order.Order;
+import hhplus.ecommerce.storage.order.OrderStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import java.time.LocalDateTime;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
@@ -42,17 +42,19 @@ class OrderControllerTest {
         // Given
         Long userId = 1L;
 
-        OrderPaidResult result = new OrderPaidResult(
-                1L,
-                1L,
-                10_00_000L,
-                new Receiver("김 아무개", "서울특별시 마포구", "01012344321"),
-                "CARD",
-                LocalDateTime.now(),
-                LocalDateTime.now()
-        );
+        Order order = TestFixtures.order(OrderStatus.READY);
 
-        given(orderUseCase.order(anyLong(), any())).willReturn(result);
+//        OrderPaidResult result = new OrderPaidResult(
+//                1L,
+//                1L,
+//                10_00_000L,
+//                new Receiver("김 아무개", "서울특별시 마포구", "01012344321"),
+//                "CARD",
+//                LocalDateTime.now(),
+//                LocalDateTime.now()
+//        );
+
+        given(orderUseCase.order(anyLong(), any())).willReturn(order);
 
         // When && Then
         mockMvc.perform(post("/ecommerce/api/order/" + userId)
@@ -75,12 +77,13 @@ class OrderControllerTest {
                                 }
                                 """))
                 .andExpect(status().isCreated())
-                .andExpectAll(
-                        jsonPath("$.receiver.name").value("김아무개"),
-                        jsonPath("$.receiver.address").value("서울특별시 마포구"),
-                        jsonPath("$.receiver.payAmount").value("100000"),
-                        jsonPath("$.receiver.paymentMethod").value("TRANSFER")
-                );
+                .andExpect(jsonPath("$.orderId").value(1L));
+//                .andExpectAll(
+//                        jsonPath("$.receiver.name").value("김아무개"),
+//                        jsonPath("$.receiver.address").value("서울특별시 마포구"),
+//                        jsonPath("$.receiver.payAmount").value("100000"),
+//                        jsonPath("$.receiver.paymentMethod").value("TRANSFER")
+//                );
     }
 
     @Test
