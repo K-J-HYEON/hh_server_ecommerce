@@ -3,7 +3,7 @@ package hhplus.ecommerce.domain.order;
 import hhplus.ecommerce.TestFixtures;
 import hhplus.ecommerce.domain.orderitem.OrderItem;
 import hhplus.ecommerce.domain.orderitem.OrderItemRepository;
-import hhplus.ecommerce.storage.order.OrderItemStatus;
+import hhplus.ecommerce.storage.orderitem.OrderItemStatus;
 import hhplus.ecommerce.storage.order.OrderStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
