@@ -1,7 +1,6 @@
-package hhplus.ecommerce.common;
+package hhplus.ecommerce.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.annotation.Around;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Component;
