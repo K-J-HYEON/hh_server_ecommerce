@@ -3,9 +3,12 @@ package hhplus.ecommerce.domain.order;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.api.dto.request.Receiver;
 import hhplus.ecommerce.domain.cart.Cart;
+import hhplus.ecommerce.domain.orderitem.OrderItem;
+import hhplus.ecommerce.domain.product.Product;
 import hhplus.ecommerce.storage.order.OrderStatus;
 import hhplus.ecommerce.TestFixtures;
 import hhplus.ecommerce.domain.user.User;
+import hhplus.ecommerce.storage.orderitem.OrderItemStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -56,12 +59,30 @@ class OrderServiceTest {
         given(orderAppender.append(any(), any(), any())).willReturn(readyOrder);
 
         // when
-        Order order = orderService.order(user, cart, orderReq);
+        Order order = orderService.order(user.id(), cart, orderReq);
 
         // then
         assertThat(order).isNotNull();
         assertThat(order.payAmount()).isEqualTo(200_000L);
         assertThat(order.orderStatus()).isEqualTo("READY");
+    }
+
+    @Test
+    @DisplayName("주문 아이템 상태 변경")
+    void update_order_item() {
+        // Given
+        Product product = TestFixtures.product("바지");
+        OrderItem item = new OrderItem(
+                1L, 1L,
+                product.id(), product.name(),
+                product.price(), product.orderTotalPrice(5L),
+                5L, OrderItemStatus.CREATED.toString());
+
+        // When
+        orderService.updateItemStatus(item, OrderItemStatus.SUCCESS);
+
+        // Then
+        verify(orderUpdater, atLeastOnce()).changeItemStatus(any(), any());
     }
 
     @Test
