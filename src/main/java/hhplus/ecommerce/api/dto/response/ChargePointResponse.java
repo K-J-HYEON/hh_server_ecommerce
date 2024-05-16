@@ -1,6 +1,5 @@
 package hhplus.ecommerce.api.dto.response;
 
-
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "충전 금액 응답 DTO")
