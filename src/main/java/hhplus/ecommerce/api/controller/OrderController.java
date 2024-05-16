@@ -4,6 +4,7 @@ import hhplus.ecommerce.api.dto.OrderPaidResult;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.api.dto.response.OrderResponse;
 import hhplus.ecommerce.application.order.OrderUseCase;
+import hhplus.ecommerce.domain.order.Order;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class OrderController {
     @ResponseStatus(HttpStatus.CREATED)
     public OrderResponse order(@PathVariable("userId") Long userId,
                                @Valid @RequestBody OrderRequest request) {
-        OrderPaidResult orderPaidResult = orderUseCase.order(userId, request);
-        return OrderResponse.from(orderPaidResult);
+        Order order = orderUseCase.order(userId, request);
+        return OrderResponse.from(order);
     }
 }
