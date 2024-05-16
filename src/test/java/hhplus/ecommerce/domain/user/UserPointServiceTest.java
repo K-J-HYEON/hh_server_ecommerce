@@ -1,7 +1,7 @@
 package hhplus.ecommerce.domain.user;
 
 import hhplus.ecommerce.TestFixtures;
-import hhplus.ecommerce.common.LockHandler;
+import hhplus.ecommerce.config.LockHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
