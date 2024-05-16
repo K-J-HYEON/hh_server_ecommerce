@@ -5,5 +5,5 @@ import hhplus.ecommerce.domain.user.User;
 public interface CartRepository {
     Cart findByUserId(Long userId);
 
-    void resetCart(User user);
+    void resetCart(Long userId);
 }
