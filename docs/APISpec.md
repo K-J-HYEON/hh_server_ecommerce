@@ -147,10 +147,13 @@
                 "code": "OK",
                 "products": [
                     {
-                        "productId": 1,
-                        "productName": "테스트 상품1",
-                        "price": 1000,
-                        
+                        "id": 1,
+                        "name": "신발",
+                        "price": 1000
+                    },
+                    
+                    {
+                    ...
                     }
                 ]
             }
@@ -176,12 +179,12 @@
                 "code": "OK",
                 "products": [
                     {
-                        "productId": 1,
-                        "productName": "테스트 상품1",
+                        "id": 1,
+                        "name": "신발",
                         "price": 1000,
-                        "stock": 10
-                        "size": "XL"
-                        "color": "베이직"
+                        "stockCount": 10,
+                        "size": "270",
+                        "color": "화이트"
                     }
                 ]
             }
@@ -204,47 +207,50 @@
         ```json
         {
             "code": "OK",
-            "products": [
-                {
-                    "productId": 1,
-                    "name": "테스트상품1",
-                    "price": 1000,
-                    "stock": 10,
-                    "threeDaysCount": "3",
-                    "rank": "1",
+            "products": 
+            [
+                    {
+                        "id": 1,
+                        "name": "신발",
+                        "price": 1000,
+                        "stockCount": 10,
+                        "rank": "1"
+                    },
 
-                    "productId": 2,
-                    "name": "테스트상품2",
-                    "price": 1000,
-                    "stock": 10,
-                    "threeDaysCount": "3",
-                    "rank": "2",
-
-
-                    "productId": 4,
-                    "name": "테스트상품4",
-                    "price": 1000,
-                    "stock": 10,
-                    "threeDaysCount": "3",
-                    "rank": "3",
+                    {
+                        "id": 2,
+                        "name": "바지",
+                        "price": 1000,
+                        "stockCount": 10,
+                        "rank": "2"
+                    },
 
 
-                    "productId": 3,
-                    "name": "테스트상품3",
-                    "price": 1000,
-                    "stock": 10,
-                    "threeDaysCount": "3",
-                    "rank": "4",
+                    {
+                        "id": 4,
+                        "name": "아우터",
+                        "price": 1000,
+                        "stockCount": 10,
+                        "rank": "3"
+                    },
 
 
-                    "productId": 6,
-                    "name": "테스트상품6",
-                    "price": 1000,
-                    "stock": 10,
-                    "threeDaysCount": "3",
-                    "rank": "5"
-        
-                }
+                    {
+                        "id": 3,
+                        "name": "박스티",
+                        "price": 1000,
+                        "stockCount": 10,
+                        "rank": "4"
+                    },
+
+
+                    {
+                        "id": 6,
+                        "name": "티셔츠",
+                        "price": 1000,
+                        "stockCount": 10,
+                        "rank": "5"
+                    }
             ]
         }
       ```
@@ -264,81 +270,69 @@
 - Body:
   ```json
     
-        [
-            {
-                "productId": 1,
-                "productName": "sample1",
-                "count": 1,
-                "price": 1000
-        
-            },
-        
-            {
-                "productId": 2,
-                "productName": "sample2",
-                "count": 2,
-                "price": 2000
-            }
-        ]
+         {
+            "receiver": {
+            "name": "김 아무개",
+            "address": "서울시 마포구",
+            "phoneNumber": "01012344321"
+         },
+            "products": [
+         {
+            "id": 1,
+            "quantity": 1
+         },
+           ...
+         ],
+            "paymentAmount": 10000,
+            "paymentMethod": "CARD"
+         }
   ```
 
-- Response
-    - 200 OK: 성공적으로 주문 및 결제
-        ```json
-            {
-                "userId": 1,
-                "orderId": 1,
-                "paymentId": 1,
-                "point": 10000,
-                "paymentPoint": 3000,
-                "aftePoint": 7000,
-                "order":
-                [
-                    {
-                        "productId": 1,
-                        "productName": "sample1",
-                        "count": 1,
-                        "price": 1000
-        
-                    },
-        
-                    {
-                        "productId": 2,
-                        "productName": "sample2",
-                        "count": 2,
-                        "price": 2000
-                    }
-                ]
-            }
-        ```
-    - 400 Bad Request: 주문 상품 재고가 부족한 경우
-        ```json
-        {
-            "code": "BAD_REQUEST",
-            "message": "This OrderItem is out of stock. "
-        }
-        ```
-    - 404 Not Found User: 유저 정보가 없는 경우
-        ```json
-        {
-            "code": "NOT_FOUND_USER",
-            "message": "User Information is missing"
-        }
-        ```
-    - 404 Not Found Product: 주문 상품 정보가 없는 경우
-        ```json
-        {
-            "code": "NOT_FOUND_PRODUCT",
-            "message": "This OrderItem Information is not found"
-        }
-        ```
-    - 404 Bad Request: 포인트가 없는 경우
-        ```json
-        {
-            "code": "NOT_FOUND_POINT",
-            "message": "Point is not found"
-        }
-        ```
+  - Response
+      - 200 OK: 성공적으로 주문 및 결제
+          ```json
+              {
+                   "orderId": 1,
+                   "paymentId": 1,
+                   "payAmount": 10000,
+                   "receiver": {
+                        "name": "김 아무개",
+                        "address": "서울시 마포구",
+                        "phoneNumber": "01012344321"
+              },
+                   "paymentMethod": "CARD",
+                   "orderedAt": "2024-04-11 20:57:05",
+                   "paidAt": "2024-04-11 20:57:05"
+              }
+          ```
+      - 400 Bad Request: 주문 상품 재고가 부족한 경우
+          ```json
+          {
+              "code": "BAD_REQUEST",
+              "message": "This OrderItem is out of stock. "
+          }
+          ```
+      - 404 Not Found User: 유저 정보가 없는 경우
+          ```json
+          {
+              "code": "NOT_FOUND_USER",
+              "message": "User Information is missing"
+          }
+          ```
+      - 404 Not Found Product: 주문 상품 정보가 없는 경우
+          ```json
+          {
+              "code": "NOT_FOUND_PRODUCT",
+              "message": "This OrderItem Information is not found"
+          }
+          ```
+      - 404 Bad Request: 포인트가 없는 경우
+          ```json
+          {
+              "code": "NOT_FOUND_POINT",
+              "message": "Point is not found"
+          }
+          ```
 </details>
 
 
@@ -357,15 +351,15 @@
         [
             {
                 "productId": 1,
-                "productName": "sample1",
-                "count": 1,
+                "name": "신발",
+                "stockCount": 1,
                 "price": 1000
             },
     
             {
                 "productId": 2,
-                "productName": "sample2",
-                "count": 1,
+                "name": "바지",
+                "stockCount": 1,
                 "price": 2000
             }
         ]
@@ -375,22 +369,22 @@
         ```json
         {
             "code": "OK",
-            "cartId" : 1,
+            "id" : 1,
             "userId" : 1,
             "totalPrice" : 3000,
             "cart":
             [
                 {
                     "productId" : 1,
-                    "productName" : "sample1",
-                    "count" : 1,
+                    "name" : "신발",
+                    "stockCount" : 1,
                     "price" : 1000
                 },
         
                 {
                     "productId" : 2,
-                    "productName" : "sample2",
-                    "count" : 1,
+                    "name" : "바지",
+                    "stockCount" : 1,
                     "price" : 2000
                 }
             ]
@@ -414,15 +408,15 @@
         [
             {
                 "productId": 3,
-                "productName": "sample3",
-                "count": 3,
+                "name": "신발",
+                "stockCount": 3,
                 "price": 3000
             },
   
             {
                 "productId": 4,
-                "productName": "sample4",
-                "count": 4,
+                "name": "바지",
+                "stockCount": 4,
                 "price": 4000
             }
         ]
@@ -441,15 +435,15 @@
                 	[
                 		{
                 			"productId" : 3,
-                			"productName" : "sample3",
-                			"count" : 3,
+                			"name" : "신발",
+                			"stockCount" : 3,
                 			"price" : 3000
                 		},
       
                 		{
                 			"productId" : 4,
-                			"productName" : "sample4",
-                			"count" : 4,
+                			"name" : "바지",
+                			"stockCount" : 4,
                 			"price" : 4000
                 		}
                 	]
@@ -478,15 +472,15 @@
                 "cart": [
                     {
                         "productId": 1,
-                        "productName": "sample1",
-                        "count": 3,
+                        "name": "신발",
+                        "stockCount": 3,
                         "price": 1000
                     },
         
                     {
                         "productId": 2,
-                        "productName": "sample2",
-                        "count": 2,
+                        "name": "바지",
+                        "stockCount": 2,
                         "price": 2000
                     }
                 ]
