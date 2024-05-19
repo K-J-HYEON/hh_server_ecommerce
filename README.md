@@ -17,3 +17,4 @@
 - ### [Git Branch 전략](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/feature/git_workflow_cicd/docs/GitBranch.md)
 - ### [동시성 문제 처리 고민](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/feature/simultaneous_issues_handling/docs/SimultaneousIssue.md)
 - ### [이벤트 기반 애플리케이션 로직 분리 고려](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/feature/simultaneous_issues_handling/docs/ApplicationEventHandling.md)
+- ### [Ecommerce - BackLog](https://github.com/users/K-J-HYEON/projects/1)
