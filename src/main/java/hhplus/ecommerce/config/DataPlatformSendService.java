@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class DataPlatformSendService {
-
     private final OkHttpClient client = new OkHttpClient();
 
     public void send(Order order, Payment payment) {
