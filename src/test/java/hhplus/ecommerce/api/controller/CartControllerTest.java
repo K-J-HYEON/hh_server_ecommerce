@@ -30,7 +30,7 @@ class CartControllerTest {
         Long cartId = 1L;
 
         // when
-        mockMvc.perform(post("/ecommerce/api/cart/" + cartId + "/user/" + userId)
+        mockMvc.perform(post("/ecommerce/api/cart/" + cartId + userId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
