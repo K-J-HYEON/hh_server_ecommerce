@@ -1,9 +1,6 @@
 package hhplus.ecommerce.domain.product;
 
-
-import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.domain.orderitem.OrderItem;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
