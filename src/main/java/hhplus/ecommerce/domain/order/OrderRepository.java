@@ -1,6 +1,5 @@
 package hhplus.ecommerce.domain.order;
 
-import hhplus.ecommerce.domain.user.User;
 import hhplus.ecommerce.storage.order.OrderStatus;
 
 public interface OrderRepository {
