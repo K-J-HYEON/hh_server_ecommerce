@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -31,6 +30,7 @@ public class CartItemEntity extends BaseTimeEntity {
     private Long quantity;
 
     private LocalDateTime createAt;
+
 
     public CartItemEntity(Long cartId, Long productId, Long quantity) {
         this.cartId = cartId;
