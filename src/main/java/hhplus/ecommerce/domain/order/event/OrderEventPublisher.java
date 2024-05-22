@@ -1,7 +1,5 @@
 package hhplus.ecommerce.domain.order.event;
 
-
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
