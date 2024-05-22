@@ -2,7 +2,6 @@ package hhplus.ecommerce.domain.order;
 
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.domain.cart.Cart;
-import hhplus.ecommerce.domain.user.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
