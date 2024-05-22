@@ -1,7 +1,6 @@
 package hhplus.ecommerce.domain.order;
 
 import hhplus.ecommerce.api.dto.request.OrderRequest;
-
 import java.util.List;
 
 public record OrderForm(
