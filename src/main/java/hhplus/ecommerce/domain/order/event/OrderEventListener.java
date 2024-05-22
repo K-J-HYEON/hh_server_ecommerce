@@ -2,8 +2,6 @@ package hhplus.ecommerce.domain.order.event;
 
 import hhplus.ecommerce.domain.product.StockService;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 
