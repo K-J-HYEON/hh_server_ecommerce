@@ -4,7 +4,6 @@ import hhplus.ecommerce.domain.cart.Cart;
 import hhplus.ecommerce.domain.cart.cartitem.CartItem;
 import hhplus.ecommerce.domain.product.ProductReader;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
