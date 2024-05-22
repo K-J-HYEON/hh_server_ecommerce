@@ -2,7 +2,6 @@ package hhplus.ecommerce.storage.cart;
 
 import hhplus.ecommerce.domain.cart.Cart;
 import hhplus.ecommerce.domain.cart.CartRepository;
-import hhplus.ecommerce.domain.user.User;
 import hhplus.ecommerce.storage.cart.cartitem.CartItemEntity;
 import hhplus.ecommerce.storage.cart.cartitem.CartItemJpaRepository;
 import org.springframework.stereotype.Repository;
