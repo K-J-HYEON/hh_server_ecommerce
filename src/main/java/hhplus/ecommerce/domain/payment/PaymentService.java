@@ -1,12 +1,10 @@
 package hhplus.ecommerce.domain.payment;
 
-import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.order.OrderUpdater;
 import hhplus.ecommerce.domain.payment.event.PaymentEventPublisher;
 import hhplus.ecommerce.domain.payment.event.PaymentFailEvent;
 import hhplus.ecommerce.domain.payment.event.PaymentSuccessEvent;
-import hhplus.ecommerce.domain.user.User;
 import hhplus.ecommerce.domain.user.UserPointManager;
 import hhplus.ecommerce.storage.order.OrderStatus;
 import org.springframework.stereotype.Service;
