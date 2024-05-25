@@ -8,6 +8,10 @@
 - JPA
 - gradle
 
+<a href="https://hhpluscertificateofcompletion.oopy.io/">
+  <img src="https://static.spartacodingclub.kr/hanghae99/plus/completion/badge_purple.svg" />
+</a>
+
 ## 프로젝트 자료
 - ### [개발환경 및 마일스톤](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/main/docs/DevEnv%26MileStone.md)
 - ### [Sequence Diagram & Flow Chart](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/main/docs/SequenceAndFlowChart.md)
