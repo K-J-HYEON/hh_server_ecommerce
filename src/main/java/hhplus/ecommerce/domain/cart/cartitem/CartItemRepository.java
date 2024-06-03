@@ -2,7 +2,6 @@ package hhplus.ecommerce.domain.cart.cartitem;
 
 import hhplus.ecommerce.domain.cart.Cart;
 import hhplus.ecommerce.storage.cart.cartitem.CartItemEntity;
-
 import java.util.List;
 import java.util.Optional;
 
