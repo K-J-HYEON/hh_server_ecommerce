@@ -1,7 +1,6 @@
 package hhplus.ecommerce.domain.cart.cartitem;
 
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 @Component
