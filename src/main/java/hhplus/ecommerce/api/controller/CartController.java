@@ -24,7 +24,7 @@ public class CartController {
     }
 
     @Tag(name = "장바구니 조회 API", description = "장바구니 조회 API 입니다.")
-    @GetMapping("/{userId}")
+    @GetMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CartItemResponse cart(@PathVariable("userId") Long userId) {
         CartItemResult cartItemResult = cartUseCase.getCartItems(userId);
