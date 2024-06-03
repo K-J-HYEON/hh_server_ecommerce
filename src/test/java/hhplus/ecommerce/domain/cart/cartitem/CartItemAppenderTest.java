@@ -26,7 +26,6 @@ class CartItemAppenderTest {
     @BeforeEach
     void setUp() {
         cartItemRepository = mock(CartItemRepository.class);
-
         cartItemAppender = new CartItemAppender(cartItemRepository);
     }
 
