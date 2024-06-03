@@ -8,10 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
