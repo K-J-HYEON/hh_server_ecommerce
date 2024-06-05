@@ -5,7 +5,6 @@ import hhplus.ecommerce.domain.cart.Cart;
 import hhplus.ecommerce.domain.cart.CartService;
 import hhplus.ecommerce.domain.order.Order;
 import hhplus.ecommerce.domain.order.OrderService;
-import hhplus.ecommerce.domain.order.event.OrderEventListener;
 import hhplus.ecommerce.domain.order.event.OrderEventPublisher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
