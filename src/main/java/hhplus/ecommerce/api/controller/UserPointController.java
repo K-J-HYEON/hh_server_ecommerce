@@ -9,7 +9,7 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/ecommerce/api/point")
+@RequestMapping("/ecommerce/api/points")
 public class UserPointController {
 
     private final UserPointService userPointService;
