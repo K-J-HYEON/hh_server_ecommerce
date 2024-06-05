@@ -62,7 +62,7 @@
 
 - Request:
     - Method: POST
-    - URL: /ecommerce/api/point/charge/{userId}
+    - URL: /ecommerce/api/points/charge/{userId}
     - Headers:
         - Content-Type: application/json
 
@@ -106,7 +106,7 @@
 
 - Request:
     - Method: GET
-    - URL: /ecommerce/api/point/{userId}
+    - URL: /ecommerce/api/points/{userId}
     - Headers:
         - Content-Type: application/json
 
@@ -135,7 +135,7 @@
 
 - Request:
     - Method: GET
-    - URL: /ecommerce/api/product
+    - URL: /ecommerce/api/products
     - Headers:
         - Content-Type: application/json
 
@@ -162,7 +162,7 @@
 
 - Request:
     - Method: GET
-    - URL: /ecommerce/api/product/{productId}
+    - URL: /ecommerce/api/products/{productId}
     - Headers:
         - Content-Type: application/json
 
@@ -187,7 +187,7 @@
 
 - Request
     - Method: GET
-    - URL: /ecommerce/api/product/popular
+    - URL: /ecommerce/api/products/popular
     - Headers:
         - Content-Type: application/json
 
@@ -213,7 +213,7 @@
 
 - Request
     - Method: POST
-    - URL: /ecommerce/order/{orderId}/{userId}
+    - URL: /ecommerce/orders/{orderId}/{userId}
     - Headers:
         - Content-Type: application/json
 
@@ -291,7 +291,7 @@
 
 - Request
     - Method: POST
-    - URL: /ecommerce/api/cart/{userId}
+    - URL: /ecommerce/api/carts/{userId}
     - Headers:
         - Content-Type: application/json
 
@@ -329,7 +329,7 @@
 
 - Request
     - Method: POST
-    - URL: /ecommerce/api/cart/deleteCart/{userId}
+    - URL: /ecommerce/api/carts/deleteCart/{userId}
     - Headers:
         - Content-Type: application/json
 
@@ -357,7 +357,7 @@
 
 - Request
     - Method: GET
-    - URL: /ecommerce/api/cart
+    - URL: /ecommerce/api/carts
     - Headers:
         - Content-Type: application/json
 - Response
