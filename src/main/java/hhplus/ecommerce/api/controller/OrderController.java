@@ -1,6 +1,5 @@
 package hhplus.ecommerce.api.controller;
 
-import hhplus.ecommerce.api.dto.OrderPaidResult;
 import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.api.dto.response.OrderResponse;
 import hhplus.ecommerce.application.order.OrderUseCase;
