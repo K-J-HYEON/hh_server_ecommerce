@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/ecommerce/api/cart")
+@RequestMapping("/ecommerce/api/carts")
 public class CartController {
 
     private CartUseCase cartUseCase;
