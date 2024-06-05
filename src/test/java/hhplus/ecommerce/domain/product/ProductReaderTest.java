@@ -1,7 +1,6 @@
 package hhplus.ecommerce.domain.product;
 
 import hhplus.ecommerce.TestFixtures;
-import hhplus.ecommerce.api.dto.request.OrderRequest;
 import hhplus.ecommerce.storage.product.ProductEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
