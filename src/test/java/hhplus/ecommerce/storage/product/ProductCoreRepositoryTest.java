@@ -1,27 +1,27 @@
 package hhplus.ecommerce.storage.product;
 
 import jakarta.persistence.EntityNotFoundException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
 
 @SpringBootTest
 class ProductCoreRepositoryTest {
 
-//    @Mock
+    @MockBean
     private ProductJpaRepository productJpaRepository;
 
-//    @InjectMocks
+    @InjectMocks
     private ProductCoreRepository productCoreRepository;
 
-    @BeforeEach
-    void setUp() {
-        productJpaRepository = mock(ProductJpaRepository.class);
-        productCoreRepository = new ProductCoreRepository(productJpaRepository);
-    }
+//    @BeforeEach
+//    void setUp() {
+//        productJpaRepository = mock(ProductJpaRepository.class);
+//        productCoreRepository = new ProductCoreRepository(productJpaRepository);
+//    }
 
     @Test
     @DisplayName("상품을 찾지 못하였을 경우 에러 발생")
