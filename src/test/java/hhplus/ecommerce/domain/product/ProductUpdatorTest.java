@@ -15,11 +15,11 @@ import java.util.List;
 
 class ProductUpdatorTest {
 
-    @MockBean
-    private ProductRepository productRepository;
-
     @InjectMocks
     private ProductUpdator productUpdator;
+
+    @MockBean
+    private ProductRepository productRepository;
 
     @Test
     @DisplayName("상품 재고 업데이트")
