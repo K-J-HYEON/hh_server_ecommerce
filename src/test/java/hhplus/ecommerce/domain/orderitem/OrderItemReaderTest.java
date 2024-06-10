@@ -4,6 +4,9 @@ import hhplus.ecommerce.TestFixtures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,8 +16,10 @@ import static org.mockito.Mockito.mock;
 
 class OrderItemReaderTest {
 
+    @InjectMocks
     private OrderItemRepository orderItemRepository;
 
+    @MockBean
     private OrderItemReader orderItemReader;
 
     @BeforeEach
