@@ -33,10 +33,10 @@ public class OrderEventHandler {
                 .post(body)
                 .build();
 
-        try {
-            client.newCall(request).execute();
-        } catch (Exception e) {
-            log.error("API 요청 실패, {}", e.getMessage());
-        }
+//        try {
+//            client.newCall(request).execute();
+//        } catch (Exception e) {
+//            log.error("API 요청 실패, {}", e.getMessage());
+//        }
     }
 }
