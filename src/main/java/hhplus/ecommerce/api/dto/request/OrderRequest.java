@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
-
 @Schema(description = "주문 요청 DTO")
 public record OrderRequest(
 
