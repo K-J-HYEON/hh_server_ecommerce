@@ -19,5 +19,5 @@
 - ### [Swagger & ERD](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/main/docs/SwaggerAndERD.md)
 - ### [API Spec](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/main/docs/APISpec.md)
 - ### [Git Branch 전략 초안](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/main/docs/GitBranch.md)
-- ### [동시성 문제 처리 고민](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/main/docs/Simultaneous_issues_handling.md)
+- ### [동시성 문제 처리 고민](https://github.com/K-J-HYEON/hh_3wk_ecommerce/blob/main/docs/SimultaneousIssue.md)
 - ### [Ecommerce - BackLog](https://github.com/users/K-J-HYEON/projects/1)
