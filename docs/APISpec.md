@@ -32,8 +32,8 @@
 - 데이터 분석을 위해 결제 성공 시에 실시간으로 주문 정보를 데이터 플랫폼에 전송해야 합니다. ( 데이터 플랫폼이 어플리케이션 `외부` 라는 가정만 지켜 작업해 주시면 됩니다 )
 
 > 데이터 플랫폼으로의 전송 기능은 Mock API, Fake Module 등 다양한 방법으로 접근해 봅니다.
-4️⃣ **상위 상품 조회 API**
 
+4️⃣ **상위 상품 조회 API**
 - 최근 3일간 가장 많이 팔린 상위 5개 상품 정보를 제공하는 API 를 작성합니다.
 - 통계 정보를 다루기 위한 기술적 고민을 충분히 해보도록 합니다.
 
@@ -62,7 +62,7 @@
 
 - Request:
     - Method: POST
-    - URL: /ecommerce/api/point/charge/{userId}
+    - URL: /ecommerce/api/points/charge/{userId}
     - Headers:
         - Content-Type: application/json
 
@@ -79,7 +79,7 @@
         ```json
             {
                 "code": "OK",
-                "point": 100
+                "balance": 100
             }
         ```
 
@@ -87,7 +87,7 @@
         ```json
         {
             "code": "BAD_REQUEST",
-            "message": "Requested Point is not appropriate"
+            "message": "Requested Point is not appropriate"
         }
         ```
     - 404 User Not Found: 유저 정보가 없는 경우
@@ -106,7 +106,7 @@
 
 - Request:
     - Method: GET
-    - URL: /ecommerce/api/point/{userId}
+    - URL: /ecommerce/api/points/{userId}
     - Headers:
         - Content-Type: application/json
 
@@ -115,7 +115,7 @@
     ```json
             {
                 "code": "OK",
-                "point": 100
+                "balance" : 50000
             }
     ```
 
@@ -135,7 +135,7 @@
 
 - Request:
     - Method: GET
-    - URL: /ecommerce/api/product
+    - URL: /ecommerce/api/products
     - Headers:
         - Content-Type: application/json
 
@@ -144,15 +144,13 @@
         ```json
     
             {
-                "code": "OK",
-                "products": [
-                    {
-                        "productId": 1,
-                        "productName": "테스트 상품1",
-                        "price": 1000,
-                        
-                    }
-                ]
+                 "products" : [
+            {
+                        "id" : 1,
+                        "name" : "신발",
+                        "price" : 90000,
+                      }...
+                 ]
             }
         ```
 </details>
@@ -164,7 +162,7 @@
 
 - Request:
     - Method: GET
-    - URL: /ecommerce/api/product/{productId}
+    - URL: /ecommerce/api/products/{productId}
     - Headers:
         - Content-Type: application/json
 
@@ -173,18 +171,12 @@
         ```json
     
             {
-                "code": "OK",
-                "products": [
-                    {
-                        "productId": 1,
-                        "productName": "테스트 상품1",
-                        "price": 1000,
-                        "stock": 10
-                        "size": "XL"
-                        "color": "베이직"
-                    }
-                ]
-            }
+                 "id" : 2,
+                 "name" : "바지",
+                 "price" : 10000,
+                 "stockQuantity" : 50,
+                 "description" : "베이직"
+             }
         ```
 </details>
 
@@ -195,7 +187,7 @@
 
 - Request
     - Method: GET
-    - URL: /ecommerce/api/product/best
+    - URL: /ecommerce/api/products/popular
     - Headers:
         - Content-Type: application/json
 
@@ -203,51 +195,15 @@
     - 200 OK: 성공적으로 조회
         ```json
         {
-            "code": "OK",
-            "products": [
-                {
-                    "productId": 1,
-                    "name": "테스트상품1",
-                    "price": 1000,
-                    "stock": 10,
-                    "threeDaysCount": "3",
-                    "rank": "1",
-
-                    "productId": 2,
-                    "name": "테스트상품2",
-                    "price": 1000,
-                    "stock": 10,
-                    "threeDaysCount": "3",
-                    "rank": "2",
-
-
-                    "productId": 4,
-                    "name": "테스트상품4",
-                    "price": 1000,
-                    "stock": 10,
-                    "threeDaysCount": "3",
-                    "rank": "3",
-
-
-                    "productId": 3,
-                    "name": "테스트상품3",
-                    "price": 1000,
-                    "stock": 10,
-                    "threeDaysCount": "3",
-                    "rank": "4",
-
-
-                    "productId": 6,
-                    "name": "테스트상품6",
-                    "price": 1000,
-                    "stock": 10,
-                    "threeDaysCount": "3",
-                    "rank": "5"
-        
-                }
-            ]
-        }
-    ```
+            "products" : [
+                      {
+                           "id" : 123,
+                           "name" : "후드티",
+                           "price" : 52000,
+                      }...
+                 ]
+         }
+      ```
 </details>
 
 
@@ -257,88 +213,76 @@
 
 - Request
     - Method: POST
-    - URL: /ecommerce/order/{orderId}/{userId}
+    - URL: /ecommerce/orders/{orderId}/{userId}
     - Headers:
         - Content-Type: application/json
 
 - Body:
   ```json
     
-        [
-            {
-                "productId": 1,
-                "productName": "sample1",
-                "count": 1,
-                "price": 1000
-        
-            },
-        
-            {
-                "productId": 2,
-                "productName": "sample2",
-                "count": 2,
-                "price": 2000
-            }
-        ]
+         {
+            "receiver": {
+            "name": "김 아무개",
+            "address": "서울시 마포구",
+            "phoneNumber": "01012344321"
+         },
+            "products": [
+         {
+            "id": 1,
+            "quantity": 1
+         },
+           ...
+         ],
+            "paymentAmount": 10000,
+            "paymentMethod": "CARD"
+         }
   ```
 
-- Response
-    - 200 OK: 성공적으로 주문 및 결제
-        ```json
+    - Response
+        - 200 OK: 성공적으로 주문 및 결제
+            ```json
+                {
+                     "orderId": 1,
+                     "paymentId": 1,
+                     "payAmount": 10000,
+                     "receiver": {
+                          "name": "김 아무개",
+                          "address": "서울시 마포구",
+                          "phoneNumber": "01012344321"
+                },
+                     "paymentMethod": "CARD",
+                     "orderedAt": "2024-04-11 20:57:05",
+                     "paidAt": "2024-04-11 20:57:05"
+                }
+            ```
+        - 400 Bad Request: 주문 상품 재고가 부족한 경우
+            ```json
             {
-                "userId": 1,
-                "orderId": 1,
-                "paymentId": 1,
-                "point": 10000,
-                "paymentPoint": 3000,
-                "aftePoint": 7000,
-                "order":
-                [
-                    {
-                        "productId": 1,
-                        "productName": "sample1",
-                        "count": 1,
-                        "price": 1000
-        
-                    },
-        
-                    {
-                        "productId": 2,
-                        "productName": "sample2",
-                        "count": 2,
-                        "price": 2000
-                    }
-                ]
+                "code": "BAD_REQUEST",
+                "message": "This OrderItem is out of stock. "
             }
-        ```
-    - 400 Bad Request: 주문 상품 재고가 부족한 경우
-        ```json
-        {
-            "code": "BAD_REQUEST",
-            "message": "This OrderItem is out of stock. "
-        }
-        ```
-    - 404 Not Found User: 유저 정보가 없는 경우
-        ```json
-        {
-            "code": "NOT_FOUND_USER",
-            "message": "User Information is missing"
-        }
-        ```
-    - 404 Not Found Product: 주문 상품 정보가 없는 경우
-        ```json
-        {
-            "code": "NOT_FOUND_PRODUCT",
-            "message": "This OrderItem Information is not found"
-        }
-        ```
-    - 404 Bad Request: 포인트가 없는 경우
-        ```json
-        {
-            "code": "NOT_FOUND_POINT",
-            "message": "Point is not found"
-        }
-        ```
+            ```
+        - 404 Not Found User: 유저 정보가 없는 경우
+            ```json
+            {
+                "code": "NOT_FOUND_USER",
+                "message": "User Information is missing"
+            }
+            ```
+        - 404 Not Found Product: 주문 상품 정보가 없는 경우
+            ```json
+            {
+                "code": "NOT_FOUND_PRODUCT",
+                "message": "This OrderItem Information is not found"
+            }
+            ```
+        - 404 Bad Request: 포인트가 없는 경우
+            ```json
+            {
+                "code": "NOT_FOUND_POINT",
+                "message": "Point is not found"
+            }
+            ```
 </details>
 
 
@@ -347,54 +291,34 @@
 
 - Request
     - Method: POST
-    - URL: /ecommerce/api/cart/{cartId}/user/{userId}
+    - URL: /ecommerce/api/carts/{userId}
     - Headers:
         - Content-Type: application/json
 
 - Body:
     ```json
     
-        [
-            {
-                "productId": 1,
-                "productName": "sample1",
-                "count": 1,
-                "price": 1000
-            },
-    
-            {
-                "productId": 2,
-                "productName": "sample2",
-                "count": 1,
-                "price": 2000
-            }
-        ]
+        {
+             "cartItems" : 
+                 [
+                         {
+                             "itemId" : 1L,
+                             "quantity" : 2
+                         },
+  
+                         {
+                             "itemId" : 2L,
+                             "quantity" : 1
+                         }...
+                 ]
+        }
     ```    
 - Response
     - 200 OK: 성공적으로 추가
         ```json
-        {
-            "code": "OK",
-            "cartId" : 1,
-            "userId" : 1,
-            "totalPrice" : 3000,
-            "cart":
-            [
-                {
-                    "productId" : 1,
-                    "productName" : "sample1",
-                    "count" : 1,
-                    "price" : 1000
-                },
-        
-                {
-                    "productId" : 2,
-                    "productName" : "sample2",
-                    "count" : 1,
-                    "price" : 2000
-                }
-            ]
-        }
+          {
+               "message" : "SUCCESS"
+          }
         ```
 </details>
 
@@ -405,27 +329,15 @@
 
 - Request
     - Method: POST
-    - URL: /ecommerce/api/cart/{cartId}/user/{userId}
+    - URL: /ecommerce/api/carts/deleteCart/{userId}
     - Headers:
         - Content-Type: application/json
 
 - Body
   ```json
-        [
-            {
-                "productId": 3,
-                "productName": "sample3",
-                "count": 3,
-                "price": 3000
-            },
-  
-            {
-                "productId": 4,
-                "productName": "sample4",
-                "count": 4,
-                "price": 4000
-            }
-        ]
+          {
+             "cartItemIdList" : [1, 2]
+          }
   ```
 
 
@@ -433,27 +345,8 @@
     - 200 OK: 성공적으로 삭제
       ```json
           {
-                "code": "OK",
-            	  "cartId" : 1,
-                "userId" : 1,
-            	  "totalPrice" : 25000,
-            	  "cart":
-                	[
-                		{
-                			"productId" : 3,
-                			"productName" : "sample3",
-                			"count" : 3,
-                			"price" : 3000
-                		},
-      
-                		{
-                			"productId" : 4,
-                			"productName" : "sample4",
-                			"count" : 4,
-                			"price" : 4000
-                		}
-                	]
-            }
+               "message" : "SUCCESS"
+          }
         ```
 </details>
 
@@ -464,32 +357,27 @@
 
 - Request
     - Method: GET
-    - URL: /ecommerce/api/cart/{cartId}/user/{userId}
+    - URL: /ecommerce/api/carts
     - Headers:
         - Content-Type: application/json
 - Response
     - 200 OK: 성공적으로 조회
         ```json
             {
-                "code": "OK",
-                "cartId": 1,
-                "userId": 1,
-                "totalPrice": 5000,
-                "cart": [
-                    {
-                        "productId": 1,
-                        "productName": "sample1",
-                        "count": 3,
-                        "price": 1000
-                    },
-        
-                    {
-                        "productId": 2,
-                        "productName": "sample2",
-                        "count": 2,
-                        "price": 2000
-                    }
-                ]
+                 "cartItems" : 
+               [
+                      {
+                           "cartItemId" : 1L,
+                           "product" : {
+                                "id" : 1L,
+                                "name" : "신발"
+                      },
+                           "unitPrice" : 90000,
+                           "quantity" : 2,
+                           "totalPrice" 180000
+                      } ...
+               ],
+                           "totalPrice" : 180000
             }
         ```
 </details>
