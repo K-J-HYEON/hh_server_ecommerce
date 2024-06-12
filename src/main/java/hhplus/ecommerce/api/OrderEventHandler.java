@@ -10,6 +10,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import java.util.logging.ErrorManager;
 
 @Component
 @Slf4j
