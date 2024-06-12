@@ -1,5 +1,7 @@
 package hhplus.ecommerce.domain.product;
 
+import hhplus.ecommerce.storage.product.ProductEntity;
+
 public record Product(
         Long id,
         String name,
