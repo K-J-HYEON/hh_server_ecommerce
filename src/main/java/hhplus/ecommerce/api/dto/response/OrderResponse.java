@@ -28,7 +28,7 @@ public record OrderResponse(
         @Schema(description = "주문 날짜")
         String orderedAt,
 
-        @Schema(description = "겳제 날짜")
+        @Schema(description = "결제 날짜")
         String paidAt
 ) {
     private final static DateTimeFormatter DATE_TIME_FORMATTER =
