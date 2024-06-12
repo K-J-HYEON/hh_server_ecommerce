@@ -14,7 +14,6 @@
 1. 하나의 로직에서 검증, 재고차감, 주문, 결제 등 많은 관심사를 하나의 작업으로 처리할 수 있음
 2. Spring : ApplicationEventPublisher & EventListener & TransactionEventListener
 
-
 ### Event 기반 흐름 제어
 1. 구독하는 모델링을 통해서 Event의 강한 결합을 분리
 2. Event에 의해 자기의 관심사만 수행하도록 비즈니스 로직간의 의존 느슨하게 함
