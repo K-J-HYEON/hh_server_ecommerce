@@ -15,9 +15,9 @@ public class ProductValidator {
 
     public void checkPossibleAddToCart(List<NewCartItem> newCartItems) {
         for (NewCartItem newCartItem : newCartItems) {
-            Product product = productRepository.findById(newCartItem.productId())
-                    .orElseThrow(() -> new EntityNotFoundException("상품 정보를 찾지 못했습니다. - id: " + newCartItem.productId()))
-                    .toProduct();
+            Product product = productRepository.findById(newCartItem.productId());
+//                    .orElseThrow(() -> new EntityNotFoundException("상품 정보를 찾지 못했습니다. - id: " + newCartItem.productId()))
+//                    .toProduct();
 
             product.isEnoughProductStockQuantityForOrder(newCartItem.quantity());
         }
