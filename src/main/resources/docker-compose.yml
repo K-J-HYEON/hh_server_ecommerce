@@ -11,6 +11,7 @@ services:
     volumes:
       - ./h2/:/opt/h2-data
     restart: always
+
 #  redis:
 #    container_name: redis-local
 #    image: redis:alpine
@@ -44,3 +45,10 @@ services:
 #    H2_OPTIONS: -ifNotExists
 #  volumes:
 #    - /Users/Shared/data/h2-dev:/opt/h2-data
+
+#services:
+#  my-web-server:
+#    container_name: webserver
+#    image: nginx
+#    ports:
+#      - 80:80
