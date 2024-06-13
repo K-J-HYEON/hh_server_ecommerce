@@ -2,12 +2,14 @@ name: pr_ci_pipeline
 
 # 동작 조건 설정 : main 브랜치에 push 혹은 pull request가 발생할 경우 동작한다.
 on:
+#  push:
+#    branches:
+#      - main
   pull_request:
     branches: [ main, develop, feature/* ]
 
 permissions:
   contents: read
-
 
 jobs:
   # Spring Boot 애플리케이션을 빌드하여 도커허브에 푸시하는 과정
