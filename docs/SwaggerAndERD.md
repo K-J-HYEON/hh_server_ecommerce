@@ -1,4 +1,4 @@
-## ERD
+ ## ERD
 ![image](https://github.com/K-J-HYEON/hh_3wk_ecommerce/assets/77037051/f020f724-49da-4544-9512-7ba8c5354e0e)
 
 ## Swagger
