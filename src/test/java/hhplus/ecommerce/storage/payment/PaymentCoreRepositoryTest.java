@@ -1,29 +1,25 @@
 package hhplus.ecommerce.storage.payment;
 
 import jakarta.persistence.EntityNotFoundException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
 
 class PaymentCoreRepositoryTest {
 
-//    @MockBean
+    @MockBean
     private PaymentJpaRepository paymentJpaRepository;
 
-//    @InjectMocks
+    @InjectMocks
     private PaymentCoreRepository paymentCoreRepository;
 
-    @BeforeEach
-    void setUp() {
-        paymentJpaRepository = mock(PaymentJpaRepository.class);
-        paymentCoreRepository = new PaymentCoreRepository(paymentJpaRepository);
-    }
+//    @BeforeEach
+//    void setUp() {
+//        paymentJpaRepository = mock(PaymentJpaRepository.class);
+//        paymentCoreRepository = new PaymentCoreRepository(paymentJpaRepository);
+//    }
 
     @Test
     @DisplayName("결제 정보를 찾지 못하였을 경우 에러 발생")
