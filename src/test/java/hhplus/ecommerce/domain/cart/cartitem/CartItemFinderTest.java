@@ -1,18 +1,13 @@
 package hhplus.ecommerce.domain.cart.cartitem;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
 import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mock;
 
 class CartItemFinderTest {
 
@@ -28,7 +23,6 @@ class CartItemFinderTest {
 //
 //        cartItemFinder = new CartItemFinder(cartItemRepository);
 //    }
-
 
 
     @Test
