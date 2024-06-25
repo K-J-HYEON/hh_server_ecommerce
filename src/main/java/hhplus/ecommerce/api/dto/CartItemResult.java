@@ -2,7 +2,6 @@ package hhplus.ecommerce.api.dto;
 
 import hhplus.ecommerce.domain.cart.cartitem.CartItem;
 import hhplus.ecommerce.domain.product.Product;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
