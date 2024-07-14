@@ -1,3 +1,12 @@
+buildscript {
+    ext.kotlin_version = '2.0.0'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.4'
@@ -6,6 +15,7 @@ plugins {
 	id 'checkstyle'
 	id 'jacoco'
 }
+apply plugin: 'kotlin'
 
 // jacoco report 설정
 jacocoTestReport {
@@ -74,7 +84,6 @@ subprojects {
 }
 
 java {
-	sourceCompatibility = '17'
 }
 
 configurations {
@@ -121,8 +130,14 @@ dependencies {
 	implementation group: 'log4j', name: 'log4j', version: '1.2.17'
 
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '3.0.6'
+
+	implementation 'org.springframework.kafka:spring-kafka'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(17)
 }
