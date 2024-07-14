@@ -14,7 +14,7 @@ public class OrderEventListener {
         this.stockService = stockService;
     }
 
-//    @Transactional(propagation = Propagation.REQUIRES_NEW)
+
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void orderCreatedHandler(OrderCreatedEvent event) {
         stockService.updateStockCountForOrder(event.order());
